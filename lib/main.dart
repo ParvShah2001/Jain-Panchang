@@ -4,6 +4,8 @@ import 'core/theme/app_theme.dart';
 import 'ui/home/home_screen.dart';
 import 'ui/calendar/calendar_screen.dart';
 import 'ui/timings/timings_screen.dart';
+import 'ui/niyam/niyam_screen.dart';
+import 'ui/settings/settings_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +42,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     HomeScreen(),
     CalendarScreen(),
     TimingsScreen(),
+    NiyamScreen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -66,7 +70,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           NavigationDestination(
             icon: Icon(Icons.schedule_outlined),
             selectedIcon: Icon(Icons.schedule),
-            label: 'ચોઘડિયા / મુહૂર્ત',
+            label: 'ચોઘડિયા',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.task_alt_outlined),
+            selectedIcon: Icon(Icons.task_alt),
+            label: 'નિયમ',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings),
+            label: 'સેટિંગ્સ',
           ),
         ],
       ),

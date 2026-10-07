@@ -1,0 +1,134 @@
+[
+  {
+    "id": "paryushan_start",
+    "nameEnglish": "Paryushan Parva Begins",
+    "nameGujarati": "પર્યુષણ પર્વ આરંભ",
+    "nameHindi": "पर्युषण पर्व प्रारंभ",
+    "monthIndex": 10,
+    "paksha": "krishna",
+    "tithi": 12,
+    "importance": "high",
+    "description": "Sacred 8-day festival of self-purification, forgiveness, and fasting."
+  },
+  {
+    "id": "samvatsari",
+    "nameEnglish": "Samvatsari (Kshamavani)",
+    "nameGujarati": "સંવત્સરી મહાપર્વ",
+    "nameHindi": "संवत्सरी महापर्व",
+    "monthIndex": 10,
+    "paksha": "shukla",
+    "tithi": 4,
+    "importance": "highest",
+    "description": "The supreme day of universal forgiveness (Micchami Dukkadam)."
+  },
+  {
+    "id": "mahavir_janma_kalyanak",
+    "nameEnglish": "Mahavir Janma Kalyanak",
+    "nameGujarati": "મહાવીર જન્મ કલ્યાણક",
+    "nameHindi": "महावीर जन्म कल्याणक",
+    "monthIndex": 5,
+    "paksha": "shukla",
+    "tithi": 13,
+    "importance": "highest",
+    "description": "Celebration of the birth of 24th Tirthankar Bhagwan Mahavira."
+  },
+  {
+    "id": "diwali_nirvan",
+    "nameEnglish": "Diwali - Bhagwan Mahavir Nirvan Kalyanak",
+    "nameGujarati": "દિવાળી - મહાવીર નિર્વાણ કલ્યાણક",
+    "nameHindi": "दीपावली - भगवान महावीर निर्वाण कल्याणक",
+    "monthIndex": 11,
+    "paksha": "krishna",
+    "tithi": 15,
+    "importance": "highest",
+    "description": "Liberation (Moksha) of Bhagwan Mahavir."
+  },
+  {
+    "id": "new_year",
+    "nameEnglish": "Jain New Year (Kartak Sud Ekam)",
+    "nameGujarati": "નૂતન વર્ષ (બેસતું વર્ષ)",
+    "nameHindi": "नव वर्ष (वीर संवत प्रारंभ)",
+    "monthIndex": 0,
+    "paksha": "shukla",
+    "tithi": 1,
+    "importance": "high",
+    "description": "Gautam Swami Kevalgyan day and start of New Veer Nirvan Samvat year."
+  },
+  {
+    "id": "gyan_panchami",
+    "nameEnglish": "Gyan Panchami (Saubhagya Panchami)",
+    "nameGujarati": "જ્ઞાન પંચમી",
+    "nameHindi": "ज्ञान पंचमी",
+    "monthIndex": 0,
+    "paksha": "shukla",
+    "tithi": 5,
+    "importance": "high",
+    "description": "Veneration of sacred scriptures (Agamas) and divine spiritual knowledge."
+  },
+  {
+    "id": "kartiki_purnima",
+    "nameEnglish": "Kartiki Purnima (Shatrunjay Yatra Chalu)",
+    "nameGujarati": "કારતકી પૂનમ (યાત્રા પ્રારંભ)",
+    "nameHindi": "कार्तिकी पूर्णिमा",
+    "monthIndex": 0,
+    "paksha": "shukla",
+    "tithi": 15,
+    "importance": "highest",
+    "description": "Reopening of sacred Shatrunjay Mahatirth pilgrimage after Chaturmas."
+  },
+  {
+    "id": "maun_ekadashi",
+    "nameEnglish": "Maun Ekadashi",
+    "nameGujarati": "મૌન એકાદશી",
+    "nameHindi": "मौन एकादशी",
+    "monthIndex": 1,
+    "paksha": "shukla",
+    "tithi": 11,
+    "importance": "high",
+    "description": "Day of complete silence (Maun), meditation, and worship of 150 Kalyanaks."
+  },
+  {
+    "id": "paush_dashami",
+    "nameEnglish": "Paush Dashami (Parshwanath Janma Kalyanak)",
+    "nameGujarati": "પોષ દશમી (પાર્શ્વનાથ જન્મ કલ્યાણક)",
+    "nameHindi": "पौष दशमी",
+    "monthIndex": 2,
+    "paksha": "krishna",
+    "tithi": 10,
+    "importance": "high",
+    "description": "Auspicious day dedicated to 23rd Tirthankar Bhagwan Parshwanath."
+  },
+  {
+    "id": "oli_chaitra",
+    "nameEnglish": "Chaitra Navpad Oli (Ayambil)",
+    "nameGujarati": "ચૈત્રી નવપદ ઓળી આરંભ",
+    "nameHindi": "चैत्र नवपद ओली प्रारंभ",
+    "monthIndex": 5,
+    "paksha": "shukla",
+    "tithi": 7,
+    "importance": "high",
+    "description": "9-day sacred fasting festival honoring Navpad (Arihant, Siddha, Acharya, etc.)."
+  },
+  {
+    "id": "akshay_tritiya",
+    "nameEnglish": "Akshay Tritiya (Varshitap Parna)",
+    "nameGujarati": "અક્ષય તૃતીયા (વર્ષીતપ પારણા)",
+    "nameHindi": "अक्षय तृतीया (वर्षीतप पारणा)",
+    "monthIndex": 6,
+    "paksha": "shukla",
+    "tithi": 3,
+    "importance": "highest",
+    "description": "Commemoration of Bhagwan Rishabhdev break of 400-day fast with sugarcane juice."
+  },
+  {
+    "id": "chaumasi_chaudas_ashadh",
+    "nameEnglish": "Ashadhi Chaumasi Chaudas (Chaturmas Aarambh)",
+    "nameGujarati": "અષાઢી ચૌમાસી ચૌદસ (ચાતુર્માસ શરૂ)",
+    "nameHindi": "आषाढ़ी चौमासी चौदस (चातुर्मास प्रारंभ)",
+    "monthIndex": 8,
+    "paksha": "shukla",
+    "tithi": 14,
+    "importance": "high",
+    "description": "Commencement of the 4-month ascetic monsoon stay (Chaturmas)."
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "c1",
+    "number": 1,
+    "nameEnglish": "Sachit Tyag (Living Raw Greens)",
+    "nameGujarati": "સચિત્ત ત્યાગ",
+    "nameHindi": "सचित्त त्याग",
+    "category": "Aahar Sanyam",
+    "description": "Limiting intake of raw, uncooked green vegetation with living water/seeds."
+  },
+  {
+    "id": "c2",
+    "number": 2,
+    "nameEnglish": "Dravya Maryada (Food Item Count)",
+    "nameGujarati": "દ્રવ્ય મર્યાદા",
+    "nameHindi": "द्रव्य मर्यादा",
+    "category": "Aahar Sanyam",
+    "description": "Limiting total variety of raw/prepared food items consumed in a day (e.g. max 14 dravyas)."
+  },
+  {
+    "id": "c3",
+    "number": 3,
+    "nameEnglish": "Vigai Tyag (Butter, Milk, Curd, Oil, Sweet, Fried)",
+    "nameGujarati": "વિગઇ ત્યાગ",
+    "nameHindi": "विगई त्याग",
+    "category": "Tap",
+    "description": "Abstaining from one or more tasty stimulating Vigais."
+  },
+  {
+    "id": "c4",
+    "number": 4,
+    "nameEnglish": "Vahana Maryada (Footwear & Vehicles)",
+    "nameGujarati": "વાહન મર્યાદા",
+    "nameHindi": "वाहन मर्यादा",
+    "category": "Jeev Daya",
+    "description": "Restricting travel distance and footwear for mindfulness of microscopic organisms."
+  },
+  {
+    "id": "c5",
+    "number": 5,
+    "nameEnglish": "Tambool Tyag (Mouth Fresheners / Betel)",
+    "nameGujarati": "તાંબૂલ ત્યાગ",
+    "nameHindi": "तांबूल त्याग",
+    "category": "Aahar Sanyam",
+    "description": "Abstaining from unnecessary mouth fresheners and spices."
+  },
+  {
+    "id": "c6",
+    "number": 6,
+    "nameEnglish": "Vastra Maryada (Clothing Limits)",
+    "nameGujarati": "વસ્ત્ર મર્યાદા",
+    "nameHindi": "वस्त्र मर्यादा",
+    "category": "Aparigraha",
+    "description": "Restricting the number of cloth pairs worn or changed in a single day."
+  },
+  {
+    "id": "c7",
+    "number": 7,
+    "nameEnglish": "Kusum Maryada (Perfumes, Flowers & Cosmetics)",
+    "nameGujarati": "કુસુમ મર્યાદા",
+    "nameHindi": "कुसुम मर्यादा",
+    "category": "Aparigraha",
+    "description": "Restricting usage of floral scents, perfumes, and luxurious cosmetics."
+  },
+  {
+    "id": "c8",
+    "number": 8,
+    "nameEnglish": "Vahana / Asana Maryada (Vehicles & Seats)",
+    "nameGujarati": "વાહન / આસન મર્યાદા",
+    "nameHindi": "वाहन / आसन मर्यादा",
+    "category": "Jeev Daya",
+    "description": "Conscious restraint on riding luxury vehicles or lavish furniture."
+  },
+  {
+    "id": "c9",
+    "number": 9,
+    "nameEnglish": "Shayana Maryada (Beds & Sleep Luxury)",
+    "nameGujarati": "શયન મર્યાદા",
+    "nameHindi": "शयन मर्यादा",
+    "category": "Tap",
+    "description": "Choosing simple mats/beds rather than excessive soft mattresses."
+  },
+  {
+    "id": "c10",
+    "number": 10,
+    "nameEnglish": "Vilepan Maryada (Skin Creams & Oils)",
+    "nameGujarati": "વિલેપન મર્યાદા",
+    "nameHindi": "विलेपन मर्यादा",
+    "category": "Aparigraha",
+    "description": "Minimizing body oils, lotions, soaps, and adornments."
+  },
+  {
+    "id": "c11",
+    "number": 11,
+    "nameEnglish": "Brahma Maryada (Celibacy / Contentment)",
+    "nameGujarati": "બ્રહ્મચર્ય મર્યાદા",
+    "nameHindi": "ब्रह्मचर्य मर्यादा",
+    "category": "Tap",
+    "description": "Observing sensual purity and mental contentment."
+  },
+  {
+    "id": "c12",
+    "number": 12,
+    "nameEnglish": "Disha Maryada (Spatial Boundaries)",
+    "nameGujarati": "દિશા મર્યાદા",
+    "nameHindi": "दिशा मर्यादा",
+    "category": "Jeev Daya",
+    "description": "Setting physical geographic boundaries beyond which one will not travel today."
+  },
+  {
+    "id": "c13",
+    "number": 13,
+    "nameEnglish": "Snana Maryada (Bathing Water Usage)",
+    "nameGujarati": "સ્નાન મર્યાદા",
+    "nameHindi": "स्नान मर्यादा",
+    "category": "Jeev Daya",
+    "description": "Restricting bucket count of water used for bathing to protect Apkay (water) souls."
+  },
+  {
+    "id": "c14",
+    "number": 14,
+    "nameEnglish": "Bhaktan (Food Intake Frequency)",
+    "nameGujarati": "ભક્ત પાન મર્યાદા",
+    "nameHindi": "भक्त पान मर्यादा",
+    "category": "Aahar Sanyam",
+    "description": "Limiting meals to 1 or 2 sittings (Ekasana / Biyasana) without grazing throughout the day."
+  }
+]

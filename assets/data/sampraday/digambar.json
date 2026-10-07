@@ -1,0 +1,17 @@
+{
+  "sampraday": "digambar",
+  "name": "Digambar",
+  "paryushanDurationDays": 10,
+  "dasLakshanParva": {
+    "monthIndex": 10,
+    "paksha": "shukla",
+    "startTithi": 5,
+    "endTithi": 14
+  },
+  "kshamavaniDayRule": {
+    "monthIndex": 10,
+    "paksha": "shukla",
+    "tithi": 15
+  },
+  "notes": "10-day Das Lakshana Parva ending on Anant Chaturdashi; Kshamavani celebrated on Ashwin Krishna Pratipada / Purnima."
+}

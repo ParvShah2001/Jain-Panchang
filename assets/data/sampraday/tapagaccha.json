@@ -1,0 +1,12 @@
+{
+  "sampraday": "tapagaccha",
+  "name": "Tapagaccha (Shwetambar Murtipujak)",
+  "paryushanDurationDays": 8,
+  "samvatsariDayRule": {
+    "monthIndex": 10,
+    "paksha": "shukla",
+    "tithi": 4
+  },
+  "udayaTithiSunriseRule": "standard",
+  "notes": "Samvatsari observed on Bhadarva Sud 4 (or Sud 5 under specific 50-day calculation conventions)."
+}
