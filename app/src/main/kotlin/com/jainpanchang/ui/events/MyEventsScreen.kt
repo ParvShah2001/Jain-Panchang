@@ -14,15 +14,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jainpanchang.R
 import com.jainpanchang.data.db.MyEventEntity
 import com.jainpanchang.data.repository.EventsRepository
 import com.jainpanchang.data.repository.SettingsRepository
 import com.jainpanchang.engine.model.JainMonth
 import com.jainpanchang.engine.model.Paksha
-import com.jainpanchang.ui.theme.GoldenSecondary
-import com.jainpanchang.ui.theme.SaffronPrimary
+import com.jainpanchang.ui.theme.*
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -38,6 +39,7 @@ fun MyEventsScreen(
     val settings by settingsRepository.settingsFlow.collectAsState(initial = null)
     val userSettings = settings ?: return
     val scope = rememberCoroutineScope()
+    val lang = LocalAppLanguage.current
 
     var showAddDialog by remember { mutableStateOf(false) }
     val thisYear = remember { LocalDate.now().year }
@@ -49,7 +51,7 @@ fun MyEventsScreen(
                 containerColor = SaffronPrimary,
                 contentColor = Color.White
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Add Event")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_event))
             }
         },
         modifier = modifier.fillMaxSize()
@@ -64,14 +66,14 @@ fun MyEventsScreen(
         ) {
             item {
                 Text(
-                    text = "મારા પ્રસંગો (My Events)",
+                    text = stringResource(R.string.title_events),
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                     color = SaffronPrimary,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
-                    text = "તિથિ અનુસાર જન્મદિવસ, વર્ષગાંઠ અને તિથિ-તિથિના ધાર્મિક પ્રસંગો દર વર્ષે આપોઆપ સાચી તારીખે આવે છે.",
+                    text = stringResource(R.string.recurring_by_tithi_desc),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -95,15 +97,9 @@ fun MyEventsScreen(
                             Icon(Icons.Default.Event, contentDescription = null, modifier = Modifier.size(48.dp), tint = GoldenSecondary)
                             Spacer(modifier = Modifier.height(12.dp))
                             Text(
-                                text = "હજી કોઈ પ્રસંગ ઉમેરેલ નથી",
+                                text = stringResource(R.string.no_events_yet),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold
-                            )
-                            Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "નીચે આપેલા '+' બટનથી તિથિ મુજબનો પ્રસંગ ઉમેરો.",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
@@ -137,22 +133,22 @@ fun MyEventsScreen(
                                 )
 
                                 val recurrenceLabel = if (event.isTithiBased) {
-                                    val m = try { JainMonth.valueOf(event.jainMonth).nameGu } catch (e: Exception) { event.jainMonth }
-                                    val p = try { Paksha.valueOf(event.paksha).nameGu } catch (e: Exception) { event.paksha }
-                                    "$m $p તિથિ ${event.tithi}"
+                                    val m = try { JainMonth.valueOf(event.jainMonth).displayName(lang) } catch (e: Exception) { event.jainMonth }
+                                    val p = try { Paksha.valueOf(event.paksha).displayName(lang) } catch (e: Exception) { event.paksha }
+                                    "$m $p ${stringResource(R.string.tithi)} ${event.tithi}"
                                 } else {
                                     "${event.gregorianDay}/${event.gregorianMonth}"
                                 }
 
                                 Text(
-                                    text = "પુનરાવર્તન: $recurrenceLabel",
+                                    text = "${stringResource(R.string.recurrence)}: $recurrenceLabel",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
 
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Text(
-                                    text = "ચાલુ વર્ષે: ${computedDate.format(DateTimeFormatter.ofPattern("d MMMM yyyy (EEEE)"))}",
+                                    text = "$thisYear: ${computedDate.format(DateTimeFormatter.ofPattern("d MMMM yyyy (EEEE)", lang.locale))}",
                                     style = MaterialTheme.typography.bodyMedium,
                                     fontWeight = FontWeight.SemiBold,
                                     color = GoldenSecondary
@@ -160,7 +156,7 @@ fun MyEventsScreen(
                             }
 
                             IconButton(onClick = { scope.launch { eventsRepository.deleteEvent(event) } }) {
-                                Icon(Icons.Default.Delete, contentDescription = "Delete Event", tint = MaterialTheme.colorScheme.error)
+                                Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.delete), tint = MaterialTheme.colorScheme.error)
                             }
                         }
                     }
@@ -179,13 +175,14 @@ fun MyEventsScreen(
 
         AlertDialog(
             onDismissRequest = { showAddDialog = false },
-            title = { Text("નવો પ્રસંગ ઉમેરો (Add Event)") },
+            title = { Text(stringResource(R.string.add_event)) },
             text = {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     OutlinedTextField(
                         value = title,
                         onValueChange = { title = it },
-                        label = { Text("પ્રસંગનું નામ (Event Title)") },
+                        label = { Text(stringResource(R.string.event_title)) },
+                        placeholder = { Text(stringResource(R.string.event_title_hint)) },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -197,28 +194,28 @@ fun MyEventsScreen(
                             selected = isTithiBased,
                             onClick = { isTithiBased = true }
                         )
-                        Text(text = "તિથિ અનુસાર (Tithi based)")
+                        Text(text = stringResource(R.string.tithi_based))
                     }
 
                     if (isTithiBased) {
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
-                            text = "માસ: ${selectedMonth.nameGu} (${selectedMonth.nameEn})",
+                            text = "${stringResource(R.string.tithi)}: ${selectedMonth.displayName(lang)}",
                             style = MaterialTheme.typography.bodySmall
                         )
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             TextButton(onClick = {
                                 val nextIdx = (selectedMonth.ordinal + 1) % 12
                                 selectedMonth = JainMonth.entries[nextIdx]
-                            }) { Text("માસ બદલો (Change)") }
+                            }) { Text(selectedMonth.displayName(lang)) }
 
                             TextButton(onClick = {
                                 selectedPaksha = if (selectedPaksha == Paksha.SHUKLA) Paksha.KRISHNA else Paksha.SHUKLA
-                            }) { Text(selectedPaksha.nameGu) }
+                            }) { Text(selectedPaksha.displayName(lang)) }
                         }
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("તિથિ (૧-૧૫): ")
+                            Text("${stringResource(R.string.tithi)} (1-15): ")
                             Slider(
                                 value = selectedTithi.toFloat(),
                                 onValueChange = { selectedTithi = it.toInt() },
@@ -251,11 +248,11 @@ fun MyEventsScreen(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = SaffronPrimary)
                 ) {
-                    Text("સાચવો (Save)")
+                    Text(stringResource(R.string.save))
                 }
             },
             dismissButton = {
-                TextButton(onClick = { showAddDialog = false }) { Text("રદ કરો (Cancel)") }
+                TextButton(onClick = { showAddDialog = false }) { Text(stringResource(R.string.cancel)) }
             }
         )
     }

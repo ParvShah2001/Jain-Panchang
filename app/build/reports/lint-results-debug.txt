@@ -20,6 +20,18 @@ D:\github\Jain-Panchang\app\build.gradle.kts:15: Warning: Not targeting the late
 
    https://developer.android.com/distribute/best-practices/develop/target-sdk.html
 
+D:\github\Jain-Panchang\app\src\main\kotlin\com\jainpanchang\MainActivity.kt:100: Warning: Found dynamic locale changes, but did not find corresponding Play Core library calls for downloading languages and splitting by language is not disabled in the bundle configuration [AppBundleLocaleChanges]
+                config.setLocale(currentLanguage.locale)
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "AppBundleLocaleChanges":
+   When changing locales at runtime (e.g. to provide an in-app language
+   switcher), the Android App Bundle must be configured to not split by locale
+   or the Play Core library must be used to download additional locales at
+   runtime.
+
+   https://developer.android.com/guide/app-bundle/configure-base#handling_language_changes
+
 D:\github\Jain-Panchang\app\build.gradle.kts:10: Warning: A newer version of compileSdk than 36 is available: 37 [GradleDependency]
     compileSdk = 36
     ~~~~~~~~~~~~~~~
@@ -30,6 +42,31 @@ D:\github\Jain-Panchang\app\build.gradle.kts:10: Warning: A newer version of com
    are cases where you deliberately want to stick with an older version.
    However, you may simply not be aware that a more recent version is
    available, and that is what this lint check helps find.
+
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:110: Warning: Formatting %d followed by words ("Days"): This should probably be a plural rather than a string [PluralsCandidate]
+    <string name="days_count">%d Days</string>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "PluralsCandidate":
+   This lint check looks for potential errors in internationalization where
+   you have translated a message which involves a quantity and it looks like
+   other parts of the string may need grammatical changes.
+
+   For example, rather than something like this:
+     <string name="try_again">Try again in %d seconds.</string>
+   you should be using a plural:
+      <plurals name="try_again">
+           <item quantity="one">Try again in %d second</item>
+           <item quantity="other">Try again in %d seconds</item>
+       </plurals>
+   This will ensure that in other languages the right set of translations are
+   provided for the different quantity classes.
+
+   (This check depends on some heuristics, so it may not accurately determine
+   whether a string really should be a quantity. You can use tools:ignore to
+   filter out false positives.
+
+   https://developer.android.com/guide/topics/resources/string-resource.html#Plurals
 
 D:\github\Jain-Panchang\app\src\main\kotlin\com\jainpanchang\receiver\AlarmScheduler.kt:21: Warning: Unnecessary; SDK_INT is always >= 26 [ObsoleteSdkInt]
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -44,147 +81,147 @@ D:\github\Jain-Panchang\app\src\main\kotlin\com\jainpanchang\receiver\AlarmSched
    where the version qualifier is less than or equal to the minSdkVersion,
    where the contents should be merged into the best folder.
 
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:3: Warning: The resource R.string.tab_home appears to be unused [UnusedResources]
-    <string name="tab_home">Home</string>
-            ~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:4: Warning: The resource R.string.tab_calendar appears to be unused [UnusedResources]
-    <string name="tab_calendar">Calendar</string>
-            ~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:5: Warning: The resource R.string.tab_timings appears to be unused [UnusedResources]
-    <string name="tab_timings">Timings</string>
-            ~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:6: Warning: The resource R.string.tab_festivals appears to be unused [UnusedResources]
-    <string name="tab_festivals">Festivals</string>
-            ~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:7: Warning: The resource R.string.tab_niyam appears to be unused [UnusedResources]
-    <string name="tab_niyam">Niyam</string>
-            ~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:8: Warning: The resource R.string.tab_events appears to be unused [UnusedResources]
-    <string name="tab_events">My Events</string>
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:16: Warning: The resource R.string.date appears to be unused [UnusedResources]
+    <string name="date">Date</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:17: Warning: The resource R.string.time appears to be unused [UnusedResources]
+    <string name="time">Time</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:18: Warning: The resource R.string.search appears to be unused [UnusedResources]
+    <string name="search">Search</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:22: Warning: The resource R.string.edit appears to be unused [UnusedResources]
+    <string name="edit">Edit</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:24: Warning: The resource R.string.done appears to be unused [UnusedResources]
+    <string name="done">Done</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:25: Warning: The resource R.string.streak appears to be unused [UnusedResources]
+    <string name="streak">Streak</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:27: Warning: The resource R.string.pending appears to be unused [UnusedResources]
+    <string name="pending">Pending</string>
+            ~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:28: Warning: The resource R.string.auspicious appears to be unused [UnusedResources]
+    <string name="auspicious">Auspicious</string>
             ~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:9: Warning: The resource R.string.tab_settings appears to be unused [UnusedResources]
-    <string name="tab_settings">Settings</string>
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:29: Warning: The resource R.string.inauspicious appears to be unused [UnusedResources]
+    <string name="inauspicious">Inauspicious</string>
             ~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:12: Warning: The resource R.string.tithi appears to be unused [UnusedResources]
-    <string name="tithi">Tithi</string>
-            ~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:13: Warning: The resource R.string.paksha appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:34: Warning: The resource R.string.paksha appears to be unused [UnusedResources]
     <string name="paksha">Paksha</string>
             ~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:14: Warning: The resource R.string.nakshatra appears to be unused [UnusedResources]
-    <string name="nakshatra">Nakshatra</string>
-            ~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:15: Warning: The resource R.string.yoga appears to be unused [UnusedResources]
-    <string name="yoga">Yoga</string>
-            ~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:16: Warning: The resource R.string.karana appears to be unused [UnusedResources]
-    <string name="karana">Karana</string>
-            ~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:17: Warning: The resource R.string.vara appears to be unused [UnusedResources]
-    <string name="vara">Day</string>
-            ~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:18: Warning: The resource R.string.sunrise appears to be unused [UnusedResources]
-    <string name="sunrise">Sunrise</string>
-            ~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:19: Warning: The resource R.string.sunset appears to be unused [UnusedResources]
-    <string name="sunset">Sunset</string>
-            ~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:20: Warning: The resource R.string.moonrise appears to be unused [UnusedResources]
-    <string name="moonrise">Moonrise</string>
-            ~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:21: Warning: The resource R.string.moonset appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:42: Warning: The resource R.string.moonset appears to be unused [UnusedResources]
     <string name="moonset">Moonset</string>
             ~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:22: Warning: The resource R.string.current_choghadiya appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:43: Warning: The resource R.string.solar_noon appears to be unused [UnusedResources]
+    <string name="solar_noon">Solar Noon</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:44: Warning: The resource R.string.day_length appears to be unused [UnusedResources]
+    <string name="day_length">Day Length</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:45: Warning: The resource R.string.night_length appears to be unused [UnusedResources]
+    <string name="night_length">Night Length</string>
+            ~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:46: Warning: The resource R.string.current_choghadiya appears to be unused [UnusedResources]
     <string name="current_choghadiya">Current Choghadiya</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:23: Warning: The resource R.string.next_event appears to be unused [UnusedResources]
-    <string name="next_event">Next Timing</string>
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:52: Warning: The resource R.string.title_home appears to be unused [UnusedResources]
+    <string name="title_home">Today\'s Panchang</string>
             ~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:24: Warning: The resource R.string.samvat appears to be unused [UnusedResources]
-    <string name="samvat">Vikram Samvat</string>
-            ~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:25: Warning: The resource R.string.veer_nirvan_samvat appears to be unused [UnusedResources]
-    <string name="veer_nirvan_samvat">Veer Nirvan Samvat</string>
-            ~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:28: Warning: The resource R.string.choghadiya_amrit appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:55: Warning: The resource R.string.today_kalyanaks appears to be unused [UnusedResources]
+    <string name="today_kalyanaks">Today\'s Kalyanaks</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:60: Warning: The resource R.string.title_calendar appears to be unused [UnusedResources]
+    <string name="title_calendar">Jain Calendar</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:62: Warning: The resource R.string.day_details appears to be unused [UnusedResources]
+    <string name="day_details">Day Details</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:63: Warning: The resource R.string.no_events_today appears to be unused [UnusedResources]
+    <string name="no_events_today">No special festival or event today</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:78: Warning: The resource R.string.choghadiya_amrit appears to be unused [UnusedResources]
     <string name="choghadiya_amrit">Amrit</string>
             ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:29: Warning: The resource R.string.choghadiya_shubh appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:79: Warning: The resource R.string.choghadiya_shubh appears to be unused [UnusedResources]
     <string name="choghadiya_shubh">Shubh</string>
             ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:30: Warning: The resource R.string.choghadiya_labh appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:80: Warning: The resource R.string.choghadiya_labh appears to be unused [UnusedResources]
     <string name="choghadiya_labh">Labh</string>
             ~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:31: Warning: The resource R.string.choghadiya_char appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:81: Warning: The resource R.string.choghadiya_char appears to be unused [UnusedResources]
     <string name="choghadiya_char">Char</string>
             ~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:32: Warning: The resource R.string.choghadiya_rog appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:82: Warning: The resource R.string.choghadiya_rog appears to be unused [UnusedResources]
     <string name="choghadiya_rog">Rog</string>
             ~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:33: Warning: The resource R.string.choghadiya_kaal appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:83: Warning: The resource R.string.choghadiya_kaal appears to be unused [UnusedResources]
     <string name="choghadiya_kaal">Kaal</string>
             ~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:34: Warning: The resource R.string.choghadiya_udveg appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:84: Warning: The resource R.string.choghadiya_udveg appears to be unused [UnusedResources]
     <string name="choghadiya_udveg">Udveg</string>
             ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:37: Warning: The resource R.string.pachkhan_navkarshi appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:87: Warning: The resource R.string.pachkhan_navkarshi appears to be unused [UnusedResources]
     <string name="pachkhan_navkarshi">Navkarshi</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:38: Warning: The resource R.string.pachkhan_porsi appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:88: Warning: The resource R.string.pachkhan_porsi appears to be unused [UnusedResources]
     <string name="pachkhan_porsi">Porsi</string>
             ~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:39: Warning: The resource R.string.pachkhan_sadh_porsi appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:89: Warning: The resource R.string.pachkhan_sadh_porsi appears to be unused [UnusedResources]
     <string name="pachkhan_sadh_porsi">Sadh Porsi</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:40: Warning: The resource R.string.pachkhan_purimuddh appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:90: Warning: The resource R.string.pachkhan_purimuddh appears to be unused [UnusedResources]
     <string name="pachkhan_purimuddh">Purimuddh</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:41: Warning: The resource R.string.pachkhan_avaddh appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:91: Warning: The resource R.string.pachkhan_avaddh appears to be unused [UnusedResources]
     <string name="pachkhan_avaddh">Avaddh</string>
             ~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:42: Warning: The resource R.string.pachkhan_chauvihar appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:92: Warning: The resource R.string.pachkhan_chauvihar appears to be unused [UnusedResources]
     <string name="pachkhan_chauvihar">Chauvihar</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:43: Warning: The resource R.string.pachkhan_tivihar appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:93: Warning: The resource R.string.pachkhan_tivihar appears to be unused [UnusedResources]
     <string name="pachkhan_tivihar">Tivihar</string>
             ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:44: Warning: The resource R.string.pachkhan_ekasana appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:94: Warning: The resource R.string.pachkhan_ekasana appears to be unused [UnusedResources]
     <string name="pachkhan_ekasana">Ekasana</string>
             ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:45: Warning: The resource R.string.pachkhan_biyasana appears to be unused [UnusedResources]
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:95: Warning: The resource R.string.pachkhan_biyasana appears to be unused [UnusedResources]
     <string name="pachkhan_biyasana">Biyasana</string>
             ~~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:48: Warning: The resource R.string.select_city appears to be unused [UnusedResources]
-    <string name="select_city">Select City</string>
-            ~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:49: Warning: The resource R.string.select_sampraday appears to be unused [UnusedResources]
-    <string name="select_sampraday">Sampraday / Tradition</string>
-            ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:50: Warning: The resource R.string.select_ayanamsha appears to be unused [UnusedResources]
-    <string name="select_ayanamsha">Ayanamsha</string>
-            ~~~~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:51: Warning: The resource R.string.theme appears to be unused [UnusedResources]
-    <string name="theme">Theme</string>
-            ~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:52: Warning: The resource R.string.theme_system appears to be unused [UnusedResources]
-    <string name="theme_system">System Default</string>
-            ~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:53: Warning: The resource R.string.theme_light appears to be unused [UnusedResources]
-    <string name="theme_light">Light</string>
-            ~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:54: Warning: The resource R.string.theme_dark appears to be unused [UnusedResources]
-    <string name="theme_dark">Dark</string>
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:104: Warning: The resource R.string.filter_by_sampraday appears to be unused [UnusedResources]
+    <string name="filter_by_sampraday">Tradition Filter</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:110: Warning: The resource R.string.days_count appears to be unused [UnusedResources]
+    <string name="days_count">%d Days</string>
             ~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:55: Warning: The resource R.string.language appears to be unused [UnusedResources]
-    <string name="language">Language</string>
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:112: Warning: The resource R.string.custom_maryada_hint appears to be unused [UnusedResources]
+    <string name="custom_maryada_hint">Enter your vow / limit...</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:116: Warning: The resource R.string.share_quote appears to be unused [UnusedResources]
+    <string name="share_quote">Share Quote</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:117: Warning: The resource R.string.quote_of_the_day appears to be unused [UnusedResources]
+    <string name="quote_of_the_day">Quote of the Day</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:124: Warning: The resource R.string.event_type appears to be unused [UnusedResources]
+    <string name="event_type">Event Type</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:125: Warning: The resource R.string.birthday appears to be unused [UnusedResources]
+    <string name="birthday">Birthday</string>
             ~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:56: Warning: The resource R.string.notifications appears to be unused [UnusedResources]
-    <string name="notifications">Notifications &amp; Reminders</string>
-            ~~~~~~~~~~~~~~~~~~~~
-D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:57: Warning: The resource R.string.privacy_policy appears to be unused [UnusedResources]
-    <string name="privacy_policy">Privacy Policy</string>
-            ~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:126: Warning: The resource R.string.anniversary appears to be unused [UnusedResources]
+    <string name="anniversary">Anniversary</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:127: Warning: The resource R.string.puja_diksha appears to be unused [UnusedResources]
+    <string name="puja_diksha">Puja / Diksha</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:128: Warning: The resource R.string.other appears to be unused [UnusedResources]
+    <string name="other">Other</string>
+            ~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:131: Warning: The resource R.string.gregorian_based appears to be unused [UnusedResources]
+    <string name="gregorian_based">Gregorian Date Recurrence</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
 
    Explanation for issues of type "UnusedResources":
    Unused resources make applications larger and slow down builds.
@@ -218,4 +255,30 @@ D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:57: Warning: The res
    </lint>
    ```
 
-0 errors, 50 warnings
+D:\github\Jain-Panchang\app\src\main\res\values-gu\strings.xml:99: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="search_festival_hint">પર્વ અથવા તીર્થંકર શોધો...</string>
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values-hi\strings.xml:99: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="search_festival_hint">पर्व या तीर्थंकर खोजें...</string>
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:99: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="search_festival_hint">Search festival or Tirthankar...</string>
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values-gu\strings.xml:112: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="custom_maryada_hint">તમારો વ્રત કે નિયમ લખો...</string>
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values-hi\strings.xml:112: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="custom_maryada_hint">अपना व्रत या मर्यादा लिखें...</string>
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:112: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="custom_maryada_hint">Enter your vow / limit...</string>
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "TypographyEllipsis":
+   You can replace the string "..." with a dedicated ellipsis character,
+   ellipsis character (u2026, &#8230;). This can help make the text more
+   readable.
+
+   https://en.wikipedia.org/wiki/Ellipsis
+
+0 errors, 58 warnings

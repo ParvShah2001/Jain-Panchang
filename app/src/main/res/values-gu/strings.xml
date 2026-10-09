@@ -1,12 +1,33 @@
 <resources>
     <string name="app_name">જૈન પંચાંગ</string>
-    <string name="tab_home">મુખ્ય પૃષ્ઠ</string>
+
+    <!-- Bottom Navigation -->
+    <string name="tab_home">આજનું</string>
     <string name="tab_calendar">કેલેન્ડર</string>
-    <string name="tab_timings">સમય</string>
-    <string name="tab_festivals">પર્વ અને કલ્યાણક</string>
-    <string name="tab_niyam">દૈનિક નિયમ</string>
-    <string name="tab_events">મારા પ્રસંગો</string>
+    <string name="tab_timings">ચોઘડિયા</string>
+    <string name="tab_festivals">પર્વ</string>
+    <string name="tab_niyam">નિયમ</string>
+    <string name="tab_quotes">સુવિચાર</string>
+    <string name="tab_events">પ્રસંગો</string>
     <string name="tab_settings">સેટિંગ્સ</string>
+
+    <!-- Common -->
+    <string name="today">આજે</string>
+    <string name="date">તારીખ</string>
+    <string name="time">સમય</string>
+    <string name="search">શોધો</string>
+    <string name="cancel">રદ કરો</string>
+    <string name="save">સાચવો</string>
+    <string name="delete">કાઢી નાખો</string>
+    <string name="edit">ફેરફાર કરો</string>
+    <string name="close">બંધ કરો</string>
+    <string name="done">સંપન્ન</string>
+    <string name="streak">શ્રેણી</string>
+    <string name="completed">પૂર્ણ</string>
+    <string name="pending">બાકી</string>
+    <string name="auspicious">શુભ</string>
+    <string name="inauspicious">અશુભ</string>
+    <string name="share">શેર કરો</string>
 
     <!-- Panchang Elements -->
     <string name="tithi">તિથિ</string>
@@ -19,10 +40,39 @@
     <string name="sunset">સૂર્યાસ્ત</string>
     <string name="moonrise">ચંદ્રોદય</string>
     <string name="moonset">ચંદ્રાસ્ત</string>
+    <string name="solar_noon">મધ્યાહન</string>
+    <string name="day_length">દિવસનો સમય</string>
+    <string name="night_length">રાત્રિનો સમય</string>
     <string name="current_choghadiya">ચાલુ ચોઘડિયું</string>
     <string name="next_event">આગામી સમય</string>
     <string name="samvat">વિક્રમ સંવત</string>
     <string name="veer_nirvan_samvat">વીર નિર્વાણ સંવત</string>
+
+    <!-- Home Screen -->
+    <string name="title_home">આજનું પંચાંગ</string>
+    <string name="astronomical_details">ખગોળીય વિગતો</string>
+    <string name="solar_timings">સૂર્ય અને ચંદ્ર સમય</string>
+    <string name="today_kalyanaks">આજના કલ્યાણક</string>
+    <string name="today_festivals">આજના પર્વ અને તહેવાર</string>
+    <string name="ends_at">સમાપ્તિ સમય</string>
+
+    <!-- Calendar Screen -->
+    <string name="title_calendar">જૈન કેલેન્ડર</string>
+    <string name="select_year">વર્ષ પસંદ કરો</string>
+    <string name="day_details">દિવસની વિગત</string>
+    <string name="no_events_today">આજે કોઈ વિશેષ પર્વ કે પ્રસંગ નથી</string>
+
+    <!-- Timings Screen -->
+    <string name="title_timings">સમય અને મુહૂર્ત</string>
+    <string name="tab_choghadiya">ચોઘડિયા</string>
+    <string name="tab_pachkhan">પચ્ચખાણ</string>
+    <string name="tab_hora">હોરા</string>
+    <string name="tab_gowri">ગૌરી</string>
+    <string name="tab_muhurat">મુહૂર્ત</string>
+    <string name="day_choghadiya">દિવસના ચોઘડિયા</string>
+    <string name="night_choghadiya">રાત્રિના ચોઘડિયા</string>
+    <string name="pachkhan_guidance">જૈન પચ્ચખાણ સમય</string>
+    <string name="active_now">હાલમાં ચાલુ</string>
 
     <!-- Choghadiya Types -->
     <string name="choghadiya_amrit">અમૃત</string>
@@ -44,15 +94,68 @@
     <string name="pachkhan_ekasana">એકાસણું</string>
     <string name="pachkhan_biyasana">બિયાસણું</string>
 
-    <!-- Settings & Options -->
+    <!-- Festivals & Kalyanaks -->
+    <string name="title_festivals">પર્વ અને કલ્યાણક</string>
+    <string name="search_festival_hint">પર્વ અથવા તીર્થંકર શોધો...</string>
+    <string name="tab_all_festivals">જૈન પર્વ</string>
+    <string name="tab_kalyanaks">કલ્યાણક</string>
+    <string name="tab_scholar_review">વિદ્વાન ચકાસણી</string>
+    <string name="needs_scholar_review_badge">વિદ્વાન ચકાસણી જરૂરી</string>
+    <string name="filter_by_sampraday">પરંપરા મુજબ ફિલ્ટર</string>
+
+    <!-- Niyam Screen -->
+    <string name="title_niyam">દૈનિક ચૌદહ નિયમ</string>
+    <string name="todays_suggestion">આજનું સુઝાવ</string>
+    <string name="current_streak">ચાલુ શ્રેણી</string>
+    <string name="days_count">%d દિવસ</string>
+    <string name="set_maryada">મર્યાદા નક્કી કરો</string>
+    <string name="custom_maryada_hint">તમારો વ્રત કે નિયમ લખો...</string>
+
+    <!-- Quotes Screen -->
+    <string name="title_quotes">દૈનિક જૈન સુવિચાર</string>
+    <string name="share_quote">સુવિચાર શેર કરો</string>
+    <string name="quote_of_the_day">આજનો સુવિચાર</string>
+
+    <!-- My Events Screen -->
+    <string name="title_events">મારા પ્રસંગો અને સ્મરણ</string>
+    <string name="add_event">નવો પ્રસંગ ઉમેરો</string>
+    <string name="event_title">પ્રસંગનું નામ</string>
+    <string name="event_title_hint">દા.ત. પિતાજીનો જન્મદિવસ, દીક્ષા દિવસ</string>
+    <string name="event_type">પ્રસંગ પ્રકાર</string>
+    <string name="birthday">જન્મદિવસ</string>
+    <string name="anniversary">વર્ષગાંઠ</string>
+    <string name="puja_diksha">પૂજા / દીક્ષા</string>
+    <string name="other">અન્ય</string>
+    <string name="recurrence">પુનરાવર્તન</string>
+    <string name="tithi_based">જૈન તિથિ અનુસાર</string>
+    <string name="gregorian_based">અંગ્રેજી તારીખ મુજબ</string>
+    <string name="recurring_by_tithi_desc">દર વર્ષે સાચી જૈન તિથિએ આપમેળે સ્મરણ</string>
+    <string name="no_events_yet">હજી કોઈ પ્રસંગ ઉમેરેલ નથી. ઉમેરવા + પર ટેપ કરો.</string>
+
+    <!-- Settings Screen -->
+    <string name="title_settings">સેટિંગ્સ અને પસંદગીઓ</string>
+    <string name="section_location">સ્થળ અને શહેર</string>
+    <string name="section_panchang_rules">પંચાંગ નિયમો અને પરંપરા</string>
+    <string name="section_appearance">દેખાવ અને ભાષા</string>
+    <string name="section_notifications">નોટિફિકેશન અને સ્મરણ</string>
+    <string name="section_trust">ગોપनीयતા અને વિશ્વાસ</string>
     <string name="select_city">શહેર પસંદ કરો</string>
     <string name="select_sampraday">સંપ્રદાય / પરંપરા</string>
-    <string name="select_ayanamsha">અયનાંશ</string>
-    <string name="theme">થીમ</string>
+    <string name="select_ayanamsha">અયનાંશ પદ્ધતિ</string>
+    <string name="language">ભાષા (Language)</string>
+    <string name="select_language">ભાષા પસંદ કરો</string>
+    <string name="language_en">English</string>
+    <string name="language_hi">हिंदी (Hindi)</string>
+    <string name="language_gu">ગુજરાતી (Gujarati)</string>
+    <string name="theme">થીમ (Theme)</string>
     <string name="theme_system">સિસ્ટમ મુજબ</string>
-    <string name="theme_light">લાઇટ</string>
-    <string name="theme_dark">ડાર્ક</string>
-    <string name="language">ભાષા</string>
-    <string name="notifications">નોટિફિકેશન અને રિમાઇન્ડર</string>
+    <string name="theme_light">લાઇટ (ઉજાસ)</string>
+    <string name="theme_dark">ડાર્ક (અંધારું)</string>
+    <string name="remind_tithi">તિથિ અને પર્વ સ્મરણ</string>
+    <string name="remind_chauvihar">સૂર્યાસ્ત / ચૌવિહાર સ્મરણ</string>
+    <string name="remind_pachkhan">પચ્ચખાણ સ્મરણ</string>
+    <string name="remind_my_events">મારા પ્રસંગો સ્મરણ</string>
     <string name="privacy_policy">ગોપનીયતા નીતિ</string>
+    <string name="privacy_guarantee_text">• ૧૦૦% ઓફલાઇન: કોઈ ડેટા કે લોકેશન ઉપકરણ બહાર જતું નથી.\n• કોઈ જાહેરાત નહીં (Ad-Free) અને કોઈ ટ્રેકિંગ નહીં.\n• ગણતરી સંપૂર્ણપણે ઑન-ડિવાઇસ ગાણિતિક અને ખગોળીય અલ્ગોરિધમથી થાય છે.</string>
+    <string name="read_privacy_policy">સંપૂર્ણ ગોપનીયતા નીતિ વાંચો</string>
 </resources>

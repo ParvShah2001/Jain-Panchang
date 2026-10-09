@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="active_now">वर्तमान में सक्रिय</string>
+    <string name="add_event">नया प्रसंग जोड़ें</string>
     <string msgid="8719607706653693137" name="androidx_compose_foundation_autofill">"ऑटोमैटिक तरीके से जानकारी भरने की सुविधा"</string>
     <string msgid="1150566100598813236" name="androidx_compose_ui_autofill">"ऑटोमैटिक तरीके से जानकारी भरने की सुविधा"</string>
+    <string name="anniversary">वर्षगांठ</string>
     <string name="app_name">जैन पंचांग</string>
+    <string name="astronomical_details">खगोलीय विवरण</string>
+    <string name="auspicious">शुभ</string>
+    <string name="birthday">जन्मदिन</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"जवाब दें"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"वीडियो"</string>
     <string msgid="3229508546291798546" name="call_notification_decline_action">"अस्वीकार करें"</string>
@@ -10,6 +16,7 @@
     <string msgid="6107532579223922871" name="call_notification_incoming_text">"आने वाला (इनकमिंग) कॉल"</string>
     <string msgid="8623827134497363134" name="call_notification_ongoing_text">"पहले से जारी कॉल"</string>
     <string msgid="59049573811482460" name="call_notification_screening_text">"इनकमिंग कॉल को स्क्रीन किया जा रहा है"</string>
+    <string name="cancel">रद्द करें</string>
     <string name="choghadiya_amrit">अमृत</string>
     <string name="choghadiya_char">चर</string>
     <string name="choghadiya_kaal">काल</string>
@@ -17,19 +24,41 @@
     <string name="choghadiya_rog">रोग</string>
     <string name="choghadiya_shubh">शुभ</string>
     <string name="choghadiya_udveg">उद्वेग</string>
+    <string name="close">बंद करें</string>
     <string msgid="406453423630273620" name="close_drawer">"नेविगेशन मेन्यू बंद करें"</string>
     <string msgid="7573152094250666567" name="close_sheet">"शीट बंद करें"</string>
+    <string name="completed">पूर्ण</string>
     <string name="current_choghadiya">वर्तमान चौघड़िया</string>
+    <string name="current_streak">वर्तमान निरंतरता</string>
+    <string name="custom_maryada_hint">अपना व्रत या मर्यादा लिखें...</string>
+    <string name="date">दिनांक</string>
+    <string name="day_choghadiya">दिन का चौघड़िया</string>
+    <string name="day_details">दिन का विवरण</string>
+    <string name="day_length">दिन की अवधि</string>
+    <string name="days_count">%d दिन</string>
     <string msgid="8038256446254964252" name="default_error_message">"अमान्य इनपुट"</string>
     <string msgid="6312721426453364202" name="default_popup_window_title">"पॉप-अप विंडो"</string>
+    <string name="delete">हटाएं</string>
+    <string name="done">पूर्ण</string>
     <string msgid="1890207353314751437" name="dropdown_menu">"ड्रॉपडाउन मेन्यू"</string>
+    <string name="edit">संपादित करें</string>
+    <string name="ends_at">समाप्ति समय</string>
+    <string name="event_title">प्रसंग का नाम</string>
+    <string name="event_title_hint">जैसे: पिताजी का जन्मदिन, दीक्षा दिवस</string>
+    <string name="event_type">प्रसंग प्रकार</string>
+    <string name="filter_by_sampraday">संप्रदाय अनुसार फ़िल्टर</string>
     <string msgid="2863935784364843033" name="glance_error_layout_text"><b><tt>"adb logcat"</tt></b>" की मदद से, "<b><tt>"GlanceAppWidget"</tt></b>" को ढूंढकर असल गड़बड़ी का पता लगाएं"</string>
     <string msgid="5191168365305634625" name="glance_error_layout_text_v2">"कॉन्टेंट नहीं दिखाया जा सकता"</string>
     <string msgid="3631961919234443531" name="glance_error_layout_title"><b>"Glance App Widget की गड़बड़ी"</b></string>
+    <string name="gregorian_based">अंग्रेजी दिनांक अनुसार</string>
     <string msgid="6827826412747255547" name="in_progress">"जारी है"</string>
+    <string name="inauspicious">अशुभ</string>
     <string msgid="7933458017204019916" name="indeterminate">"कुछ विकल्पों को चुना गया"</string>
     <string name="karana">करण</string>
-    <string name="language">भाषा</string>
+    <string name="language">भाषा (Language)</string>
+    <string name="language_en">English</string>
+    <string name="language_gu">ગુજરાતી (Gujarati)</string>
+    <string name="language_hi">हिंदी (Hindi)</string>
     <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"बॉटम शीट को छोटा करें"</string>
     <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"बॉटम शीट को खारिज करें"</string>
     <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"खींचकर छोड़ने वाला हैंडल"</string>
@@ -101,49 +130,105 @@
     <string name="moonset">चन्द्रास्त</string>
     <string name="nakshatra">नक्षत्र</string>
     <string msgid="542007171693138492" name="navigation_menu">"नेविगेशन मेन्यू"</string>
+    <string name="needs_scholar_review_badge">विद्वान समीक्षा अपेक्षित</string>
     <string name="next_event">अगला समय</string>
+    <string name="night_choghadiya">रात्रि का चौघड़िया</string>
+    <string name="night_length">रात्रि की अवधि</string>
+    <string name="no_events_today">आज कोई विशेष पर्व या प्रसंग नहीं है</string>
+    <string name="no_events_yet">अभी कोई प्रसंग नहीं जोड़ा गया है। + पर टैप करके जोड़ें।</string>
     <string msgid="6610465462668679431" name="not_selected">"नहीं चुना गया"</string>
-    <string name="notifications">सूचनाएं एवं स्मरण</string>
+    <string name="other">अन्य</string>
     <string name="pachkhan_avaddh">अवड्ढ</string>
     <string name="pachkhan_biyasana">ब्यासन</string>
     <string name="pachkhan_chauvihar">चौविहार</string>
     <string name="pachkhan_ekasana">एकासन</string>
+    <string name="pachkhan_guidance">जैन पच्चखाण समय</string>
     <string name="pachkhan_navkarshi">नवकारशी</string>
     <string name="pachkhan_porsi">पोरसी</string>
     <string name="pachkhan_purimuddh">पुरिमड्ढ</string>
     <string name="pachkhan_sadh_porsi">साढ़ पोरसी</string>
     <string name="pachkhan_tivihar">तिविहार</string>
     <string name="paksha">पक्ष</string>
+    <string name="pending">शेष</string>
+    <string name="privacy_guarantee_text">• १००% ऑफलाइन: कोई भी डेटा या स्थान डिवाइस से बाहर नहीं जाता।\n• पूर्णतः विज्ञापन-रहित (Ad-Free) और बिना किसी ट्रैकिंग के।\n• खगोलीय गणनाएं सीधे आपके उपकरण पर होती हैं।</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="puja_diksha">पूजा / दीक्षा</string>
+    <string name="quote_of_the_day">आज का सुविचार</string>
     <string msgid="5941395253238309765" name="range_end">"रेंज की सीमा"</string>
     <string msgid="7097486360902471446" name="range_start">"रेंज की शुरुआत"</string>
+    <string name="read_privacy_policy">पूरी गोपनीयता नीति पढ़ें</string>
+    <string name="recurrence">पुनरावृत्ति</string>
+    <string name="recurring_by_tithi_desc">प्रतिवर्ष उचित जैन तिथि पर स्वतः स्मरण</string>
+    <string name="remind_chauvihar">सूर्यास्त / चौविहार स्मरण</string>
+    <string name="remind_my_events">मेरे प्रसंग स्मरण</string>
+    <string name="remind_pachkhan">पच्चखाण स्मरण</string>
+    <string name="remind_tithi">तिथि एवं पर्व स्मरण</string>
     <string name="samvat">विक्रम संवत</string>
-    <string name="select_ayanamsha">अयनांश</string>
+    <string name="save">सुरक्षित करें</string>
+    <string name="search">खोजें</string>
+    <string name="search_festival_hint">पर्व या तीर्थंकर खोजें...</string>
+    <string name="section_appearance">स्वरूप एवं भाषा</string>
+    <string name="section_location">स्थान एवं नगर</string>
+    <string name="section_notifications">सूचनाएं एवं स्मरण</string>
+    <string name="section_panchang_rules">पंचांग नियम एवं परंपरा</string>
+    <string name="section_trust">गोपनीयता एवं विश्वास</string>
+    <string name="select_ayanamsha">अयनांश विधि</string>
     <string name="select_city">नगर चुनें</string>
+    <string name="select_language">भाषा चुनें</string>
     <string name="select_sampraday">संप्रदाय / परंपरा</string>
+    <string name="select_year">वर्ष चुनें</string>
     <string msgid="6043586758067023" name="selected">"चुना गया"</string>
+    <string name="set_maryada">मर्यादा तय करें</string>
+    <string name="share">शेयर करें</string>
+    <string name="share_quote">सुविचार साझा करें</string>
     <string msgid="2792228137354697160" name="snackbar_pane_title">"चेतावनी"</string>
+    <string name="solar_noon">मध्याह्न</string>
+    <string name="solar_timings">सूर्य एवं चंद्र समय</string>
     <string msgid="4139871816613051306" name="state_empty">"कोई भी तार नहीं लगा है"</string>
     <string msgid="5834637030682409883" name="state_off">"बंद है"</string>
     <string msgid="1490883874751719580" name="state_on">"चालू है"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="streak">स्ट्रीक</string>
     <string name="sunrise">सूर्योदय</string>
     <string name="sunset">सूर्यास्त</string>
     <string msgid="2561197295334830845" name="switch_role">"स्विच करें"</string>
     <string msgid="1672349317127674378" name="tab">"टैब"</string>
+    <string name="tab_all_festivals">जैन पर्व</string>
     <string name="tab_calendar">कैलेंडर</string>
+    <string name="tab_choghadiya">चौघड़िया</string>
     <string name="tab_events">मेरे प्रसंग</string>
     <string name="tab_festivals">पर्व व कल्याणक</string>
+    <string name="tab_gowri">गौरी</string>
     <string name="tab_home">मुख्य पृष्ठ</string>
-    <string name="tab_niyam">दैनिक नियम</string>
+    <string name="tab_hora">होरा</string>
+    <string name="tab_kalyanaks">कल्याणक</string>
+    <string name="tab_muhurat">मुहूर्त</string>
+    <string name="tab_niyam">नियम</string>
+    <string name="tab_pachkhan">पच्चखाण</string>
+    <string name="tab_quotes">सुविचार</string>
+    <string name="tab_scholar_review">विद्वान समीक्षा</string>
     <string name="tab_settings">सेटिंग्स</string>
     <string name="tab_timings">समय</string>
-    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> प्रतिशत."</string>
-    <string name="theme">थीम</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns2:g id="PERCENTAGE">%1$d</ns2:g> प्रतिशत."</string>
+    <string name="theme">थीम (Theme)</string>
     <string name="theme_dark">डार्क (अंधेरा)</string>
     <string name="theme_light">लाइट (उजाला)</string>
     <string name="theme_system">सिस्टम अनुसार</string>
+    <string name="time">समय</string>
     <string name="tithi">तिथि</string>
+    <string name="tithi_based">जैन तिथि अनुसार पुनरावृत्ति</string>
+    <string name="title_calendar">जैन कैलेंडर</string>
+    <string name="title_events">मेरे प्रसंग एवं स्मरण</string>
+    <string name="title_festivals">पर्व एवं कल्याणक</string>
+    <string name="title_home">आज का पंचांग</string>
+    <string name="title_niyam">दैनिक नियम (चौदह नियम)</string>
+    <string name="title_quotes">दैनिक जैन सुविचार</string>
+    <string name="title_settings">सेटिंग्स एवं प्राथमिकताएं</string>
+    <string name="title_timings">समय एवं मुहूर्त</string>
+    <string name="today">आज</string>
+    <string name="today_festivals">आज के पर्व व त्यौहार</string>
+    <string name="today_kalyanaks">आज के कल्याणक</string>
+    <string name="todays_suggestion">आज का सुझाव</string>
     <string msgid="3765533235322692011" name="tooltip_description">"टूलटिप"</string>
     <string msgid="3124740595719787496" name="tooltip_label">"टूलटिप दिखाएं"</string>
     <string name="vara">वार</string>

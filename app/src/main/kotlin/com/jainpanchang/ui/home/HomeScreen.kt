@@ -16,9 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jainpanchang.R
 import com.jainpanchang.engine.model.ChoghadiyaType
 import com.jainpanchang.ui.theme.*
 import java.time.LocalDate
@@ -34,6 +36,7 @@ fun HomeScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val panchang = uiState.panchang
+    val lang = LocalAppLanguage.current
 
     if (panchang == null) {
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -77,7 +80,7 @@ fun HomeScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.LocationOn,
-                                contentDescription = "Select City",
+                                contentDescription = stringResource(R.string.select_city),
                                 tint = SaffronPrimary,
                                 modifier = Modifier.size(20.dp)
                             )
@@ -95,12 +98,12 @@ fun HomeScreen(
                             )
                         }
                         Text(
-                            text = "${currentDate.format(DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy"))} • ${panchang.vara.nameGu}",
+                            text = "${currentDate.format(DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy", lang.locale))} • ${panchang.vara.displayName(lang)}",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = "VS ${panchang.vikramSamvat} • VNS ${panchang.veerNirvanSamvat}",
+                            text = "${stringResource(R.string.samvat)} ${panchang.vikramSamvat} • ${stringResource(R.string.veer_nirvan_samvat)} ${panchang.veerNirvanSamvat}",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Medium,
                             color = GoldenSecondary
@@ -112,7 +115,7 @@ fun HomeScreen(
                             Icon(Icons.Default.ChevronLeft, contentDescription = "Previous Day")
                         }
                         IconButton(onClick = { viewModel.setDate(LocalDate.now()) }) {
-                            Icon(Icons.Default.Today, contentDescription = "Today")
+                            Icon(Icons.Default.Today, contentDescription = stringResource(R.string.today))
                         }
                         IconButton(onClick = { viewModel.setDate(currentDate.plusDays(1)) }) {
                             Icon(Icons.Default.ChevronRight, contentDescription = "Next Day")
@@ -136,28 +139,22 @@ fun HomeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "${panchang.jainMonth.nameGu} માસ • ${panchang.jainMonth.nameEn} Month",
+                        text = panchang.jainMonth.displayName(lang),
                         style = MaterialTheme.typography.titleSmall,
                         color = Color.White.copy(alpha = 0.9f)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = panchang.tithi.fullDisplayNameGu,
+                        text = panchang.tithi.displayName(lang),
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
                     )
-                    Text(
-                        text = "${panchang.tithi.fullDisplayNameHi} (${panchang.tithi.fullDisplayNameEn})",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.White.copy(alpha = 0.85f)
-                    )
 
                     Spacer(modifier = Modifier.height(12.dp))
-                    val tithiStart = ZonedDateTime.parse(panchang.tithi.startIso)
                     val tithiEnd = ZonedDateTime.parse(panchang.tithi.endIso)
                     Text(
-                        text = "તિથિ સમાપ્તિ: ${tithiEnd.format(DateTimeFormatter.ofPattern("h:mm a"))} સુધી",
+                        text = "${stringResource(R.string.tithi)} ${stringResource(R.string.ends_at)} ${tithiEnd.format(DateTimeFormatter.ofPattern("h:mm a"))}",
                         style = MaterialTheme.typography.labelLarge,
                         color = GoldenSecondaryContainer,
                         fontWeight = FontWeight.SemiBold
@@ -202,14 +199,14 @@ fun HomeScreen(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    text = if (choghadiya.isDay) "ચાલુ ચોઘડિયું (દિવસ)" else "ચાલુ ચોઘડિયું (રાત્રિ)",
+                                    text = if (choghadiya.isDay) stringResource(R.string.day_choghadiya) else stringResource(R.string.night_choghadiya),
                                     style = MaterialTheme.typography.labelMedium,
                                     color = textColor.copy(alpha = 0.9f)
                                 )
                             }
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "${choghadiya.type.nameGu} (${choghadiya.type.nameEn})",
+                                text = choghadiya.type.displayName(lang),
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.Bold,
                                 color = textColor
@@ -217,7 +214,7 @@ fun HomeScreen(
                             val s = ZonedDateTime.parse(choghadiya.startIso).format(DateTimeFormatter.ofPattern("h:mm a"))
                             val e = ZonedDateTime.parse(choghadiya.endIso).format(DateTimeFormatter.ofPattern("h:mm a"))
                             Text(
-                                text = "$s થી $e",
+                                text = "$s - $e",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = textColor.copy(alpha = 0.85f)
                             )
@@ -225,13 +222,13 @@ fun HomeScreen(
 
                         Column(horizontalAlignment = Alignment.End) {
                             Text(
-                                text = "${uiState.choghadiyaCountdownMinutes} મિનિટ",
+                                text = "${uiState.choghadiyaCountdownMinutes} m",
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = textColor
                             )
                             Text(
-                                text = "બાકી સમય",
+                                text = stringResource(R.string.active_now),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = textColor.copy(alpha = 0.85f)
                             )
@@ -267,7 +264,7 @@ fun HomeScreen(
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "આગામી સમય: ${next.first}",
+                                text = "${stringResource(R.string.next_event)}: ${next.first}",
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.SemiBold
                             )
@@ -294,7 +291,7 @@ fun HomeScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "સૂર્ય અને ચંદ્ર સમય (Sun & Moon)",
+                        text = stringResource(R.string.solar_timings),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = SaffronPrimary
@@ -306,10 +303,10 @@ fun HomeScreen(
                     ) {
                         val sunrise = ZonedDateTime.parse(panchang.solarTimes.sunriseIso).format(DateTimeFormatter.ofPattern("h:mm a"))
                         val sunset = ZonedDateTime.parse(panchang.solarTimes.sunsetIso).format(DateTimeFormatter.ofPattern("h:mm a"))
-                        TimingCell("સૂર્યોદય (Sunrise)", sunrise, Icons.Default.WbSunny)
-                        TimingCell("સૂર્યાસ્ત (Sunset)", sunset, Icons.Default.NightsStay)
+                        TimingCell(stringResource(R.string.sunrise), sunrise, Icons.Default.WbSunny)
+                        TimingCell(stringResource(R.string.sunset), sunset, Icons.Default.NightsStay)
                         val mr = panchang.lunarTimes.moonriseIso?.let { ZonedDateTime.parse(it).format(DateTimeFormatter.ofPattern("h:mm a")) } ?: "--:--"
-                        TimingCell("ચંદ્રોદય (Moonrise)", mr, Icons.Default.Brightness2)
+                        TimingCell(stringResource(R.string.moonrise), mr, Icons.Default.Brightness2)
                     }
                 }
             }
@@ -326,7 +323,7 @@ fun HomeScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "પંચાંગ અંગ (Panchang Details)",
+                        text = stringResource(R.string.astronomical_details),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = SaffronPrimary
@@ -336,16 +333,16 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        PanchangElementItem("નક્ષત્ર", "${panchang.nakshatra.nameGu} (${panchang.nakshatra.nameEn})")
-                        PanchangElementItem("યોગ", "${panchang.yoga.nameGu} (${panchang.yoga.nameEn})")
+                        PanchangElementItem(stringResource(R.string.nakshatra), panchang.nakshatra.displayName(lang))
+                        PanchangElementItem(stringResource(R.string.yoga), panchang.yoga.displayName(lang))
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        PanchangElementItem("કરણ", "${panchang.karana.nameGu} (${panchang.karana.nameEn})")
-                        PanchangElementItem("વાર", "${panchang.vara.nameGu} (${panchang.vara.nameEn})")
+                        PanchangElementItem(stringResource(R.string.karana), panchang.karana.displayName(lang))
+                        PanchangElementItem(stringResource(R.string.vara), panchang.vara.displayName(lang))
                     }
                 }
             }
@@ -364,7 +361,7 @@ fun HomeScreen(
                             Icon(Icons.Default.Celebration, contentDescription = null, tint = MaroonTertiary)
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "આજના પર્વ અને કલ્યાણક",
+                                text = stringResource(R.string.today_festivals),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = MaroonTertiary
@@ -373,14 +370,14 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                         for (f in panchang.festivalsToday) {
                             Text(
-                                text = "★ ${f.nameGu} (${f.nameEn})",
+                                text = "★ ${f.displayName(lang)}",
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.SemiBold
                             )
                         }
                         for (k in panchang.kalyanaksToday) {
                             Text(
-                                text = "✦ ${k.tirthankarNameGu} - ${k.type.nameGu}",
+                                text = "✦ ${k.displayName(lang)}",
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.SemiBold
                             )

@@ -15,9 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jainpanchang.R
 import com.jainpanchang.data.repository.PanchangRepository
 import com.jainpanchang.data.repository.SettingsRepository
 import com.jainpanchang.engine.model.Festival
@@ -34,8 +36,9 @@ fun FestivalsScreen(
 ) {
     val settings by settingsRepository.settingsFlow.collectAsState(initial = null)
     val userSettings = settings ?: return
+    val lang = LocalAppLanguage.current
 
-    var selectedTabIndex by remember { mutableIntStateOf(0) } // 0=Festivals, 1=Kalyanaks, 2=Scholar Review
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
     var searchQuery by remember { mutableStateOf("") }
 
     val allFestivals = remember { panchangRepository.getFestivals() }
@@ -73,7 +76,7 @@ fun FestivalsScreen(
             .padding(horizontal = 16.dp)
     ) {
         Text(
-            text = "પર્વ અને કલ્યાણક (Festivals)",
+            text = stringResource(R.string.title_festivals),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = SaffronPrimary,
@@ -81,7 +84,7 @@ fun FestivalsScreen(
         )
 
         Text(
-            text = "સંપ્રદાય: ${userSettings.sampraday.nameGu}",
+            text = "${stringResource(R.string.select_sampraday)}: ${userSettings.sampraday.displayName(lang)}",
             style = MaterialTheme.typography.labelLarge,
             color = GoldenSecondary,
             fontWeight = FontWeight.SemiBold
@@ -92,7 +95,7 @@ fun FestivalsScreen(
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
-            placeholder = { Text("પર્વ અથવા તીર્થંકર શોધો...") },
+            placeholder = { Text(stringResource(R.string.search_festival_hint)) },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
@@ -109,17 +112,17 @@ fun FestivalsScreen(
             Tab(
                 selected = selectedTabIndex == 0,
                 onClick = { selectedTabIndex = 0 },
-                text = { Text("જૈન પર્વ (${filteredFestivals.size})") }
+                text = { Text("${stringResource(R.string.tab_all_festivals)} (${filteredFestivals.size})") }
             )
             Tab(
                 selected = selectedTabIndex == 1,
                 onClick = { selectedTabIndex = 1 },
-                text = { Text("કલ્યાણક (${filteredKalyanaks.size})") }
+                text = { Text("${stringResource(R.string.tab_kalyanaks)} (${filteredKalyanaks.size})") }
             )
             Tab(
                 selected = selectedTabIndex == 2,
                 onClick = { selectedTabIndex = 2 },
-                text = { Text("વિદ્વાન ચકાસણી (${reviewItemsFestivals.size + reviewItemsKalyanaks.size})") }
+                text = { Text("${stringResource(R.string.tab_scholar_review)} (${reviewItemsFestivals.size + reviewItemsKalyanaks.size})") }
             )
         }
 
@@ -132,7 +135,7 @@ fun FestivalsScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(filteredFestivals) { fest ->
-                        FestivalCard(fest)
+                        FestivalCard(fest, lang)
                     }
                 }
             }
@@ -142,7 +145,7 @@ fun FestivalsScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(filteredKalyanaks) { kal ->
-                        KalyanakCard(kal)
+                        KalyanakCard(kal, lang)
                     }
                 }
             }
@@ -154,21 +157,19 @@ fun FestivalsScreen(
                     item {
                         Card(
                             colors = CardDefaults.cardColors(containerColor = GoldenSecondaryContainer),
-                            shape = RoundedCornerShape(14.dp),
+                            shape = RoundedCornerShape(12.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Column(modifier = Modifier.padding(14.dp)) {
+                            Row(
+                                modifier = Modifier.padding(14.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(Icons.Default.Info, contentDescription = null, tint = GoldenSecondary)
+                                Spacer(modifier = Modifier.width(10.dp))
                                 Text(
-                                    text = "જૈન વિદ્વાન સમીક્ષા સૂચિ (Scholar Review Items)",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = GoldenOnSecondaryContainer
-                                )
-                                Spacer(modifier = Modifier.height(4.dp))
-                                Text(
-                                    text = "આ સૂચિમાં રહેલા નિયમો અને તિથિઓ વિવિધ સંપ્રદાયો કે પરંપરાઓમાં મતભેદ ધરાવે છે અને scholar verification માટે 'needs_review: true' ચિહ્નિત છે.",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = GoldenOnSecondaryContainer
+                                    text = stringResource(R.string.needs_scholar_review_badge),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.SemiBold
                                 )
                             }
                         }
@@ -176,26 +177,30 @@ fun FestivalsScreen(
 
                     items(reviewItemsFestivals) { f ->
                         Card(
-                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                            ),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Column(modifier = Modifier.padding(12.dp)) {
                                 Text(
-                                    text = "★ ${f.nameGu} (${f.nameEn})",
+                                    text = "★ ${f.displayName(lang)}",
                                     style = MaterialTheme.typography.titleSmall,
                                     fontWeight = FontWeight.Bold,
                                     color = MaroonTertiary
                                 )
                                 Text(
-                                    text = "નિયમ: ${f.jainMonth.nameGu} ${f.paksha.nameGu} તિથિ ${f.tithi}",
+                                    text = "Rule: ${f.jainMonth.displayName(lang)} ${f.paksha.displayName(lang)} Tithi ${f.tithi}",
                                     style = MaterialTheme.typography.bodySmall
                                 )
-                                Text(
-                                    text = f.description,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
+                                if (f.description.isNotEmpty()) {
+                                    Text(
+                                        text = f.description,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
                             }
                         }
                     }
@@ -206,7 +211,7 @@ fun FestivalsScreen(
 }
 
 @Composable
-private fun FestivalCard(fest: Festival) {
+private fun FestivalCard(fest: Festival, lang: AppLanguage) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
@@ -221,26 +226,21 @@ private fun FestivalCard(fest: Festival) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = fest.nameGu,
+                    text = fest.displayName(lang),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = SaffronPrimary
                 )
                 Text(
-                    text = "${fest.paksha.nameGu} ${fest.tithi}",
+                    text = "${fest.paksha.displayName(lang)} ${fest.tithi}",
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold,
                     color = GoldenSecondary
                 )
             }
-            Text(
-                text = "${fest.nameHi} • ${fest.nameEn}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "માસ: ${fest.jainMonth.nameGu} (${fest.jainMonth.nameEn})",
+                text = "${stringResource(R.string.tithi)}: ${fest.jainMonth.displayName(lang)} (${fest.paksha.displayName(lang)} ${fest.tithi})",
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Medium
             )
@@ -257,7 +257,7 @@ private fun FestivalCard(fest: Festival) {
 }
 
 @Composable
-private fun KalyanakCard(kal: Kalyanak) {
+private fun KalyanakCard(kal: Kalyanak, lang: AppLanguage) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
@@ -274,18 +274,18 @@ private fun KalyanakCard(kal: Kalyanak) {
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "${kal.tirthankarId}. ${kal.tirthankarNameGu} (${kal.tirthankarNameEn})",
+                    text = "${kal.tirthankarId}. ${kal.tirthankarDisplayName(lang)}",
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    text = "${kal.type.nameGu} • ${kal.notes}",
+                    text = "${kal.type.displayName(lang)}${if (kal.notes.isNotEmpty()) " • ${kal.notes}" else ""}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
             Text(
-                text = "${kal.jainMonth.nameGu} ${kal.paksha.nameGu} ${kal.tithi}",
+                text = "${kal.jainMonth.displayName(lang)} ${kal.paksha.displayName(lang)} ${kal.tithi}",
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary

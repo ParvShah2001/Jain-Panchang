@@ -15,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jainpanchang.R
 import com.jainpanchang.engine.model.*
 import com.jainpanchang.ui.home.HomeViewModel
 import com.jainpanchang.ui.theme.*
@@ -31,6 +33,7 @@ fun TimingsScreen(
 ) {
     val uiState by homeViewModel.uiState.collectAsState()
     val panchang = uiState.panchang
+    val lang = LocalAppLanguage.current
 
     if (panchang == null) {
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -40,7 +43,13 @@ fun TimingsScreen(
     }
 
     var selectedTabIndex by remember { mutableIntStateOf(0) }
-    val tabTitles = listOf("ચોઘડિયા", "પચ્ચખાણ", "હોરા", "ગૌરી", "મુહૂર્ત")
+    val tabTitles = listOf(
+        stringResource(R.string.tab_choghadiya),
+        stringResource(R.string.tab_pachkhan),
+        stringResource(R.string.tab_hora),
+        stringResource(R.string.tab_gowri),
+        stringResource(R.string.tab_muhurat)
+    )
 
     Column(
         modifier = modifier
@@ -48,7 +57,7 @@ fun TimingsScreen(
             .padding(horizontal = 16.dp)
     ) {
         Text(
-            text = "સમય અને મુહૂર્ત (Timings)",
+            text = stringResource(R.string.title_timings),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = SaffronPrimary,
@@ -79,24 +88,24 @@ fun TimingsScreen(
         Spacer(modifier = Modifier.height(12.dp))
 
         when (selectedTabIndex) {
-            0 -> ChoghadiyaTabContent(panchang, uiState.currentChoghadiya)
-            1 -> PachkhanTabContent(panchang)
-            2 -> HoraTabContent(panchang)
-            3 -> GowriTabContent(panchang)
-            4 -> MuhuratTabContent(panchang)
+            0 -> ChoghadiyaTabContent(panchang, uiState.currentChoghadiya, lang)
+            1 -> PachkhanTabContent(panchang, lang)
+            2 -> HoraTabContent(panchang, lang)
+            3 -> GowriTabContent(panchang, lang)
+            4 -> MuhuratTabContent(panchang, lang)
         }
     }
 }
 
 @Composable
-private fun ChoghadiyaTabContent(panchang: DailyPanchang, currentSlot: ChoghadiyaSlot?) {
+private fun ChoghadiyaTabContent(panchang: DailyPanchang, currentSlot: ChoghadiyaSlot?, lang: AppLanguage) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         item {
             Text(
-                text = "દિવસના ચોઘડિયા (Day Choghadiya)",
+                text = stringResource(R.string.day_choghadiya),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary,
@@ -105,13 +114,13 @@ private fun ChoghadiyaTabContent(panchang: DailyPanchang, currentSlot: Choghadiy
         }
 
         items(panchang.dayChoghadiya) { slot ->
-            ChoghadiyaCardItem(slot, isCurrent = currentSlot?.startIso == slot.startIso && currentSlot.isDay)
+            ChoghadiyaCardItem(slot, isCurrent = currentSlot?.startIso == slot.startIso && currentSlot.isDay, lang = lang)
         }
 
         item {
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "રાત્રિના ચોઘડિયા (Night Choghadiya)",
+                text = stringResource(R.string.night_choghadiya),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = GoldenSecondary,
@@ -120,13 +129,13 @@ private fun ChoghadiyaTabContent(panchang: DailyPanchang, currentSlot: Choghadiy
         }
 
         items(panchang.nightChoghadiya) { slot ->
-            ChoghadiyaCardItem(slot, isCurrent = currentSlot?.startIso == slot.startIso && !currentSlot.isDay)
+            ChoghadiyaCardItem(slot, isCurrent = currentSlot?.startIso == slot.startIso && !currentSlot.isDay, lang = lang)
         }
     }
 }
 
 @Composable
-private fun ChoghadiyaCardItem(slot: ChoghadiyaSlot, isCurrent: Boolean) {
+private fun ChoghadiyaCardItem(slot: ChoghadiyaSlot, isCurrent: Boolean, lang: AppLanguage) {
     val (typeColor, textColor) = when (slot.type) {
         ChoghadiyaType.AMRIT -> Pair(ColorAmrit, Color.White)
         ChoghadiyaType.SHUBH -> Pair(ColorShubh, Color.White)
@@ -164,13 +173,13 @@ private fun ChoghadiyaCardItem(slot: ChoghadiyaSlot, isCurrent: Boolean) {
                 Spacer(modifier = Modifier.width(12.dp))
                 Column {
                     Text(
-                        text = "${slot.type.nameGu} (${slot.type.nameEn})",
+                        text = slot.type.displayName(lang),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = if (isCurrent) textColor else MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "સ્વામી: ${slot.type.rulerPlanet}",
+                        text = "Planet: ${slot.type.rulerPlanet}",
                         style = MaterialTheme.typography.labelSmall,
                         color = if (isCurrent) textColor.copy(alpha = 0.85f) else MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -186,7 +195,7 @@ private fun ChoghadiyaCardItem(slot: ChoghadiyaSlot, isCurrent: Boolean) {
                 )
                 if (isCurrent) {
                     Text(
-                        text = "● ચાલુ (ACTIVE)",
+                        text = "● ${stringResource(R.string.active_now)}",
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Bold,
                         color = textColor
@@ -198,7 +207,7 @@ private fun ChoghadiyaCardItem(slot: ChoghadiyaSlot, isCurrent: Boolean) {
 }
 
 @Composable
-private fun PachkhanTabContent(panchang: DailyPanchang) {
+private fun PachkhanTabContent(panchang: DailyPanchang, lang: AppLanguage) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -210,7 +219,7 @@ private fun PachkhanTabContent(panchang: DailyPanchang) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "પચ્ચખાણના સમય સ્થાનિક સૂર્યોદય અને દિવસના ચોથા ભાગ (પ્રહર) અનુસાર ગણવામાં આવે છે.",
+                    text = stringResource(R.string.pachkhan_guidance),
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(14.dp)
                 )
@@ -233,16 +242,18 @@ private fun PachkhanTabContent(panchang: DailyPanchang) {
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "${p.nameGu} (${p.nameEn})",
+                            text = p.displayName(lang),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = SaffronPrimary
                         )
-                        Text(
-                            text = p.description,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        if (p.description.isNotEmpty()) {
+                            Text(
+                                text = p.description,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                     Text(
                         text = time,
@@ -257,7 +268,7 @@ private fun PachkhanTabContent(panchang: DailyPanchang) {
 }
 
 @Composable
-private fun HoraTabContent(panchang: DailyPanchang) {
+private fun HoraTabContent(panchang: DailyPanchang, lang: AppLanguage) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -278,7 +289,7 @@ private fun HoraTabContent(panchang: DailyPanchang) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "${hora.hourIndex}. ${hora.nameGu} હોરા (${hora.planetName})",
+                        text = "${hora.hourIndex}. ${hora.displayName(lang)} (${hora.planetName})",
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -294,39 +305,39 @@ private fun HoraTabContent(panchang: DailyPanchang) {
 }
 
 @Composable
-private fun GowriTabContent(panchang: DailyPanchang) {
+private fun GowriTabContent(panchang: DailyPanchang, lang: AppLanguage) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
             Text(
-                text = "દિવસનું ગૌરી પંચાંગ",
+                text = "${stringResource(R.string.day_choghadiya)} - ${stringResource(R.string.tab_gowri)}",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary
             )
         }
         items(panchang.gowriDay) { slot ->
-            GowriSlotRow(slot)
+            GowriSlotRow(slot, lang)
         }
         item {
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "રાત્રિનું ગૌરી પંચાંગ",
+                text = "${stringResource(R.string.night_choghadiya)} - ${stringResource(R.string.tab_gowri)}",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = GoldenSecondary
             )
         }
         items(panchang.gowriNight) { slot ->
-            GowriSlotRow(slot)
+            GowriSlotRow(slot, lang)
         }
     }
 }
 
 @Composable
-private fun GowriSlotRow(slot: GowriSlot) {
+private fun GowriSlotRow(slot: GowriSlot, lang: AppLanguage) {
     val s = ZonedDateTime.parse(slot.startIso).format(DateTimeFormatter.ofPattern("h:mm a"))
     val e = ZonedDateTime.parse(slot.endIso).format(DateTimeFormatter.ofPattern("h:mm a"))
     Card(
@@ -351,7 +362,7 @@ private fun GowriSlotRow(slot: GowriSlot) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "${slot.nameGu} (${slot.nameEn})",
+                    text = slot.displayName(lang),
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -366,7 +377,7 @@ private fun GowriSlotRow(slot: GowriSlot) {
 }
 
 @Composable
-private fun MuhuratTabContent(panchang: DailyPanchang) {
+private fun MuhuratTabContent(panchang: DailyPanchang, lang: AppLanguage) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -388,7 +399,7 @@ private fun MuhuratTabContent(panchang: DailyPanchang) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "${m.nameGu} (${m.nameEn})",
+                            text = m.displayName(lang),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = if (m.isAuspicious) ColorAmrit else ColorKaal

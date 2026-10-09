@@ -1,13 +1,9 @@
 package com.jainpanchang.ui.calendar
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -18,10 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jainpanchang.R
 import com.jainpanchang.engine.model.DailyPanchang
 import com.jainpanchang.engine.model.Paksha
 import com.jainpanchang.ui.theme.*
@@ -40,6 +38,7 @@ fun CalendarScreen(
     val ym = uiState.selectedYearMonth
     val daysList = uiState.monthPanchangList
     val selectedDay = uiState.selectedDayPanchang
+    val lang = LocalAppLanguage.current
     var showYearDialog by remember { mutableStateOf(false) }
 
     LazyColumn(
@@ -77,12 +76,12 @@ fun CalendarScreen(
                             .padding(8.dp)
                     ) {
                         Text(
-                            text = "${ym.month.name} ${ym.year}",
+                            text = ym.format(DateTimeFormatter.ofPattern("MMMM yyyy", lang.locale)),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             color = SaffronPrimary
                         )
-                        Icon(Icons.Default.ArrowDropDown, contentDescription = "Select Year", tint = SaffronPrimary)
+                        Icon(Icons.Default.ArrowDropDown, contentDescription = stringResource(R.string.select_year), tint = SaffronPrimary)
                     }
 
                     IconButton(onClick = { viewModel.nextMonth() }) {
@@ -98,13 +97,17 @@ fun CalendarScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                val dow = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-                for (d in dow) {
+                val dow = when (lang) {
+                    AppLanguage.GUJARATI -> listOf("રવિ", "સોમ", "મંગળ", "બુધ", "ગુરુ", "શુક્ર", "શનિ")
+                    AppLanguage.HINDI -> listOf("रवि", "सोम", "मंगल", "बुध", "गुरु", "शुक्र", "शनि")
+                    AppLanguage.ENGLISH -> listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+                }
+                for ((idx, d) in dow.withIndex()) {
                     Text(
                         text = d,
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
-                        color = if (d == "Sun") Color.Red else MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = if (idx == 0) Color.Red else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.width(42.dp),
                         textAlign = TextAlign.Center
                     )
@@ -138,19 +141,23 @@ fun CalendarScreen(
                         ) {
                             for (cell in row) {
                                 if (cell == null) {
-                                    Spacer(modifier = Modifier.width(44.dp))
+                                    Spacer(modifier = Modifier.size(width = 44.dp, height = 52.dp))
                                 } else {
+                                    val cellDate = LocalDate.parse(cell.dateIso)
+                                    val isToday = cellDate == LocalDate.now()
+                                    val isSelected = selectedDay?.dateIso == cell.dateIso
                                     CalendarDayCell(
                                         panchang = cell,
-                                        isSelected = selectedDay?.dateIso == cell.dateIso,
-                                        isToday = cell.dateIso == LocalDate.now().toString(),
+                                        isSelected = isSelected,
+                                        isToday = isToday,
+                                        lang = lang,
                                         onClick = { viewModel.selectDay(cell) }
                                     )
                                 }
                             }
                             if (row.size < 7) {
                                 for (i in 0 until (7 - row.size)) {
-                                    Spacer(modifier = Modifier.width(44.dp))
+                                    Spacer(modifier = Modifier.size(width = 44.dp, height = 52.dp))
                                 }
                             }
                         }
@@ -159,12 +166,12 @@ fun CalendarScreen(
             }
         }
 
-        // 4. Selected Day Detail Card
-        if (selectedDay != null) {
-            item {
+        // 4. Day Details Card
+        item {
+            if (selectedDay != null) {
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f)
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
                     ),
                     shape = RoundedCornerShape(20.dp),
                     modifier = Modifier.fillMaxWidth()
@@ -178,13 +185,13 @@ fun CalendarScreen(
                         ) {
                             Column {
                                 Text(
-                                    text = d.format(DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy")),
+                                    text = d.format(DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy", lang.locale)),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = SaffronPrimary
                                 )
                                 Text(
-                                    text = "${selectedDay.jainMonth.nameGu} (${selectedDay.jainMonth.nameEn}) • ${selectedDay.vara.nameGu}",
+                                    text = "${selectedDay.jainMonth.displayName(lang)} • ${selectedDay.vara.displayName(lang)}",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -207,13 +214,13 @@ fun CalendarScreen(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
-                                text = "તિથિ: ${selectedDay.tithi.fullDisplayNameGu}",
+                                text = "${stringResource(R.string.tithi)}: ${selectedDay.tithi.displayName(lang)}",
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.Bold
                             )
                             val end = ZonedDateTime.parse(selectedDay.tithi.endIso).format(DateTimeFormatter.ofPattern("h:mm a"))
                             Text(
-                                text = "સમાપ્તિ: $end",
+                                text = "${stringResource(R.string.ends_at)} $end",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = SaffronPrimary,
                                 fontWeight = FontWeight.SemiBold
@@ -225,14 +232,14 @@ fun CalendarScreen(
                         val ss = ZonedDateTime.parse(selectedDay.solarTimes.sunsetIso).format(DateTimeFormatter.ofPattern("h:mm a"))
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
-                            text = "સૂર્યોદય: $sr  •  સૂર્યાસ્ત (ચૌવિહાર): $ss",
+                            text = "${stringResource(R.string.sunrise)}: $sr  •  ${stringResource(R.string.sunset)}: $ss",
                             style = MaterialTheme.typography.bodyMedium
                         )
 
-                        // Nakshatra, Yoga
+                        // Nakshatra, Yoga, Karana
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "નક્ષત્ર: ${selectedDay.nakshatra.nameGu}  •  યોગ: ${selectedDay.yoga.nameGu}  •  કરણ: ${selectedDay.karana.nameGu}",
+                            text = "${stringResource(R.string.nakshatra)}: ${selectedDay.nakshatra.displayName(lang)}  •  ${stringResource(R.string.yoga)}: ${selectedDay.yoga.displayName(lang)}  •  ${stringResource(R.string.karana)}: ${selectedDay.karana.displayName(lang)}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -242,7 +249,7 @@ fun CalendarScreen(
                             Spacer(modifier = Modifier.height(8.dp))
                             for (f in selectedDay.festivalsToday) {
                                 Text(
-                                    text = "★ ${f.nameGu} (${f.nameEn})",
+                                    text = "★ ${f.displayName(lang)}",
                                     style = MaterialTheme.typography.bodyMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = MaroonTertiary
@@ -250,7 +257,7 @@ fun CalendarScreen(
                             }
                             for (k in selectedDay.kalyanaksToday) {
                                 Text(
-                                    text = "✦ ${k.tirthankarNameGu} - ${k.type.nameGu}",
+                                    text = "✦ ${k.displayName(lang)}",
                                     style = MaterialTheme.typography.bodyMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = GoldenSecondary
@@ -267,7 +274,7 @@ fun CalendarScreen(
     if (showYearDialog) {
         AlertDialog(
             onDismissRequest = { showYearDialog = false },
-            title = { Text("વર્ષ પસંદ કરો (Select Year)") },
+            title = { Text(stringResource(R.string.select_year)) },
             text = {
                 val years = (1970..2070).toList()
                 LazyColumn(modifier = Modifier.height(280.dp)) {
@@ -290,7 +297,7 @@ fun CalendarScreen(
                 }
             },
             confirmButton = {
-                TextButton(onClick = { showYearDialog = false }) { Text("બંધ કરો (Close)") }
+                TextButton(onClick = { showYearDialog = false }) { Text(stringResource(R.string.close)) }
             }
         )
     }
@@ -301,6 +308,7 @@ private fun CalendarDayCell(
     panchang: DailyPanchang,
     isSelected: Boolean,
     isToday: Boolean,
+    lang: AppLanguage,
     onClick: () -> Unit
 ) {
     val date = LocalDate.parse(panchang.dateIso)
@@ -339,10 +347,18 @@ private fun CalendarDayCell(
                 color = textColor
             )
 
-            // Short tithi text (e.g. સુદ ૫, વદ ૧૧, પૂનમ)
-            val shortPaksha = if (panchang.tithi.paksha == Paksha.SHUKLA) "સુ" else "વ"
+            // Short tithi text
+            val shortPaksha = when (lang) {
+                AppLanguage.GUJARATI -> if (panchang.tithi.paksha == Paksha.SHUKLA) "સુ" else "વ"
+                AppLanguage.HINDI -> if (panchang.tithi.paksha == Paksha.SHUKLA) "शु" else "कृ"
+                AppLanguage.ENGLISH -> if (panchang.tithi.paksha == Paksha.SHUKLA) "S" else "K"
+            }
             val shortTithi = when (panchang.tithi.number) {
-                15 -> if (panchang.tithi.paksha == Paksha.SHUKLA) "પૂ" else "અ"
+                15 -> when (lang) {
+                    AppLanguage.GUJARATI -> if (panchang.tithi.paksha == Paksha.SHUKLA) "પૂ" else "અ"
+                    AppLanguage.HINDI -> if (panchang.tithi.paksha == Paksha.SHUKLA) "पूर्णि" else "अमा"
+                    AppLanguage.ENGLISH -> if (panchang.tithi.paksha == Paksha.SHUKLA) "Pur" else "Amv"
+                }
                 else -> "$shortPaksha ${panchang.tithi.number}"
             }
             Text(

@@ -1,12 +1,33 @@
 <resources>
     <string name="app_name">Jain Panchang</string>
+
+    <!-- Bottom Navigation -->
     <string name="tab_home">Home</string>
     <string name="tab_calendar">Calendar</string>
     <string name="tab_timings">Timings</string>
     <string name="tab_festivals">Festivals</string>
     <string name="tab_niyam">Niyam</string>
+    <string name="tab_quotes">Quotes</string>
     <string name="tab_events">My Events</string>
     <string name="tab_settings">Settings</string>
+
+    <!-- Common -->
+    <string name="today">Today</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="close">Close</string>
+    <string name="done">Done</string>
+    <string name="streak">Streak</string>
+    <string name="completed">Completed</string>
+    <string name="pending">Pending</string>
+    <string name="auspicious">Auspicious</string>
+    <string name="inauspicious">Inauspicious</string>
+    <string name="share">Share</string>
 
     <!-- Panchang Elements -->
     <string name="tithi">Tithi</string>
@@ -19,10 +40,39 @@
     <string name="sunset">Sunset</string>
     <string name="moonrise">Moonrise</string>
     <string name="moonset">Moonset</string>
+    <string name="solar_noon">Solar Noon</string>
+    <string name="day_length">Day Length</string>
+    <string name="night_length">Night Length</string>
     <string name="current_choghadiya">Current Choghadiya</string>
     <string name="next_event">Next Timing</string>
     <string name="samvat">Vikram Samvat</string>
     <string name="veer_nirvan_samvat">Veer Nirvan Samvat</string>
+
+    <!-- Home Screen -->
+    <string name="title_home">Today\'s Panchang</string>
+    <string name="astronomical_details">Astronomical Details</string>
+    <string name="solar_timings">Sun &amp; Moon Timings</string>
+    <string name="today_kalyanaks">Today\'s Kalyanaks</string>
+    <string name="today_festivals">Today\'s Festivals &amp; Parv</string>
+    <string name="ends_at">ends at</string>
+
+    <!-- Calendar Screen -->
+    <string name="title_calendar">Jain Calendar</string>
+    <string name="select_year">Select Year</string>
+    <string name="day_details">Day Details</string>
+    <string name="no_events_today">No special festival or event today</string>
+
+    <!-- Timings Screen -->
+    <string name="title_timings">Timings &amp; Muhurats</string>
+    <string name="tab_choghadiya">Choghadiya</string>
+    <string name="tab_pachkhan">Pachkhan</string>
+    <string name="tab_hora">Hora</string>
+    <string name="tab_gowri">Gowri</string>
+    <string name="tab_muhurat">Muhurat</string>
+    <string name="day_choghadiya">Day Choghadiya</string>
+    <string name="night_choghadiya">Night Choghadiya</string>
+    <string name="pachkhan_guidance">Jain Pachkhan Timings</string>
+    <string name="active_now">Active Now</string>
 
     <!-- Choghadiya Types -->
     <string name="choghadiya_amrit">Amrit</string>
@@ -44,15 +94,68 @@
     <string name="pachkhan_ekasana">Ekasana</string>
     <string name="pachkhan_biyasana">Biyasana</string>
 
-    <!-- Settings & Options -->
+    <!-- Festivals & Kalyanaks -->
+    <string name="title_festivals">Festivals &amp; Kalyanaks</string>
+    <string name="search_festival_hint">Search festival or Tirthankar...</string>
+    <string name="tab_all_festivals">Festivals</string>
+    <string name="tab_kalyanaks">Kalyanaks</string>
+    <string name="tab_scholar_review">Scholar Review</string>
+    <string name="needs_scholar_review_badge">Needs Scholar Review</string>
+    <string name="filter_by_sampraday">Tradition Filter</string>
+
+    <!-- Niyam Screen -->
+    <string name="title_niyam">Daily Niyam (Chaudah Niyam)</string>
+    <string name="todays_suggestion">Today\'s Suggestion</string>
+    <string name="current_streak">Current Streak</string>
+    <string name="days_count">%d Days</string>
+    <string name="set_maryada">Set Maryada</string>
+    <string name="custom_maryada_hint">Enter your vow / limit...</string>
+
+    <!-- Quotes Screen -->
+    <string name="title_quotes">Daily Jain Quote</string>
+    <string name="share_quote">Share Quote</string>
+    <string name="quote_of_the_day">Quote of the Day</string>
+
+    <!-- My Events Screen -->
+    <string name="title_events">My Events &amp; Reminders</string>
+    <string name="add_event">Add Event</string>
+    <string name="event_title">Event Title</string>
+    <string name="event_title_hint">e.g. Father\'s Birthday, Diksha Day</string>
+    <string name="event_type">Event Type</string>
+    <string name="birthday">Birthday</string>
+    <string name="anniversary">Anniversary</string>
+    <string name="puja_diksha">Puja / Diksha</string>
+    <string name="other">Other</string>
+    <string name="recurrence">Recurrence</string>
+    <string name="tithi_based">Jain Tithi Recurrence</string>
+    <string name="gregorian_based">Gregorian Date Recurrence</string>
+    <string name="recurring_by_tithi_desc">Recurs automatically on the exact tithi every year</string>
+    <string name="no_events_yet">No saved events yet. Tap + to add one.</string>
+
+    <!-- Settings Screen -->
+    <string name="title_settings">Settings &amp; Preferences</string>
+    <string name="section_location">Location &amp; City</string>
+    <string name="section_panchang_rules">Panchang Rules &amp; Tradition</string>
+    <string name="section_appearance">Appearance &amp; Language</string>
+    <string name="section_notifications">Notifications &amp; Reminders</string>
+    <string name="section_trust">Privacy &amp; Trust</string>
     <string name="select_city">Select City</string>
     <string name="select_sampraday">Sampraday / Tradition</string>
-    <string name="select_ayanamsha">Ayanamsha</string>
+    <string name="select_ayanamsha">Ayanamsha Method</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="language_en">English</string>
+    <string name="language_hi">हिंदी (Hindi)</string>
+    <string name="language_gu">ગુજરાતી (Gujarati)</string>
     <string name="theme">Theme</string>
     <string name="theme_system">System Default</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
-    <string name="language">Language</string>
-    <string name="notifications">Notifications &amp; Reminders</string>
+    <string name="remind_tithi">Tithi &amp; Festivals Reminders</string>
+    <string name="remind_chauvihar">Sunset / Chauvihar Reminder</string>
+    <string name="remind_pachkhan">Pachkhan Reminders</string>
+    <string name="remind_my_events">My Events Reminders</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_guarantee_text">• 100% Offline: No location or personal data leaves your device.\n• Completely Ad-Free and zero tracking.\n• Astronomical algorithms computed on-device.</string>
+    <string name="read_privacy_policy">Read Full Privacy Policy</string>
 </resources>

@@ -17,8 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.jainpanchang.R
 import com.jainpanchang.data.repository.NiyamRepository
 import com.jainpanchang.data.schema.ChaudahNiyamEntry
 import com.jainpanchang.data.schema.NiyamSuggestionEntry
@@ -35,6 +38,7 @@ fun NiyamScreen(
     val today = remember { LocalDate.now() }
     val todayIso = remember { today.toString() }
     val scope = rememberCoroutineScope()
+    val lang = LocalAppLanguage.current
 
     val categories = remember { niyamRepository.getCategories() }
     val chaudahNiyams = remember { niyamRepository.getChaudahNiyams() }
@@ -54,7 +58,7 @@ fun NiyamScreen(
     ) {
         item {
             Text(
-                text = "દૈનિક નિયમ (Daily Niyam)",
+                text = stringResource(R.string.title_niyam),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary,
@@ -81,7 +85,7 @@ fun NiyamScreen(
                             Icon(Icons.Default.EmojiEvents, contentDescription = null, tint = GoldenSecondary)
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "આજની પ્રગતિ (Today's Progress)",
+                                text = stringResource(R.string.current_streak),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = GoldenOnSecondaryContainer
@@ -89,7 +93,7 @@ fun NiyamScreen(
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "${completedSet.size} / 14 નિયમ પૂર્ણ થયા",
+                            text = "${completedSet.size} / 14 ${stringResource(R.string.completed)}",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.SemiBold,
                             color = GoldenOnSecondaryContainer
@@ -130,7 +134,7 @@ fun NiyamScreen(
                         Icon(Icons.Default.Lightbulb, contentDescription = null, tint = SaffronPrimary)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "આજનું પ્રેરણાદાયી સૂચન (Daily Suggestion)",
+                            text = stringResource(R.string.todays_suggestion),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = SaffronPrimary
@@ -138,18 +142,13 @@ fun NiyamScreen(
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = dailySuggestion.title.gu,
+                        text = dailySuggestion.title.get(lang),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
-                    Text(
-                        text = dailySuggestion.title.en,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = dailySuggestion.detail.gu,
+                        text = dailySuggestion.detail.get(lang),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -159,7 +158,7 @@ fun NiyamScreen(
         // 3. Classical Chaudah Niyam List
         item {
             Text(
-                text = "ચૌદહ નિયમ (14 Classical Niyams)",
+                text = stringResource(R.string.title_niyam),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary
@@ -189,24 +188,19 @@ fun NiyamScreen(
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = niyam.name.gu,
+                            text = niyam.name.get(lang),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = if (isChecked) ColorAmrit else MaterialTheme.colorScheme.onSurface
                         )
-                        Text(
-                            text = niyam.name.en,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = niyam.description.gu,
+                            text = niyam.description.get(lang),
                             style = MaterialTheme.typography.bodySmall
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "મર્યાદા: ${niyam.defaultMaryada}",
+                            text = "${stringResource(R.string.set_maryada)}: ${niyam.defaultMaryada}",
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.SemiBold,
                             color = GoldenSecondary

@@ -20,6 +20,24 @@
     </issue>
 
     <issue
+        id="AppBundleLocaleChanges"
+        severity="Warning"
+        message="Found dynamic locale changes, but did not find corresponding Play Core library calls for downloading languages and splitting by language is not disabled in the `bundle` configuration"
+        category="Correctness"
+        priority="5"
+        summary="App Bundle handling of runtime locale changes"
+        explanation="When changing locales at runtime (e.g. to provide an in-app language switcher), the Android App Bundle must be configured to not split by locale or the Play Core library must be used to download additional locales at runtime."
+        url="https://developer.android.com/guide/app-bundle/configure-base#handling_language_changes"
+        urls="https://developer.android.com/guide/app-bundle/configure-base#handling_language_changes"
+        errorLine1="                config.setLocale(currentLanguage.locale)"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\kotlin\com\jainpanchang\MainActivity.kt"
+            line="100"
+            column="17"/>
+    </issue>
+
+    <issue
         id="GradleDependency"
         severity="Warning"
         message="A newer version of `compileSdk` than 36 is available: 37"
@@ -32,6 +50,24 @@
         <location
             file="D:\github\Jain-Panchang\app\build.gradle.kts"
             line="10"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="PluralsCandidate"
+        severity="Warning"
+        message="Formatting %d followed by words (&quot;Days&quot;): This should probably be a plural rather than a string"
+        category="Correctness:Messages"
+        priority="5"
+        summary="Potential Plurals"
+        explanation="This lint check looks for potential errors in internationalization where you have translated a message which involves a quantity and it looks like other parts of the string may need grammatical changes.&#xA;&#xA;For example, rather than something like this:&#xA;```xml&#xA;  &lt;string name=&quot;try_again&quot;>Try again in %d seconds.&lt;/string>&#xA;```&#xA;you should be using a plural:&#xA;```xml&#xA;   &lt;plurals name=&quot;try_again&quot;>&#xA;        &lt;item quantity=&quot;one&quot;>Try again in %d second&lt;/item>&#xA;        &lt;item quantity=&quot;other&quot;>Try again in %d seconds&lt;/item>&#xA;    &lt;/plurals>&#xA;```&#xA;This will ensure that in other languages the right set of translations are provided for the different quantity classes.&#xA;&#xA;(This check depends on some heuristics, so it may not accurately determine whether a string really should be a quantity. You can use tools:ignore to filter out false positives."
+        url="https://developer.android.com/guide/topics/resources/string-resource.html#Plurals"
+        urls="https://developer.android.com/guide/topics/resources/string-resource.html#Plurals"
+        errorLine1="    &lt;string name=&quot;days_count&quot;>%d Days&lt;/string>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="110"
             column="5"/>
     </issue>
 
@@ -54,128 +90,144 @@
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_home` appears to be unused"
+        message="The resource `R.string.date` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_home&quot;>Home&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;date&quot;>Date&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="3"
+            line="16"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_calendar` appears to be unused"
+        message="The resource `R.string.time` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_calendar&quot;>Calendar&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;time&quot;>Time&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="4"
+            line="17"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_timings` appears to be unused"
+        message="The resource `R.string.search` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_timings&quot;>Timings&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;search&quot;>Search&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="5"
+            line="18"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_festivals` appears to be unused"
+        message="The resource `R.string.edit` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_festivals&quot;>Festivals&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;edit&quot;>Edit&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="6"
+            line="22"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_niyam` appears to be unused"
+        message="The resource `R.string.done` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_niyam&quot;>Niyam&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;done&quot;>Done&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="7"
+            line="24"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_events` appears to be unused"
+        message="The resource `R.string.streak` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_events&quot;>My Events&lt;/string>"
+        errorLine1="    &lt;string name=&quot;streak&quot;>Streak&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.pending` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;pending&quot;>Pending&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="27"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.auspicious` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;auspicious&quot;>Auspicious&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="8"
+            line="28"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.tab_settings` appears to be unused"
+        message="The resource `R.string.inauspicious` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tab_settings&quot;>Settings&lt;/string>"
+        errorLine1="    &lt;string name=&quot;inauspicious&quot;>Inauspicious&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="9"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.tithi` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;tithi&quot;>Tithi&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="12"
+            line="29"
             column="13"/>
     </issue>
 
@@ -191,119 +243,7 @@
         errorLine2="            ~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="13"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.nakshatra` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;nakshatra&quot;>Nakshatra&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="14"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.yoga` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;yoga&quot;>Yoga&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="15"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.karana` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;karana&quot;>Karana&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="16"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.vara` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;vara&quot;>Day&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="17"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.sunrise` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;sunrise&quot;>Sunrise&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="18"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.sunset` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;sunset&quot;>Sunset&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="19"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.moonrise` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;moonrise&quot;>Moonrise&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="20"
+            line="34"
             column="13"/>
     </issue>
 
@@ -319,7 +259,55 @@
         errorLine2="            ~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="21"
+            line="42"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.solar_noon` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;solar_noon&quot;>Solar Noon&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="43"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.day_length` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;day_length&quot;>Day Length&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.night_length` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;night_length&quot;>Night Length&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="45"
             column="13"/>
     </issue>
 
@@ -335,55 +323,87 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="22"
+            line="46"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.next_event` appears to be unused"
+        message="The resource `R.string.title_home` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;next_event&quot;>Next Timing&lt;/string>"
+        errorLine1="    &lt;string name=&quot;title_home&quot;>Today\&apos;s Panchang&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="23"
+            line="52"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.samvat` appears to be unused"
+        message="The resource `R.string.today_kalyanaks` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;samvat&quot;>Vikram Samvat&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;today_kalyanaks&quot;>Today\&apos;s Kalyanaks&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="24"
+            line="55"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.veer_nirvan_samvat` appears to be unused"
+        message="The resource `R.string.title_calendar` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;veer_nirvan_samvat&quot;>Veer Nirvan Samvat&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;title_calendar&quot;>Jain Calendar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="25"
+            line="60"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.day_details` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;day_details&quot;>Day Details&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="62"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.no_events_today` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;no_events_today&quot;>No special festival or event today&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="63"
             column="13"/>
     </issue>
 
@@ -399,7 +419,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="28"
+            line="78"
             column="13"/>
     </issue>
 
@@ -415,7 +435,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="29"
+            line="79"
             column="13"/>
     </issue>
 
@@ -431,7 +451,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="30"
+            line="80"
             column="13"/>
     </issue>
 
@@ -447,7 +467,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="31"
+            line="81"
             column="13"/>
     </issue>
 
@@ -463,7 +483,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="32"
+            line="82"
             column="13"/>
     </issue>
 
@@ -479,7 +499,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="33"
+            line="83"
             column="13"/>
     </issue>
 
@@ -495,7 +515,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="34"
+            line="84"
             column="13"/>
     </issue>
 
@@ -511,7 +531,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="37"
+            line="87"
             column="13"/>
     </issue>
 
@@ -527,7 +547,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="38"
+            line="88"
             column="13"/>
     </issue>
 
@@ -543,7 +563,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="39"
+            line="89"
             column="13"/>
     </issue>
 
@@ -559,7 +579,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="40"
+            line="90"
             column="13"/>
     </issue>
 
@@ -575,7 +595,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="41"
+            line="91"
             column="13"/>
     </issue>
 
@@ -591,7 +611,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="42"
+            line="92"
             column="13"/>
     </issue>
 
@@ -607,7 +627,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="43"
+            line="93"
             column="13"/>
     </issue>
 
@@ -623,7 +643,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="44"
+            line="94"
             column="13"/>
     </issue>
 
@@ -639,168 +659,292 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="45"
+            line="95"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.select_city` appears to be unused"
+        message="The resource `R.string.filter_by_sampraday` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;select_city&quot;>Select City&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;filter_by_sampraday&quot;>Tradition Filter&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="48"
+            line="104"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.select_sampraday` appears to be unused"
+        message="The resource `R.string.days_count` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;select_sampraday&quot;>Sampraday / Tradition&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="49"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.select_ayanamsha` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;select_ayanamsha&quot;>Ayanamsha&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="50"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.theme` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;theme&quot;>Theme&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="51"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.theme_system` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;theme_system&quot;>System Default&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="52"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.theme_light` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;theme_light&quot;>Light&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~">
-        <location
-            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="53"
-            column="13"/>
-    </issue>
-
-    <issue
-        id="UnusedResources"
-        severity="Warning"
-        message="The resource `R.string.theme_dark` appears to be unused"
-        category="Performance"
-        priority="3"
-        summary="Unused resources"
-        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;theme_dark&quot;>Dark&lt;/string>"
+        errorLine1="    &lt;string name=&quot;days_count&quot;>%d Days&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="54"
+            line="110"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.language` appears to be unused"
+        message="The resource `R.string.custom_maryada_hint` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;language&quot;>Language&lt;/string>"
+        errorLine1="    &lt;string name=&quot;custom_maryada_hint&quot;>Enter your vow / limit...&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="112"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.share_quote` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;share_quote&quot;>Share Quote&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="116"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.quote_of_the_day` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;quote_of_the_day&quot;>Quote of the Day&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="117"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.event_type` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;event_type&quot;>Event Type&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="124"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.birthday` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;birthday&quot;>Birthday&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="55"
+            line="125"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.notifications` appears to be unused"
+        message="The resource `R.string.anniversary` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;notifications&quot;>Notifications &amp;amp; Reminders&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;anniversary&quot;>Anniversary&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="56"
+            line="126"
             column="13"/>
     </issue>
 
     <issue
         id="UnusedResources"
         severity="Warning"
-        message="The resource `R.string.privacy_policy` appears to be unused"
+        message="The resource `R.string.puja_diksha` appears to be unused"
         category="Performance"
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
-        errorLine1="    &lt;string name=&quot;privacy_policy&quot;>Privacy Policy&lt;/string>"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    &lt;string name=&quot;puja_diksha&quot;>Puja / Diksha&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
         <location
             file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
-            line="57"
+            line="127"
             column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.other` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;other&quot;>Other&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="128"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        severity="Warning"
+        message="The resource `R.string.gregorian_based` appears to be unused"
+        category="Performance"
+        priority="3"
+        summary="Unused resources"
+        explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property `lint.unused-resources.include-tests=true`, and to exclude them (usually for performance reasons), use `lint.unused-resources.exclude-tests=true`.&#xA;"
+        errorLine1="    &lt;string name=&quot;gregorian_based&quot;>Gregorian Date Recurrence&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="131"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;search_festival_hint&quot;>પર્વ અથવા તીર્થંકર શોધો...&lt;/string>"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values-gu\strings.xml"
+            line="99"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;search_festival_hint&quot;>पर्व या तीर्थंकर खोजें...&lt;/string>"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values-hi\strings.xml"
+            line="99"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;search_festival_hint&quot;>Search festival or Tirthankar...&lt;/string>"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="99"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;custom_maryada_hint&quot;>તમારો વ્રત કે નિયમ લખો...&lt;/string>"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values-gu\strings.xml"
+            line="112"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;custom_maryada_hint&quot;>अपना व्रत या मर्यादा लिखें...&lt;/string>"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values-hi\strings.xml"
+            line="112"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        severity="Warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        category="Usability:Typography"
+        priority="5"
+        summary="Ellipsis string can be replaced with ellipsis character"
+        explanation="You can replace the string &quot;...&quot; with a dedicated ellipsis character, ellipsis character (\u2026, &amp;#8230;). This can help make the text more readable."
+        url="https://en.wikipedia.org/wiki/Ellipsis"
+        urls="https://en.wikipedia.org/wiki/Ellipsis"
+        errorLine1="    &lt;string name=&quot;custom_maryada_hint&quot;>Enter your vow / limit...&lt;/string>"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\github\Jain-Panchang\app\src\main\res\values\strings.xml"
+            line="112"
+            column="40"/>
     </issue>
 
 </issues>

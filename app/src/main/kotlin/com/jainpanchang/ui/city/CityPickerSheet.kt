@@ -42,9 +42,9 @@ fun CityPickerDialog(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("શહેર પસંદ કરો (Select City)")
+                Text(androidx.compose.ui.res.stringResource(com.jainpanchang.R.string.select_city))
                 IconButton(onClick = onDismiss) {
-                    Icon(Icons.Default.Close, contentDescription = "Close")
+                    Icon(Icons.Default.Close, contentDescription = androidx.compose.ui.res.stringResource(com.jainpanchang.R.string.close))
                 }
             }
         },

@@ -17,6 +17,24 @@
                     "language": "en-US",
                     "rules": [
                         {
+                            "id": "AppBundleLocaleChanges",
+                            "shortDescription": {
+                                "text": "App Bundle handling of runtime locale changes"
+                            },
+                            "fullDescription": {
+                                "text": "When changing locales at runtime (e.g. to provide an in-app language switcher), the Android App Bundle must be configured to not split by locale or the Play Core library must be used to download additional locales at runtime."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
                             "id": "GradleDependency",
                             "shortDescription": {
                                 "text": "Obsolete Gradle Dependency"
@@ -73,6 +91,46 @@
                             }
                         },
                         {
+                            "id": "PluralsCandidate",
+                            "shortDescription": {
+                                "text": "Potential Plurals"
+                            },
+                            "fullDescription": {
+                                "text": "This lint check looks for potential errors in internationalization where you have translated a message which involves a quantity and it looks like other parts of the string may need grammatical changes.\n\nFor example, rather than something like this:\n  <string name=\"try_again\">Try again in %d seconds.</string>\nyou should be using a plural:\n   <plurals name=\"try_again\">\n        <item quantity=\"one\">Try again in %d second</item>\n        <item quantity=\"other\">Try again in %d seconds</item>\n    </plurals>\nThis will ensure that in other languages the right set of translations are provided for the different quantity classes.\n\n(This check depends on some heuristics, so it may not accurately determine whether a string really should be a quantity. You can use tools:ignore to filter out false positives.",
+                                "markdown": "This lint check looks for potential errors in internationalization where you have translated a message which involves a quantity and it looks like other parts of the string may need grammatical changes.\n\nFor example, rather than something like this:\n```xml\n  <string name=\"try_again\">Try again in %d seconds.</string>\n```\nyou should be using a plural:\n```xml\n   <plurals name=\"try_again\">\n        <item quantity=\"one\">Try again in %d second</item>\n        <item quantity=\"other\">Try again in %d seconds</item>\n    </plurals>\n```\nThis will ensure that in other languages the right set of translations are provided for the different quantity classes.\n\n(This check depends on some heuristics, so it may not accurately determine whether a string really should be a quantity. You can use tools:ignore to filter out false positives."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Messages",
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "TypographyEllipsis",
+                            "shortDescription": {
+                                "text": "Ellipsis string can be replaced with ellipsis character"
+                            },
+                            "fullDescription": {
+                                "text": "You can replace the string \"...\" with a dedicated ellipsis character, ellipsis character (u2026, &#8230;). This can help make the text more readable.",
+                                "markdown": "You can replace the string \"...\" with a dedicated ellipsis character, ellipsis character (\\u2026, &#8230;). This can help make the text more readable."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 60
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Typography",
+                                    "Usability"
+                                ]
+                            }
+                        },
+                        {
                             "id": "UnusedResources",
                             "shortDescription": {
                                 "text": "Unused resources"
@@ -102,7 +160,7 @@
             "results": [
                 {
                     "ruleId": "OldTargetApi",
-                    "ruleIndex": 2,
+                    "ruleIndex": 3,
                     "message": {
                         "text": "Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.",
                         "markdown": "Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
@@ -170,8 +228,47 @@
                     }
                 },
                 {
-                    "ruleId": "GradleDependency",
+                    "ruleId": "AppBundleLocaleChanges",
                     "ruleIndex": 0,
+                    "message": {
+                        "text": "Found dynamic locale changes, but did not find corresponding Play Core library calls for downloading languages and splitting by language is not disabled in the bundle configuration",
+                        "markdown": "Found dynamic locale changes, but did not find corresponding Play Core library calls for downloading languages and splitting by language is not disabled in the `bundle` configuration"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/kotlin/com/jainpanchang/MainActivity.kt"
+                                },
+                                "region": {
+                                    "startLine": 100,
+                                    "startColumn": 17,
+                                    "endLine": 100,
+                                    "endColumn": 57,
+                                    "charOffset": 3869,
+                                    "charLength": 40,
+                                    "snippet": {
+                                        "text": "config.setLocale(currentLanguage.locale)"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 98,
+                                    "endLine": 103,
+                                    "snippet": {
+                                        "text": "            val localizedConfiguration = remember(currentLanguage, baseConfig) {\n                val config = Configuration(baseConfig)\n                config.setLocale(currentLanguage.locale)\n                config\n            }\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e5160ab41990bbb2"
+                    }
+                },
+                {
+                    "ruleId": "GradleDependency",
+                    "ruleIndex": 1,
                     "message": {
                         "text": "A newer version of compileSdk than 36 is available: 37",
                         "markdown": "A newer version of `compileSdk` than 36 is available: 37"
@@ -239,8 +336,46 @@
                     }
                 },
                 {
+                    "ruleId": "PluralsCandidate",
+                    "ruleIndex": 4,
+                    "message": {
+                        "text": "Formatting %d followed by words (\"Days\"): This should probably be a plural rather than a string"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 110,
+                                    "startColumn": 5,
+                                    "endLine": 110,
+                                    "endColumn": 47,
+                                    "charOffset": 4871,
+                                    "charLength": 42,
+                                    "snippet": {
+                                        "text": "<string name=\"days_count\">%d Days</string>"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 108,
+                                    "endLine": 113,
+                                    "snippet": {
+                                        "text": "    <string name=\"todays_suggestion\">Today\\'s Suggestion</string>\n    <string name=\"current_streak\">Current Streak</string>\n    <string name=\"days_count\">%d Days</string>\n    <string name=\"set_maryada\">Set Maryada</string>\n    <string name=\"custom_maryada_hint\">Enter your vow / limit...</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "d3e1d47cdc413a83"
+                    }
+                },
+                {
                     "ruleId": "ObsoleteSdkInt",
-                    "ruleIndex": 1,
+                    "ruleIndex": 2,
                     "message": {
                         "text": "Unnecessary; SDK_INT is always >= 26",
                         "markdown": "Unnecessary; `SDK_INT` is always >= 26"
@@ -281,10 +416,10 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_home appears to be unused",
-                        "markdown": "The resource `R.string.tab_home` appears to be unused"
+                        "text": "The resource R.string.date appears to be unused",
+                        "markdown": "The resource `R.string.date` appears to be unused"
                     },
                     "locations": [
                         {
@@ -294,21 +429,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 3,
+                                    "startLine": 16,
                                     "startColumn": 13,
-                                    "endLine": 3,
-                                    "endColumn": 28,
-                                    "charOffset": 75,
-                                    "charLength": 15,
+                                    "endLine": 16,
+                                    "endColumn": 24,
+                                    "charOffset": 549,
+                                    "charLength": 11,
                                     "snippet": {
-                                        "text": "name=\"tab_home\""
+                                        "text": "name=\"date\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 1,
-                                    "endLine": 6,
+                                    "startLine": 14,
+                                    "endLine": 19,
                                     "snippet": {
-                                        "text": "<resources>\n    <string name=\"app_name\">Jain Panchang</string>\n    <string name=\"tab_home\">Home</string>\n    <string name=\"tab_calendar\">Calendar</string>\n    <string name=\"tab_timings\">Timings</string>\n"
+                                        "text": "    <!-- Common -->\n    <string name=\"today\">Today</string>\n    <string name=\"date\">Date</string>\n    <string name=\"time\">Time</string>\n    <string name=\"search\">Search</string>\n"
                                     }
                                 }
                             }
@@ -317,15 +452,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "e548cedff586fd84"
+                        "sourceContext/v1": "047bb6a1ee0180e7"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_calendar appears to be unused",
-                        "markdown": "The resource `R.string.tab_calendar` appears to be unused"
+                        "text": "The resource R.string.time appears to be unused",
+                        "markdown": "The resource `R.string.time` appears to be unused"
                     },
                     "locations": [
                         {
@@ -335,21 +470,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 4,
+                                    "startLine": 17,
                                     "startColumn": 13,
-                                    "endLine": 4,
-                                    "endColumn": 32,
-                                    "charOffset": 117,
-                                    "charLength": 19,
+                                    "endLine": 17,
+                                    "endColumn": 24,
+                                    "charOffset": 587,
+                                    "charLength": 11,
                                     "snippet": {
-                                        "text": "name=\"tab_calendar\""
+                                        "text": "name=\"time\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 2,
-                                    "endLine": 7,
+                                    "startLine": 15,
+                                    "endLine": 20,
                                     "snippet": {
-                                        "text": "    <string name=\"app_name\">Jain Panchang</string>\n    <string name=\"tab_home\">Home</string>\n    <string name=\"tab_calendar\">Calendar</string>\n    <string name=\"tab_timings\">Timings</string>\n    <string name=\"tab_festivals\">Festivals</string>\n"
+                                        "text": "    <string name=\"today\">Today</string>\n    <string name=\"date\">Date</string>\n    <string name=\"time\">Time</string>\n    <string name=\"search\">Search</string>\n    <string name=\"cancel\">Cancel</string>\n"
                                     }
                                 }
                             }
@@ -358,15 +493,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "a53df8d54b54977f"
+                        "sourceContext/v1": "705019a2c5bc4e1b"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_timings appears to be unused",
-                        "markdown": "The resource `R.string.tab_timings` appears to be unused"
+                        "text": "The resource R.string.search appears to be unused",
+                        "markdown": "The resource `R.string.search` appears to be unused"
                     },
                     "locations": [
                         {
@@ -376,21 +511,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 5,
+                                    "startLine": 18,
                                     "startColumn": 13,
-                                    "endLine": 5,
-                                    "endColumn": 31,
-                                    "charOffset": 167,
-                                    "charLength": 18,
+                                    "endLine": 18,
+                                    "endColumn": 26,
+                                    "charOffset": 625,
+                                    "charLength": 13,
                                     "snippet": {
-                                        "text": "name=\"tab_timings\""
+                                        "text": "name=\"search\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 3,
-                                    "endLine": 8,
+                                    "startLine": 16,
+                                    "endLine": 21,
                                     "snippet": {
-                                        "text": "    <string name=\"tab_home\">Home</string>\n    <string name=\"tab_calendar\">Calendar</string>\n    <string name=\"tab_timings\">Timings</string>\n    <string name=\"tab_festivals\">Festivals</string>\n    <string name=\"tab_niyam\">Niyam</string>\n"
+                                        "text": "    <string name=\"date\">Date</string>\n    <string name=\"time\">Time</string>\n    <string name=\"search\">Search</string>\n    <string name=\"cancel\">Cancel</string>\n    <string name=\"save\">Save</string>\n"
                                     }
                                 }
                             }
@@ -399,15 +534,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "7b3eeae500a3542b"
+                        "sourceContext/v1": "41512907aff07e98"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_festivals appears to be unused",
-                        "markdown": "The resource `R.string.tab_festivals` appears to be unused"
+                        "text": "The resource R.string.edit appears to be unused",
+                        "markdown": "The resource `R.string.edit` appears to be unused"
                     },
                     "locations": [
                         {
@@ -417,21 +552,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 6,
+                                    "startLine": 22,
                                     "startColumn": 13,
-                                    "endLine": 6,
-                                    "endColumn": 33,
-                                    "charOffset": 215,
-                                    "charLength": 20,
+                                    "endLine": 22,
+                                    "endColumn": 24,
+                                    "charOffset": 789,
+                                    "charLength": 11,
                                     "snippet": {
-                                        "text": "name=\"tab_festivals\""
+                                        "text": "name=\"edit\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 4,
-                                    "endLine": 9,
+                                    "startLine": 20,
+                                    "endLine": 25,
                                     "snippet": {
-                                        "text": "    <string name=\"tab_calendar\">Calendar</string>\n    <string name=\"tab_timings\">Timings</string>\n    <string name=\"tab_festivals\">Festivals</string>\n    <string name=\"tab_niyam\">Niyam</string>\n    <string name=\"tab_events\">My Events</string>\n"
+                                        "text": "    <string name=\"save\">Save</string>\n    <string name=\"delete\">Delete</string>\n    <string name=\"edit\">Edit</string>\n    <string name=\"close\">Close</string>\n    <string name=\"done\">Done</string>\n"
                                     }
                                 }
                             }
@@ -440,15 +575,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "1f1b1aed28ee16ed"
+                        "sourceContext/v1": "704ae185f63588c4"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_niyam appears to be unused",
-                        "markdown": "The resource `R.string.tab_niyam` appears to be unused"
+                        "text": "The resource R.string.done appears to be unused",
+                        "markdown": "The resource `R.string.done` appears to be unused"
                     },
                     "locations": [
                         {
@@ -458,21 +593,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 7,
+                                    "startLine": 24,
                                     "startColumn": 13,
-                                    "endLine": 7,
-                                    "endColumn": 29,
-                                    "charOffset": 267,
-                                    "charLength": 16,
+                                    "endLine": 24,
+                                    "endColumn": 24,
+                                    "charOffset": 867,
+                                    "charLength": 11,
                                     "snippet": {
-                                        "text": "name=\"tab_niyam\""
+                                        "text": "name=\"done\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 5,
-                                    "endLine": 10,
+                                    "startLine": 22,
+                                    "endLine": 27,
                                     "snippet": {
-                                        "text": "    <string name=\"tab_timings\">Timings</string>\n    <string name=\"tab_festivals\">Festivals</string>\n    <string name=\"tab_niyam\">Niyam</string>\n    <string name=\"tab_events\">My Events</string>\n    <string name=\"tab_settings\">Settings</string>\n"
+                                        "text": "    <string name=\"edit\">Edit</string>\n    <string name=\"close\">Close</string>\n    <string name=\"done\">Done</string>\n    <string name=\"streak\">Streak</string>\n    <string name=\"completed\">Completed</string>\n"
                                     }
                                 }
                             }
@@ -481,15 +616,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "70590bf4b01ad2d5"
+                        "sourceContext/v1": "0424c83720379744"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_events appears to be unused",
-                        "markdown": "The resource `R.string.tab_events` appears to be unused"
+                        "text": "The resource R.string.streak appears to be unused",
+                        "markdown": "The resource `R.string.streak` appears to be unused"
                     },
                     "locations": [
                         {
@@ -499,21 +634,103 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 8,
+                                    "startLine": 25,
                                     "startColumn": 13,
-                                    "endLine": 8,
+                                    "endLine": 25,
+                                    "endColumn": 26,
+                                    "charOffset": 905,
+                                    "charLength": 13,
+                                    "snippet": {
+                                        "text": "name=\"streak\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 23,
+                                    "endLine": 28,
+                                    "snippet": {
+                                        "text": "    <string name=\"close\">Close</string>\n    <string name=\"done\">Done</string>\n    <string name=\"streak\">Streak</string>\n    <string name=\"completed\">Completed</string>\n    <string name=\"pending\">Pending</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "96ca38cfbaab5514"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.pending appears to be unused",
+                        "markdown": "The resource `R.string.pending` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 27,
+                                    "startColumn": 13,
+                                    "endLine": 27,
+                                    "endColumn": 27,
+                                    "charOffset": 995,
+                                    "charLength": 14,
+                                    "snippet": {
+                                        "text": "name=\"pending\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 25,
+                                    "endLine": 30,
+                                    "snippet": {
+                                        "text": "    <string name=\"streak\">Streak</string>\n    <string name=\"completed\">Completed</string>\n    <string name=\"pending\">Pending</string>\n    <string name=\"auspicious\">Auspicious</string>\n    <string name=\"inauspicious\">Inauspicious</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "b446600349af4bf9"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.auspicious appears to be unused",
+                        "markdown": "The resource `R.string.auspicious` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 28,
+                                    "startColumn": 13,
+                                    "endLine": 28,
                                     "endColumn": 30,
-                                    "charOffset": 311,
+                                    "charOffset": 1039,
                                     "charLength": 17,
                                     "snippet": {
-                                        "text": "name=\"tab_events\""
+                                        "text": "name=\"auspicious\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 6,
-                                    "endLine": 11,
+                                    "startLine": 26,
+                                    "endLine": 31,
                                     "snippet": {
-                                        "text": "    <string name=\"tab_festivals\">Festivals</string>\n    <string name=\"tab_niyam\">Niyam</string>\n    <string name=\"tab_events\">My Events</string>\n    <string name=\"tab_settings\">Settings</string>\n\n"
+                                        "text": "    <string name=\"completed\">Completed</string>\n    <string name=\"pending\">Pending</string>\n    <string name=\"auspicious\">Auspicious</string>\n    <string name=\"inauspicious\">Inauspicious</string>\n    <string name=\"share\">Share</string>\n"
                                     }
                                 }
                             }
@@ -522,15 +739,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "853a86e3df454d59"
+                        "sourceContext/v1": "4586bfbefff0be62"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.tab_settings appears to be unused",
-                        "markdown": "The resource `R.string.tab_settings` appears to be unused"
+                        "text": "The resource R.string.inauspicious appears to be unused",
+                        "markdown": "The resource `R.string.inauspicious` appears to be unused"
                     },
                     "locations": [
                         {
@@ -540,21 +757,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 9,
+                                    "startLine": 29,
                                     "startColumn": 13,
-                                    "endLine": 9,
+                                    "endLine": 29,
                                     "endColumn": 32,
-                                    "charOffset": 360,
+                                    "charOffset": 1089,
                                     "charLength": 19,
                                     "snippet": {
-                                        "text": "name=\"tab_settings\""
+                                        "text": "name=\"inauspicious\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 7,
-                                    "endLine": 12,
+                                    "startLine": 27,
+                                    "endLine": 32,
                                     "snippet": {
-                                        "text": "    <string name=\"tab_niyam\">Niyam</string>\n    <string name=\"tab_events\">My Events</string>\n    <string name=\"tab_settings\">Settings</string>\n\n    <!-- Panchang Elements -->\n"
+                                        "text": "    <string name=\"pending\">Pending</string>\n    <string name=\"auspicious\">Auspicious</string>\n    <string name=\"inauspicious\">Inauspicious</string>\n    <string name=\"share\">Share</string>\n\n"
                                     }
                                 }
                             }
@@ -563,53 +780,12 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "77d38d534cbe3111"
+                        "sourceContext/v1": "7e00781a37148ac6"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.tithi appears to be unused",
-                        "markdown": "The resource `R.string.tithi` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 12,
-                                    "startColumn": 13,
-                                    "endLine": 12,
-                                    "endColumn": 25,
-                                    "charOffset": 442,
-                                    "charLength": 12,
-                                    "snippet": {
-                                        "text": "name=\"tithi\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 10,
-                                    "endLine": 15,
-                                    "snippet": {
-                                        "text": "\n    <!-- Panchang Elements -->\n    <string name=\"tithi\">Tithi</string>\n    <string name=\"paksha\">Paksha</string>\n    <string name=\"nakshatra\">Nakshatra</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "ce14aeac5d9bcad1"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.paksha appears to be unused",
                         "markdown": "The resource `R.string.paksha` appears to be unused"
@@ -622,19 +798,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 13,
+                                    "startLine": 34,
                                     "startColumn": 13,
-                                    "endLine": 13,
+                                    "endLine": 34,
                                     "endColumn": 26,
-                                    "charOffset": 482,
+                                    "charOffset": 1255,
                                     "charLength": 13,
                                     "snippet": {
                                         "text": "name=\"paksha\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 11,
-                                    "endLine": 16,
+                                    "startLine": 32,
+                                    "endLine": 37,
                                     "snippet": {
                                         "text": "    <!-- Panchang Elements -->\n    <string name=\"tithi\">Tithi</string>\n    <string name=\"paksha\">Paksha</string>\n    <string name=\"nakshatra\">Nakshatra</string>\n    <string name=\"yoga\">Yoga</string>\n"
                                     }
@@ -650,294 +826,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.nakshatra appears to be unused",
-                        "markdown": "The resource `R.string.nakshatra` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 14,
-                                    "startColumn": 13,
-                                    "endLine": 14,
-                                    "endColumn": 29,
-                                    "charOffset": 524,
-                                    "charLength": 16,
-                                    "snippet": {
-                                        "text": "name=\"nakshatra\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 12,
-                                    "endLine": 17,
-                                    "snippet": {
-                                        "text": "    <string name=\"tithi\">Tithi</string>\n    <string name=\"paksha\">Paksha</string>\n    <string name=\"nakshatra\">Nakshatra</string>\n    <string name=\"yoga\">Yoga</string>\n    <string name=\"karana\">Karana</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "8f240f3e5c202b5b"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.yoga appears to be unused",
-                        "markdown": "The resource `R.string.yoga` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 15,
-                                    "startColumn": 13,
-                                    "endLine": 15,
-                                    "endColumn": 24,
-                                    "charOffset": 572,
-                                    "charLength": 11,
-                                    "snippet": {
-                                        "text": "name=\"yoga\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 13,
-                                    "endLine": 18,
-                                    "snippet": {
-                                        "text": "    <string name=\"paksha\">Paksha</string>\n    <string name=\"nakshatra\">Nakshatra</string>\n    <string name=\"yoga\">Yoga</string>\n    <string name=\"karana\">Karana</string>\n    <string name=\"vara\">Day</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "7401665677e796cc"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.karana appears to be unused",
-                        "markdown": "The resource `R.string.karana` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 16,
-                                    "startColumn": 13,
-                                    "endLine": 16,
-                                    "endColumn": 26,
-                                    "charOffset": 610,
-                                    "charLength": 13,
-                                    "snippet": {
-                                        "text": "name=\"karana\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 14,
-                                    "endLine": 19,
-                                    "snippet": {
-                                        "text": "    <string name=\"nakshatra\">Nakshatra</string>\n    <string name=\"yoga\">Yoga</string>\n    <string name=\"karana\">Karana</string>\n    <string name=\"vara\">Day</string>\n    <string name=\"sunrise\">Sunrise</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "33e2704d03d08158"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.vara appears to be unused",
-                        "markdown": "The resource `R.string.vara` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 17,
-                                    "startColumn": 13,
-                                    "endLine": 17,
-                                    "endColumn": 24,
-                                    "charOffset": 652,
-                                    "charLength": 11,
-                                    "snippet": {
-                                        "text": "name=\"vara\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 15,
-                                    "endLine": 20,
-                                    "snippet": {
-                                        "text": "    <string name=\"yoga\">Yoga</string>\n    <string name=\"karana\">Karana</string>\n    <string name=\"vara\">Day</string>\n    <string name=\"sunrise\">Sunrise</string>\n    <string name=\"sunset\">Sunset</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "e02aa33a089a9e9e"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.sunrise appears to be unused",
-                        "markdown": "The resource `R.string.sunrise` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 18,
-                                    "startColumn": 13,
-                                    "endLine": 18,
-                                    "endColumn": 27,
-                                    "charOffset": 689,
-                                    "charLength": 14,
-                                    "snippet": {
-                                        "text": "name=\"sunrise\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 16,
-                                    "endLine": 21,
-                                    "snippet": {
-                                        "text": "    <string name=\"karana\">Karana</string>\n    <string name=\"vara\">Day</string>\n    <string name=\"sunrise\">Sunrise</string>\n    <string name=\"sunset\">Sunset</string>\n    <string name=\"moonrise\">Moonrise</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "530fd35eb427d7c0"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.sunset appears to be unused",
-                        "markdown": "The resource `R.string.sunset` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 19,
-                                    "startColumn": 13,
-                                    "endLine": 19,
-                                    "endColumn": 26,
-                                    "charOffset": 733,
-                                    "charLength": 13,
-                                    "snippet": {
-                                        "text": "name=\"sunset\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 17,
-                                    "endLine": 22,
-                                    "snippet": {
-                                        "text": "    <string name=\"vara\">Day</string>\n    <string name=\"sunrise\">Sunrise</string>\n    <string name=\"sunset\">Sunset</string>\n    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "c73dcbd034454c01"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.moonrise appears to be unused",
-                        "markdown": "The resource `R.string.moonrise` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 20,
-                                    "startColumn": 13,
-                                    "endLine": 20,
-                                    "endColumn": 28,
-                                    "charOffset": 775,
-                                    "charLength": 15,
-                                    "snippet": {
-                                        "text": "name=\"moonrise\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 18,
-                                    "endLine": 23,
-                                    "snippet": {
-                                        "text": "    <string name=\"sunrise\">Sunrise</string>\n    <string name=\"sunset\">Sunset</string>\n    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "ba7c76938ebb6bec"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.moonset appears to be unused",
                         "markdown": "The resource `R.string.moonset` appears to be unused"
@@ -950,21 +839,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 21,
+                                    "startLine": 42,
                                     "startColumn": 13,
-                                    "endLine": 21,
+                                    "endLine": 42,
                                     "endColumn": 27,
-                                    "charOffset": 821,
+                                    "charOffset": 1594,
                                     "charLength": 14,
                                     "snippet": {
                                         "text": "name=\"moonset\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 19,
-                                    "endLine": 24,
+                                    "startLine": 40,
+                                    "endLine": 45,
                                     "snippet": {
-                                        "text": "    <string name=\"sunset\">Sunset</string>\n    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n"
+                                        "text": "    <string name=\"sunset\">Sunset</string>\n    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n    <string name=\"solar_noon\">Solar Noon</string>\n    <string name=\"day_length\">Day Length</string>\n"
                                     }
                                 }
                             }
@@ -973,12 +862,135 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "cfcf6e7508961921"
+                        "sourceContext/v1": "57929f5e2274163d"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.solar_noon appears to be unused",
+                        "markdown": "The resource `R.string.solar_noon` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 43,
+                                    "startColumn": 13,
+                                    "endLine": 43,
+                                    "endColumn": 30,
+                                    "charOffset": 1638,
+                                    "charLength": 17,
+                                    "snippet": {
+                                        "text": "name=\"solar_noon\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 41,
+                                    "endLine": 46,
+                                    "snippet": {
+                                        "text": "    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n    <string name=\"solar_noon\">Solar Noon</string>\n    <string name=\"day_length\">Day Length</string>\n    <string name=\"night_length\">Night Length</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "21bfab7ab44d35ae"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.day_length appears to be unused",
+                        "markdown": "The resource `R.string.day_length` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 44,
+                                    "startColumn": 13,
+                                    "endLine": 44,
+                                    "endColumn": 30,
+                                    "charOffset": 1688,
+                                    "charLength": 17,
+                                    "snippet": {
+                                        "text": "name=\"day_length\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 42,
+                                    "endLine": 47,
+                                    "snippet": {
+                                        "text": "    <string name=\"moonset\">Moonset</string>\n    <string name=\"solar_noon\">Solar Noon</string>\n    <string name=\"day_length\">Day Length</string>\n    <string name=\"night_length\">Night Length</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e150633e5bde2d46"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.night_length appears to be unused",
+                        "markdown": "The resource `R.string.night_length` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 45,
+                                    "startColumn": 13,
+                                    "endLine": 45,
+                                    "endColumn": 32,
+                                    "charOffset": 1738,
+                                    "charLength": 19,
+                                    "snippet": {
+                                        "text": "name=\"night_length\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 43,
+                                    "endLine": 48,
+                                    "snippet": {
+                                        "text": "    <string name=\"solar_noon\">Solar Noon</string>\n    <string name=\"day_length\">Day Length</string>\n    <string name=\"night_length\">Night Length</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "5045e6ead28c3a73"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.current_choghadiya appears to be unused",
                         "markdown": "The resource `R.string.current_choghadiya` appears to be unused"
@@ -991,21 +1003,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 22,
+                                    "startLine": 46,
                                     "startColumn": 13,
-                                    "endLine": 22,
+                                    "endLine": 46,
                                     "endColumn": 38,
-                                    "charOffset": 865,
+                                    "charOffset": 1792,
                                     "charLength": 25,
                                     "snippet": {
                                         "text": "name=\"current_choghadiya\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 20,
-                                    "endLine": 25,
+                                    "startLine": 44,
+                                    "endLine": 49,
                                     "snippet": {
-                                        "text": "    <string name=\"moonrise\">Moonrise</string>\n    <string name=\"moonset\">Moonset</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n    <string name=\"samvat\">Vikram Samvat</string>\n"
+                                        "text": "    <string name=\"day_length\">Day Length</string>\n    <string name=\"night_length\">Night Length</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n    <string name=\"samvat\">Vikram Samvat</string>\n"
                                     }
                                 }
                             }
@@ -1014,15 +1026,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "cc32ef55a12dbc84"
+                        "sourceContext/v1": "032c0a8a6c29a117"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.next_event appears to be unused",
-                        "markdown": "The resource `R.string.next_event` appears to be unused"
+                        "text": "The resource R.string.title_home appears to be unused",
+                        "markdown": "The resource `R.string.title_home` appears to be unused"
                     },
                     "locations": [
                         {
@@ -1032,21 +1044,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 23,
+                                    "startLine": 52,
                                     "startColumn": 13,
-                                    "endLine": 23,
+                                    "endLine": 52,
                                     "endColumn": 30,
-                                    "charOffset": 931,
+                                    "charOffset": 2050,
                                     "charLength": 17,
                                     "snippet": {
-                                        "text": "name=\"next_event\""
+                                        "text": "name=\"title_home\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 21,
-                                    "endLine": 26,
+                                    "startLine": 50,
+                                    "endLine": 55,
                                     "snippet": {
-                                        "text": "    <string name=\"moonset\">Moonset</string>\n    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n    <string name=\"samvat\">Vikram Samvat</string>\n    <string name=\"veer_nirvan_samvat\">Veer Nirvan Samvat</string>\n"
+                                        "text": "\n    <!-- Home Screen -->\n    <string name=\"title_home\">Today\\'s Panchang</string>\n    <string name=\"astronomical_details\">Astronomical Details</string>\n    <string name=\"solar_timings\">Sun &amp; Moon Timings</string>\n"
                                     }
                                 }
                             }
@@ -1055,15 +1067,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "f29599b807b43696"
+                        "sourceContext/v1": "8acc5d0061eff37a"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.samvat appears to be unused",
-                        "markdown": "The resource `R.string.samvat` appears to be unused"
+                        "text": "The resource R.string.today_kalyanaks appears to be unused",
+                        "markdown": "The resource `R.string.today_kalyanaks` appears to be unused"
                     },
                     "locations": [
                         {
@@ -1073,21 +1085,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 24,
+                                    "startLine": 55,
                                     "startColumn": 13,
-                                    "endLine": 24,
-                                    "endColumn": 26,
-                                    "charOffset": 982,
-                                    "charLength": 13,
+                                    "endLine": 55,
+                                    "endColumn": 35,
+                                    "charOffset": 2242,
+                                    "charLength": 22,
                                     "snippet": {
-                                        "text": "name=\"samvat\""
+                                        "text": "name=\"today_kalyanaks\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 22,
-                                    "endLine": 27,
+                                    "startLine": 53,
+                                    "endLine": 58,
                                     "snippet": {
-                                        "text": "    <string name=\"current_choghadiya\">Current Choghadiya</string>\n    <string name=\"next_event\">Next Timing</string>\n    <string name=\"samvat\">Vikram Samvat</string>\n    <string name=\"veer_nirvan_samvat\">Veer Nirvan Samvat</string>\n\n"
+                                        "text": "    <string name=\"astronomical_details\">Astronomical Details</string>\n    <string name=\"solar_timings\">Sun &amp; Moon Timings</string>\n    <string name=\"today_kalyanaks\">Today\\'s Kalyanaks</string>\n    <string name=\"today_festivals\">Today\\'s Festivals &amp; Parv</string>\n    <string name=\"ends_at\">ends at</string>\n"
                                     }
                                 }
                             }
@@ -1096,15 +1108,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "d81c5ce5e3f21dc0"
+                        "sourceContext/v1": "b68e6b8cce819e8f"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.veer_nirvan_samvat appears to be unused",
-                        "markdown": "The resource `R.string.veer_nirvan_samvat` appears to be unused"
+                        "text": "The resource R.string.title_calendar appears to be unused",
+                        "markdown": "The resource `R.string.title_calendar` appears to be unused"
                     },
                     "locations": [
                         {
@@ -1114,21 +1126,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 25,
+                                    "startLine": 60,
                                     "startColumn": 13,
-                                    "endLine": 25,
-                                    "endColumn": 38,
-                                    "charOffset": 1031,
-                                    "charLength": 25,
+                                    "endLine": 60,
+                                    "endColumn": 34,
+                                    "charOffset": 2453,
+                                    "charLength": 21,
                                     "snippet": {
-                                        "text": "name=\"veer_nirvan_samvat\""
+                                        "text": "name=\"title_calendar\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 23,
-                                    "endLine": 28,
+                                    "startLine": 58,
+                                    "endLine": 63,
                                     "snippet": {
-                                        "text": "    <string name=\"next_event\">Next Timing</string>\n    <string name=\"samvat\">Vikram Samvat</string>\n    <string name=\"veer_nirvan_samvat\">Veer Nirvan Samvat</string>\n\n    <!-- Choghadiya Types -->\n"
+                                        "text": "\n    <!-- Calendar Screen -->\n    <string name=\"title_calendar\">Jain Calendar</string>\n    <string name=\"select_year\">Select Year</string>\n    <string name=\"day_details\">Day Details</string>\n"
                                     }
                                 }
                             }
@@ -1137,12 +1149,94 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "e719be52601f2dc9"
+                        "sourceContext/v1": "510a5b9bbab765ce"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.day_details appears to be unused",
+                        "markdown": "The resource `R.string.day_details` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 62,
+                                    "startColumn": 13,
+                                    "endLine": 62,
+                                    "endColumn": 31,
+                                    "charOffset": 2562,
+                                    "charLength": 18,
+                                    "snippet": {
+                                        "text": "name=\"day_details\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 60,
+                                    "endLine": 65,
+                                    "snippet": {
+                                        "text": "    <string name=\"title_calendar\">Jain Calendar</string>\n    <string name=\"select_year\">Select Year</string>\n    <string name=\"day_details\">Day Details</string>\n    <string name=\"no_events_today\">No special festival or event today</string>\n\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "e1e32e33481ae053"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.no_events_today appears to be unused",
+                        "markdown": "The resource `R.string.no_events_today` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 63,
+                                    "startColumn": 13,
+                                    "endLine": 63,
+                                    "endColumn": 35,
+                                    "charOffset": 2614,
+                                    "charLength": 22,
+                                    "snippet": {
+                                        "text": "name=\"no_events_today\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 61,
+                                    "endLine": 66,
+                                    "snippet": {
+                                        "text": "    <string name=\"select_year\">Select Year</string>\n    <string name=\"day_details\">Day Details</string>\n    <string name=\"no_events_today\">No special festival or event today</string>\n\n    <!-- Timings Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "269372a8b091a7b0"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_amrit appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_amrit` appears to be unused"
@@ -1155,19 +1249,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 28,
+                                    "startLine": 78,
                                     "startColumn": 13,
-                                    "endLine": 28,
+                                    "endLine": 78,
                                     "endColumn": 36,
-                                    "charOffset": 1128,
+                                    "charOffset": 3294,
                                     "charLength": 23,
                                     "snippet": {
                                         "text": "name=\"choghadiya_amrit\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 26,
-                                    "endLine": 31,
+                                    "startLine": 76,
+                                    "endLine": 81,
                                     "snippet": {
                                         "text": "\n    <!-- Choghadiya Types -->\n    <string name=\"choghadiya_amrit\">Amrit</string>\n    <string name=\"choghadiya_shubh\">Shubh</string>\n    <string name=\"choghadiya_labh\">Labh</string>\n"
                                     }
@@ -1183,7 +1277,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_shubh appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_shubh` appears to be unused"
@@ -1196,19 +1290,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 29,
+                                    "startLine": 79,
                                     "startColumn": 13,
-                                    "endLine": 29,
+                                    "endLine": 79,
                                     "endColumn": 36,
-                                    "charOffset": 1179,
+                                    "charOffset": 3345,
                                     "charLength": 23,
                                     "snippet": {
                                         "text": "name=\"choghadiya_shubh\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 27,
-                                    "endLine": 32,
+                                    "startLine": 77,
+                                    "endLine": 82,
                                     "snippet": {
                                         "text": "    <!-- Choghadiya Types -->\n    <string name=\"choghadiya_amrit\">Amrit</string>\n    <string name=\"choghadiya_shubh\">Shubh</string>\n    <string name=\"choghadiya_labh\">Labh</string>\n    <string name=\"choghadiya_char\">Char</string>\n"
                                     }
@@ -1224,7 +1318,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_labh appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_labh` appears to be unused"
@@ -1237,19 +1331,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 30,
+                                    "startLine": 80,
                                     "startColumn": 13,
-                                    "endLine": 30,
+                                    "endLine": 80,
                                     "endColumn": 35,
-                                    "charOffset": 1230,
+                                    "charOffset": 3396,
                                     "charLength": 22,
                                     "snippet": {
                                         "text": "name=\"choghadiya_labh\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 28,
-                                    "endLine": 33,
+                                    "startLine": 78,
+                                    "endLine": 83,
                                     "snippet": {
                                         "text": "    <string name=\"choghadiya_amrit\">Amrit</string>\n    <string name=\"choghadiya_shubh\">Shubh</string>\n    <string name=\"choghadiya_labh\">Labh</string>\n    <string name=\"choghadiya_char\">Char</string>\n    <string name=\"choghadiya_rog\">Rog</string>\n"
                                     }
@@ -1265,7 +1359,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_char appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_char` appears to be unused"
@@ -1278,19 +1372,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 31,
+                                    "startLine": 81,
                                     "startColumn": 13,
-                                    "endLine": 31,
+                                    "endLine": 81,
                                     "endColumn": 35,
-                                    "charOffset": 1279,
+                                    "charOffset": 3445,
                                     "charLength": 22,
                                     "snippet": {
                                         "text": "name=\"choghadiya_char\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 29,
-                                    "endLine": 34,
+                                    "startLine": 79,
+                                    "endLine": 84,
                                     "snippet": {
                                         "text": "    <string name=\"choghadiya_shubh\">Shubh</string>\n    <string name=\"choghadiya_labh\">Labh</string>\n    <string name=\"choghadiya_char\">Char</string>\n    <string name=\"choghadiya_rog\">Rog</string>\n    <string name=\"choghadiya_kaal\">Kaal</string>\n"
                                     }
@@ -1306,7 +1400,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_rog appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_rog` appears to be unused"
@@ -1319,19 +1413,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 32,
+                                    "startLine": 82,
                                     "startColumn": 13,
-                                    "endLine": 32,
+                                    "endLine": 82,
                                     "endColumn": 34,
-                                    "charOffset": 1328,
+                                    "charOffset": 3494,
                                     "charLength": 21,
                                     "snippet": {
                                         "text": "name=\"choghadiya_rog\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 30,
-                                    "endLine": 35,
+                                    "startLine": 80,
+                                    "endLine": 85,
                                     "snippet": {
                                         "text": "    <string name=\"choghadiya_labh\">Labh</string>\n    <string name=\"choghadiya_char\">Char</string>\n    <string name=\"choghadiya_rog\">Rog</string>\n    <string name=\"choghadiya_kaal\">Kaal</string>\n    <string name=\"choghadiya_udveg\">Udveg</string>\n"
                                     }
@@ -1347,7 +1441,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_kaal appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_kaal` appears to be unused"
@@ -1360,19 +1454,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 33,
+                                    "startLine": 83,
                                     "startColumn": 13,
-                                    "endLine": 33,
+                                    "endLine": 83,
                                     "endColumn": 35,
-                                    "charOffset": 1375,
+                                    "charOffset": 3541,
                                     "charLength": 22,
                                     "snippet": {
                                         "text": "name=\"choghadiya_kaal\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 31,
-                                    "endLine": 36,
+                                    "startLine": 81,
+                                    "endLine": 86,
                                     "snippet": {
                                         "text": "    <string name=\"choghadiya_char\">Char</string>\n    <string name=\"choghadiya_rog\">Rog</string>\n    <string name=\"choghadiya_kaal\">Kaal</string>\n    <string name=\"choghadiya_udveg\">Udveg</string>\n\n"
                                     }
@@ -1388,7 +1482,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.choghadiya_udveg appears to be unused",
                         "markdown": "The resource `R.string.choghadiya_udveg` appears to be unused"
@@ -1401,19 +1495,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 34,
+                                    "startLine": 84,
                                     "startColumn": 13,
-                                    "endLine": 34,
+                                    "endLine": 84,
                                     "endColumn": 36,
-                                    "charOffset": 1424,
+                                    "charOffset": 3590,
                                     "charLength": 23,
                                     "snippet": {
                                         "text": "name=\"choghadiya_udveg\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 32,
-                                    "endLine": 37,
+                                    "startLine": 82,
+                                    "endLine": 87,
                                     "snippet": {
                                         "text": "    <string name=\"choghadiya_rog\">Rog</string>\n    <string name=\"choghadiya_kaal\">Kaal</string>\n    <string name=\"choghadiya_udveg\">Udveg</string>\n\n    <!-- Pachkhan Names -->\n"
                                     }
@@ -1429,7 +1523,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_navkarshi appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_navkarshi` appears to be unused"
@@ -1442,19 +1536,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 37,
+                                    "startLine": 87,
                                     "startColumn": 13,
-                                    "endLine": 37,
+                                    "endLine": 87,
                                     "endColumn": 38,
-                                    "charOffset": 1504,
+                                    "charOffset": 3670,
                                     "charLength": 25,
                                     "snippet": {
                                         "text": "name=\"pachkhan_navkarshi\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 35,
-                                    "endLine": 40,
+                                    "startLine": 85,
+                                    "endLine": 90,
                                     "snippet": {
                                         "text": "\n    <!-- Pachkhan Names -->\n    <string name=\"pachkhan_navkarshi\">Navkarshi</string>\n    <string name=\"pachkhan_porsi\">Porsi</string>\n    <string name=\"pachkhan_sadh_porsi\">Sadh Porsi</string>\n"
                                     }
@@ -1470,7 +1564,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_porsi appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_porsi` appears to be unused"
@@ -1483,19 +1577,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 38,
+                                    "startLine": 88,
                                     "startColumn": 13,
-                                    "endLine": 38,
+                                    "endLine": 88,
                                     "endColumn": 34,
-                                    "charOffset": 1561,
+                                    "charOffset": 3727,
                                     "charLength": 21,
                                     "snippet": {
                                         "text": "name=\"pachkhan_porsi\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 36,
-                                    "endLine": 41,
+                                    "startLine": 86,
+                                    "endLine": 91,
                                     "snippet": {
                                         "text": "    <!-- Pachkhan Names -->\n    <string name=\"pachkhan_navkarshi\">Navkarshi</string>\n    <string name=\"pachkhan_porsi\">Porsi</string>\n    <string name=\"pachkhan_sadh_porsi\">Sadh Porsi</string>\n    <string name=\"pachkhan_purimuddh\">Purimuddh</string>\n"
                                     }
@@ -1511,7 +1605,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_sadh_porsi appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_sadh_porsi` appears to be unused"
@@ -1524,19 +1618,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 39,
+                                    "startLine": 89,
                                     "startColumn": 13,
-                                    "endLine": 39,
+                                    "endLine": 89,
                                     "endColumn": 39,
-                                    "charOffset": 1610,
+                                    "charOffset": 3776,
                                     "charLength": 26,
                                     "snippet": {
                                         "text": "name=\"pachkhan_sadh_porsi\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 37,
-                                    "endLine": 42,
+                                    "startLine": 87,
+                                    "endLine": 92,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_navkarshi\">Navkarshi</string>\n    <string name=\"pachkhan_porsi\">Porsi</string>\n    <string name=\"pachkhan_sadh_porsi\">Sadh Porsi</string>\n    <string name=\"pachkhan_purimuddh\">Purimuddh</string>\n    <string name=\"pachkhan_avaddh\">Avaddh</string>\n"
                                     }
@@ -1552,7 +1646,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_purimuddh appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_purimuddh` appears to be unused"
@@ -1565,19 +1659,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 40,
+                                    "startLine": 90,
                                     "startColumn": 13,
-                                    "endLine": 40,
+                                    "endLine": 90,
                                     "endColumn": 38,
-                                    "charOffset": 1669,
+                                    "charOffset": 3835,
                                     "charLength": 25,
                                     "snippet": {
                                         "text": "name=\"pachkhan_purimuddh\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 38,
-                                    "endLine": 43,
+                                    "startLine": 88,
+                                    "endLine": 93,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_porsi\">Porsi</string>\n    <string name=\"pachkhan_sadh_porsi\">Sadh Porsi</string>\n    <string name=\"pachkhan_purimuddh\">Purimuddh</string>\n    <string name=\"pachkhan_avaddh\">Avaddh</string>\n    <string name=\"pachkhan_chauvihar\">Chauvihar</string>\n"
                                     }
@@ -1593,7 +1687,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_avaddh appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_avaddh` appears to be unused"
@@ -1606,19 +1700,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 41,
+                                    "startLine": 91,
                                     "startColumn": 13,
-                                    "endLine": 41,
+                                    "endLine": 91,
                                     "endColumn": 35,
-                                    "charOffset": 1726,
+                                    "charOffset": 3892,
                                     "charLength": 22,
                                     "snippet": {
                                         "text": "name=\"pachkhan_avaddh\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 39,
-                                    "endLine": 44,
+                                    "startLine": 89,
+                                    "endLine": 94,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_sadh_porsi\">Sadh Porsi</string>\n    <string name=\"pachkhan_purimuddh\">Purimuddh</string>\n    <string name=\"pachkhan_avaddh\">Avaddh</string>\n    <string name=\"pachkhan_chauvihar\">Chauvihar</string>\n    <string name=\"pachkhan_tivihar\">Tivihar</string>\n"
                                     }
@@ -1634,7 +1728,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_chauvihar appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_chauvihar` appears to be unused"
@@ -1647,19 +1741,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 42,
+                                    "startLine": 92,
                                     "startColumn": 13,
-                                    "endLine": 42,
+                                    "endLine": 92,
                                     "endColumn": 38,
-                                    "charOffset": 1777,
+                                    "charOffset": 3943,
                                     "charLength": 25,
                                     "snippet": {
                                         "text": "name=\"pachkhan_chauvihar\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 40,
-                                    "endLine": 45,
+                                    "startLine": 90,
+                                    "endLine": 95,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_purimuddh\">Purimuddh</string>\n    <string name=\"pachkhan_avaddh\">Avaddh</string>\n    <string name=\"pachkhan_chauvihar\">Chauvihar</string>\n    <string name=\"pachkhan_tivihar\">Tivihar</string>\n    <string name=\"pachkhan_ekasana\">Ekasana</string>\n"
                                     }
@@ -1675,7 +1769,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_tivihar appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_tivihar` appears to be unused"
@@ -1688,19 +1782,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 43,
+                                    "startLine": 93,
                                     "startColumn": 13,
-                                    "endLine": 43,
+                                    "endLine": 93,
                                     "endColumn": 36,
-                                    "charOffset": 1834,
+                                    "charOffset": 4000,
                                     "charLength": 23,
                                     "snippet": {
                                         "text": "name=\"pachkhan_tivihar\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 41,
-                                    "endLine": 46,
+                                    "startLine": 91,
+                                    "endLine": 96,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_avaddh\">Avaddh</string>\n    <string name=\"pachkhan_chauvihar\">Chauvihar</string>\n    <string name=\"pachkhan_tivihar\">Tivihar</string>\n    <string name=\"pachkhan_ekasana\">Ekasana</string>\n    <string name=\"pachkhan_biyasana\">Biyasana</string>\n"
                                     }
@@ -1716,7 +1810,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_ekasana appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_ekasana` appears to be unused"
@@ -1729,19 +1823,19 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 44,
+                                    "startLine": 94,
                                     "startColumn": 13,
-                                    "endLine": 44,
+                                    "endLine": 94,
                                     "endColumn": 36,
-                                    "charOffset": 1887,
+                                    "charOffset": 4053,
                                     "charLength": 23,
                                     "snippet": {
                                         "text": "name=\"pachkhan_ekasana\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 42,
-                                    "endLine": 47,
+                                    "startLine": 92,
+                                    "endLine": 97,
                                     "snippet": {
                                         "text": "    <string name=\"pachkhan_chauvihar\">Chauvihar</string>\n    <string name=\"pachkhan_tivihar\">Tivihar</string>\n    <string name=\"pachkhan_ekasana\">Ekasana</string>\n    <string name=\"pachkhan_biyasana\">Biyasana</string>\n\n"
                                     }
@@ -1757,7 +1851,7 @@
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
                         "text": "The resource R.string.pachkhan_biyasana appears to be unused",
                         "markdown": "The resource `R.string.pachkhan_biyasana` appears to be unused"
@@ -1770,21 +1864,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 45,
+                                    "startLine": 95,
                                     "startColumn": 13,
-                                    "endLine": 45,
+                                    "endLine": 95,
                                     "endColumn": 37,
-                                    "charOffset": 1940,
+                                    "charOffset": 4106,
                                     "charLength": 24,
                                     "snippet": {
                                         "text": "name=\"pachkhan_biyasana\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 43,
-                                    "endLine": 48,
+                                    "startLine": 93,
+                                    "endLine": 98,
                                     "snippet": {
-                                        "text": "    <string name=\"pachkhan_tivihar\">Tivihar</string>\n    <string name=\"pachkhan_ekasana\">Ekasana</string>\n    <string name=\"pachkhan_biyasana\">Biyasana</string>\n\n    <!-- Settings & Options -->\n"
+                                        "text": "    <string name=\"pachkhan_tivihar\">Tivihar</string>\n    <string name=\"pachkhan_ekasana\">Ekasana</string>\n    <string name=\"pachkhan_biyasana\">Biyasana</string>\n\n    <!-- Festivals & Kalyanaks -->\n"
                                     }
                                 }
                             }
@@ -1793,15 +1887,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "f9502279fdaff94d"
+                        "sourceContext/v1": "dbe5d69f2233d276"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.select_city appears to be unused",
-                        "markdown": "The resource `R.string.select_city` appears to be unused"
+                        "text": "The resource R.string.filter_by_sampraday appears to be unused",
+                        "markdown": "The resource `R.string.filter_by_sampraday` appears to be unused"
                     },
                     "locations": [
                         {
@@ -1811,21 +1905,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 48,
+                                    "startLine": 104,
                                     "startColumn": 13,
-                                    "endLine": 48,
-                                    "endColumn": 31,
-                                    "charOffset": 2028,
-                                    "charLength": 18,
+                                    "endLine": 104,
+                                    "endColumn": 39,
+                                    "charOffset": 4595,
+                                    "charLength": 26,
                                     "snippet": {
-                                        "text": "name=\"select_city\""
+                                        "text": "name=\"filter_by_sampraday\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 46,
-                                    "endLine": 51,
+                                    "startLine": 102,
+                                    "endLine": 107,
                                     "snippet": {
-                                        "text": "\n    <!-- Settings & Options -->\n    <string name=\"select_city\">Select City</string>\n    <string name=\"select_sampraday\">Sampraday / Tradition</string>\n    <string name=\"select_ayanamsha\">Ayanamsha</string>\n"
+                                        "text": "    <string name=\"tab_scholar_review\">Scholar Review</string>\n    <string name=\"needs_scholar_review_badge\">Needs Scholar Review</string>\n    <string name=\"filter_by_sampraday\">Tradition Filter</string>\n\n    <!-- Niyam Screen -->\n"
                                     }
                                 }
                             }
@@ -1834,15 +1928,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "94912b31ee689b6d"
+                        "sourceContext/v1": "091e13d41d47304d"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.select_sampraday appears to be unused",
-                        "markdown": "The resource `R.string.select_sampraday` appears to be unused"
+                        "text": "The resource R.string.days_count appears to be unused",
+                        "markdown": "The resource `R.string.days_count` appears to be unused"
                     },
                     "locations": [
                         {
@@ -1852,226 +1946,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 49,
+                                    "startLine": 110,
                                     "startColumn": 13,
-                                    "endLine": 49,
-                                    "endColumn": 36,
-                                    "charOffset": 2080,
-                                    "charLength": 23,
-                                    "snippet": {
-                                        "text": "name=\"select_sampraday\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 47,
-                                    "endLine": 52,
-                                    "snippet": {
-                                        "text": "    <!-- Settings & Options -->\n    <string name=\"select_city\">Select City</string>\n    <string name=\"select_sampraday\">Sampraday / Tradition</string>\n    <string name=\"select_ayanamsha\">Ayanamsha</string>\n    <string name=\"theme\">Theme</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "bcda4d895462b1e9"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.select_ayanamsha appears to be unused",
-                        "markdown": "The resource `R.string.select_ayanamsha` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 50,
-                                    "startColumn": 13,
-                                    "endLine": 50,
-                                    "endColumn": 36,
-                                    "charOffset": 2147,
-                                    "charLength": 23,
-                                    "snippet": {
-                                        "text": "name=\"select_ayanamsha\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 48,
-                                    "endLine": 53,
-                                    "snippet": {
-                                        "text": "    <string name=\"select_city\">Select City</string>\n    <string name=\"select_sampraday\">Sampraday / Tradition</string>\n    <string name=\"select_ayanamsha\">Ayanamsha</string>\n    <string name=\"theme\">Theme</string>\n    <string name=\"theme_system\">System Default</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "71fcd2fc9895a913"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.theme appears to be unused",
-                        "markdown": "The resource `R.string.theme` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 51,
-                                    "startColumn": 13,
-                                    "endLine": 51,
-                                    "endColumn": 25,
-                                    "charOffset": 2202,
-                                    "charLength": 12,
-                                    "snippet": {
-                                        "text": "name=\"theme\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 49,
-                                    "endLine": 54,
-                                    "snippet": {
-                                        "text": "    <string name=\"select_sampraday\">Sampraday / Tradition</string>\n    <string name=\"select_ayanamsha\">Ayanamsha</string>\n    <string name=\"theme\">Theme</string>\n    <string name=\"theme_system\">System Default</string>\n    <string name=\"theme_light\">Light</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "60d763c0edc85c12"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.theme_system appears to be unused",
-                        "markdown": "The resource `R.string.theme_system` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 52,
-                                    "startColumn": 13,
-                                    "endLine": 52,
-                                    "endColumn": 32,
-                                    "charOffset": 2242,
-                                    "charLength": 19,
-                                    "snippet": {
-                                        "text": "name=\"theme_system\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 50,
-                                    "endLine": 55,
-                                    "snippet": {
-                                        "text": "    <string name=\"select_ayanamsha\">Ayanamsha</string>\n    <string name=\"theme\">Theme</string>\n    <string name=\"theme_system\">System Default</string>\n    <string name=\"theme_light\">Light</string>\n    <string name=\"theme_dark\">Dark</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "9dc7175d5d5e70d2"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.theme_light appears to be unused",
-                        "markdown": "The resource `R.string.theme_light` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 53,
-                                    "startColumn": 13,
-                                    "endLine": 53,
-                                    "endColumn": 31,
-                                    "charOffset": 2298,
-                                    "charLength": 18,
-                                    "snippet": {
-                                        "text": "name=\"theme_light\""
-                                    }
-                                },
-                                "contextRegion": {
-                                    "startLine": 51,
-                                    "endLine": 56,
-                                    "snippet": {
-                                        "text": "    <string name=\"theme\">Theme</string>\n    <string name=\"theme_system\">System Default</string>\n    <string name=\"theme_light\">Light</string>\n    <string name=\"theme_dark\">Dark</string>\n    <string name=\"language\">Language</string>\n"
-                                    }
-                                }
-                            }
-                        }
-                    ],
-                    "fixes": [
-                    ],
-                    "partialFingerprints": {
-                        "sourceContext/v1": "0483862b1edcb735"
-                    }
-                },
-                {
-                    "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
-                    "message": {
-                        "text": "The resource R.string.theme_dark appears to be unused",
-                        "markdown": "The resource `R.string.theme_dark` appears to be unused"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uriBaseId": "%SRCROOT%",
-                                    "uri": "app/src/main/res/values/strings.xml"
-                                },
-                                "region": {
-                                    "startLine": 54,
-                                    "startColumn": 13,
-                                    "endLine": 54,
+                                    "endLine": 110,
                                     "endColumn": 30,
-                                    "charOffset": 2344,
+                                    "charOffset": 4879,
                                     "charLength": 17,
                                     "snippet": {
-                                        "text": "name=\"theme_dark\""
+                                        "text": "name=\"days_count\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 52,
-                                    "endLine": 57,
+                                    "startLine": 108,
+                                    "endLine": 113,
                                     "snippet": {
-                                        "text": "    <string name=\"theme_system\">System Default</string>\n    <string name=\"theme_light\">Light</string>\n    <string name=\"theme_dark\">Dark</string>\n    <string name=\"language\">Language</string>\n    <string name=\"notifications\">Notifications &amp; Reminders</string>\n"
+                                        "text": "    <string name=\"todays_suggestion\">Today\\'s Suggestion</string>\n    <string name=\"current_streak\">Current Streak</string>\n    <string name=\"days_count\">%d Days</string>\n    <string name=\"set_maryada\">Set Maryada</string>\n    <string name=\"custom_maryada_hint\">Enter your vow / limit...</string>\n"
                                     }
                                 }
                             }
@@ -2080,15 +1969,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "188107afd994dfff"
+                        "sourceContext/v1": "d3e1d47cdc413a83"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.language appears to be unused",
-                        "markdown": "The resource `R.string.language` appears to be unused"
+                        "text": "The resource R.string.custom_maryada_hint appears to be unused",
+                        "markdown": "The resource `R.string.custom_maryada_hint` appears to be unused"
                     },
                     "locations": [
                         {
@@ -2098,21 +1987,185 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 55,
+                                    "startLine": 112,
                                     "startColumn": 13,
-                                    "endLine": 55,
+                                    "endLine": 112,
+                                    "endColumn": 39,
+                                    "charOffset": 4978,
+                                    "charLength": 26,
+                                    "snippet": {
+                                        "text": "name=\"custom_maryada_hint\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 110,
+                                    "endLine": 115,
+                                    "snippet": {
+                                        "text": "    <string name=\"days_count\">%d Days</string>\n    <string name=\"set_maryada\">Set Maryada</string>\n    <string name=\"custom_maryada_hint\">Enter your vow / limit...</string>\n\n    <!-- Quotes Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "dfdfca5d766fa93b"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.share_quote appears to be unused",
+                        "markdown": "The resource `R.string.share_quote` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 116,
+                                    "startColumn": 13,
+                                    "endLine": 116,
+                                    "endColumn": 31,
+                                    "charOffset": 5138,
+                                    "charLength": 18,
+                                    "snippet": {
+                                        "text": "name=\"share_quote\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 114,
+                                    "endLine": 119,
+                                    "snippet": {
+                                        "text": "    <!-- Quotes Screen -->\n    <string name=\"title_quotes\">Daily Jain Quote</string>\n    <string name=\"share_quote\">Share Quote</string>\n    <string name=\"quote_of_the_day\">Quote of the Day</string>\n\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "769e9bbd94c74f95"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.quote_of_the_day appears to be unused",
+                        "markdown": "The resource `R.string.quote_of_the_day` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 117,
+                                    "startColumn": 13,
+                                    "endLine": 117,
+                                    "endColumn": 36,
+                                    "charOffset": 5190,
+                                    "charLength": 23,
+                                    "snippet": {
+                                        "text": "name=\"quote_of_the_day\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 115,
+                                    "endLine": 120,
+                                    "snippet": {
+                                        "text": "    <string name=\"title_quotes\">Daily Jain Quote</string>\n    <string name=\"share_quote\">Share Quote</string>\n    <string name=\"quote_of_the_day\">Quote of the Day</string>\n\n    <!-- My Events Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "d06a28eec6507897"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.event_type appears to be unused",
+                        "markdown": "The resource `R.string.event_type` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 124,
+                                    "startColumn": 13,
+                                    "endLine": 124,
+                                    "endColumn": 30,
+                                    "charOffset": 5531,
+                                    "charLength": 17,
+                                    "snippet": {
+                                        "text": "name=\"event_type\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 122,
+                                    "endLine": 127,
+                                    "snippet": {
+                                        "text": "    <string name=\"event_title\">Event Title</string>\n    <string name=\"event_title_hint\">e.g. Father\\'s Birthday, Diksha Day</string>\n    <string name=\"event_type\">Event Type</string>\n    <string name=\"birthday\">Birthday</string>\n    <string name=\"anniversary\">Anniversary</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "b9089c92f1601e9d"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.birthday appears to be unused",
+                        "markdown": "The resource `R.string.birthday` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 125,
+                                    "startColumn": 13,
+                                    "endLine": 125,
                                     "endColumn": 28,
-                                    "charOffset": 2388,
+                                    "charOffset": 5581,
                                     "charLength": 15,
                                     "snippet": {
-                                        "text": "name=\"language\""
+                                        "text": "name=\"birthday\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 53,
-                                    "endLine": 58,
+                                    "startLine": 123,
+                                    "endLine": 128,
                                     "snippet": {
-                                        "text": "    <string name=\"theme_light\">Light</string>\n    <string name=\"theme_dark\">Dark</string>\n    <string name=\"language\">Language</string>\n    <string name=\"notifications\">Notifications &amp; Reminders</string>\n    <string name=\"privacy_policy\">Privacy Policy</string>\n"
+                                        "text": "    <string name=\"event_title_hint\">e.g. Father\\'s Birthday, Diksha Day</string>\n    <string name=\"event_type\">Event Type</string>\n    <string name=\"birthday\">Birthday</string>\n    <string name=\"anniversary\">Anniversary</string>\n    <string name=\"puja_diksha\">Puja / Diksha</string>\n"
                                     }
                                 }
                             }
@@ -2121,15 +2174,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "d11548fff332eb58"
+                        "sourceContext/v1": "21a2f759eeb8d04f"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.notifications appears to be unused",
-                        "markdown": "The resource `R.string.notifications` appears to be unused"
+                        "text": "The resource R.string.anniversary appears to be unused",
+                        "markdown": "The resource `R.string.anniversary` appears to be unused"
                     },
                     "locations": [
                         {
@@ -2139,21 +2192,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 56,
+                                    "startLine": 126,
                                     "startColumn": 13,
-                                    "endLine": 56,
-                                    "endColumn": 33,
-                                    "charOffset": 2434,
-                                    "charLength": 20,
+                                    "endLine": 126,
+                                    "endColumn": 31,
+                                    "charOffset": 5627,
+                                    "charLength": 18,
                                     "snippet": {
-                                        "text": "name=\"notifications\""
+                                        "text": "name=\"anniversary\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 54,
-                                    "endLine": 59,
+                                    "startLine": 124,
+                                    "endLine": 129,
                                     "snippet": {
-                                        "text": "    <string name=\"theme_dark\">Dark</string>\n    <string name=\"language\">Language</string>\n    <string name=\"notifications\">Notifications &amp; Reminders</string>\n    <string name=\"privacy_policy\">Privacy Policy</string>\n</resources>\n"
+                                        "text": "    <string name=\"event_type\">Event Type</string>\n    <string name=\"birthday\">Birthday</string>\n    <string name=\"anniversary\">Anniversary</string>\n    <string name=\"puja_diksha\">Puja / Diksha</string>\n    <string name=\"other\">Other</string>\n"
                                     }
                                 }
                             }
@@ -2162,15 +2215,15 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "8c61a8db0980b52c"
+                        "sourceContext/v1": "221b2f9e36154844"
                     }
                 },
                 {
                     "ruleId": "UnusedResources",
-                    "ruleIndex": 3,
+                    "ruleIndex": 6,
                     "message": {
-                        "text": "The resource R.string.privacy_policy appears to be unused",
-                        "markdown": "The resource `R.string.privacy_policy` appears to be unused"
+                        "text": "The resource R.string.puja_diksha appears to be unused",
+                        "markdown": "The resource `R.string.puja_diksha` appears to be unused"
                     },
                     "locations": [
                         {
@@ -2180,21 +2233,21 @@
                                     "uri": "app/src/main/res/values/strings.xml"
                                 },
                                 "region": {
-                                    "startLine": 57,
+                                    "startLine": 127,
                                     "startColumn": 13,
-                                    "endLine": 57,
-                                    "endColumn": 34,
-                                    "charOffset": 2506,
-                                    "charLength": 21,
+                                    "endLine": 127,
+                                    "endColumn": 31,
+                                    "charOffset": 5679,
+                                    "charLength": 18,
                                     "snippet": {
-                                        "text": "name=\"privacy_policy\""
+                                        "text": "name=\"puja_diksha\""
                                     }
                                 },
                                 "contextRegion": {
-                                    "startLine": 55,
-                                    "endLine": 59,
+                                    "startLine": 125,
+                                    "endLine": 130,
                                     "snippet": {
-                                        "text": "    <string name=\"language\">Language</string>\n    <string name=\"notifications\">Notifications &amp; Reminders</string>\n    <string name=\"privacy_policy\">Privacy Policy</string>\n</resources>\n"
+                                        "text": "    <string name=\"birthday\">Birthday</string>\n    <string name=\"anniversary\">Anniversary</string>\n    <string name=\"puja_diksha\">Puja / Diksha</string>\n    <string name=\"other\">Other</string>\n    <string name=\"recurrence\">Recurrence</string>\n"
                                     }
                                 }
                             }
@@ -2203,7 +2256,497 @@
                     "fixes": [
                     ],
                     "partialFingerprints": {
-                        "sourceContext/v1": "34137aa2d669dc19"
+                        "sourceContext/v1": "307a845c8ea180df"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.other appears to be unused",
+                        "markdown": "The resource `R.string.other` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 128,
+                                    "startColumn": 13,
+                                    "endLine": 128,
+                                    "endColumn": 25,
+                                    "charOffset": 5733,
+                                    "charLength": 12,
+                                    "snippet": {
+                                        "text": "name=\"other\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 126,
+                                    "endLine": 131,
+                                    "snippet": {
+                                        "text": "    <string name=\"anniversary\">Anniversary</string>\n    <string name=\"puja_diksha\">Puja / Diksha</string>\n    <string name=\"other\">Other</string>\n    <string name=\"recurrence\">Recurrence</string>\n    <string name=\"tithi_based\">Jain Tithi Recurrence</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "13074bc468c0f8cd"
+                    }
+                },
+                {
+                    "ruleId": "UnusedResources",
+                    "ruleIndex": 6,
+                    "message": {
+                        "text": "The resource R.string.gregorian_based appears to be unused",
+                        "markdown": "The resource `R.string.gregorian_based` appears to be unused"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 131,
+                                    "startColumn": 13,
+                                    "endLine": 131,
+                                    "endColumn": 35,
+                                    "charOffset": 5885,
+                                    "charLength": 22,
+                                    "snippet": {
+                                        "text": "name=\"gregorian_based\""
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 129,
+                                    "endLine": 134,
+                                    "snippet": {
+                                        "text": "    <string name=\"recurrence\">Recurrence</string>\n    <string name=\"tithi_based\">Jain Tithi Recurrence</string>\n    <string name=\"gregorian_based\">Gregorian Date Recurrence</string>\n    <string name=\"recurring_by_tithi_desc\">Recurs automatically on the exact tithi every year</string>\n    <string name=\"no_events_yet\">No saved events yet. Tap + to add one.</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "7a5e6c34630e5f27"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values-gu/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 99,
+                                    "startColumn": 41,
+                                    "endLine": 99,
+                                    "endColumn": 67,
+                                    "charOffset": 4192,
+                                    "charLength": 26,
+                                    "snippet": {
+                                        "text": "પર્વ અથવા તીર્થંકર શોધો..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 97,
+                                    "endLine": 102,
+                                    "snippet": {
+                                        "text": "    <!-- Festivals & Kalyanaks -->\n    <string name=\"title_festivals\">પર્વ અને કલ્યાણક</string>\n    <string name=\"search_festival_hint\">પર્વ અથવા તીર્થંકર શોધો...</string>\n    <string name=\"tab_all_festivals\">જૈન પર્વ</string>\n    <string name=\"tab_kalyanaks\">કલ્યાણક</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values-gu/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 99,
+                                                "startColumn": 64,
+                                                "charOffset": 4215,
+                                                "endLine": 99,
+                                                "endColumn": 67,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "a82095eb4ec6a16f"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values-hi/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 99,
+                                    "startColumn": 41,
+                                    "endLine": 99,
+                                    "endColumn": 66,
+                                    "charOffset": 4236,
+                                    "charLength": 25,
+                                    "snippet": {
+                                        "text": "पर्व या तीर्थंकर खोजें..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 97,
+                                    "endLine": 102,
+                                    "snippet": {
+                                        "text": "    <!-- Festivals & Kalyanaks -->\n    <string name=\"title_festivals\">पर्व एवं कल्याणक</string>\n    <string name=\"search_festival_hint\">पर्व या तीर्थंकर खोजें...</string>\n    <string name=\"tab_all_festivals\">जैन पर्व</string>\n    <string name=\"tab_kalyanaks\">कल्याणक</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values-hi/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 99,
+                                                "startColumn": 63,
+                                                "charOffset": 4258,
+                                                "endLine": 99,
+                                                "endColumn": 66,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "bba5d3e32e9234f0"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 99,
+                                    "startColumn": 41,
+                                    "endLine": 99,
+                                    "endColumn": 73,
+                                    "charOffset": 4295,
+                                    "charLength": 32,
+                                    "snippet": {
+                                        "text": "Search festival or Tirthankar..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 97,
+                                    "endLine": 102,
+                                    "snippet": {
+                                        "text": "    <!-- Festivals & Kalyanaks -->\n    <string name=\"title_festivals\">Festivals &amp; Kalyanaks</string>\n    <string name=\"search_festival_hint\">Search festival or Tirthankar...</string>\n    <string name=\"tab_all_festivals\">Festivals</string>\n    <string name=\"tab_kalyanaks\">Kalyanaks</string>\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 99,
+                                                "startColumn": 70,
+                                                "charOffset": 4324,
+                                                "endLine": 99,
+                                                "endColumn": 73,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "119a02bc407643a6"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values-gu/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 112,
+                                    "startColumn": 40,
+                                    "endLine": 112,
+                                    "endColumn": 65,
+                                    "charOffset": 4878,
+                                    "charLength": 25,
+                                    "snippet": {
+                                        "text": "તમારો વ્રત કે નિયમ લખો..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 110,
+                                    "endLine": 115,
+                                    "snippet": {
+                                        "text": "    <string name=\"days_count\">%d દિવસ</string>\n    <string name=\"set_maryada\">મર્યાદા નક્કી કરો</string>\n    <string name=\"custom_maryada_hint\">તમારો વ્રત કે નિયમ લખો...</string>\n\n    <!-- Quotes Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values-gu/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 112,
+                                                "startColumn": 62,
+                                                "charOffset": 4900,
+                                                "endLine": 112,
+                                                "endColumn": 65,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "9d5865453b06ac51"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values-hi/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 112,
+                                    "startColumn": 40,
+                                    "endLine": 112,
+                                    "endColumn": 69,
+                                    "charOffset": 4940,
+                                    "charLength": 29,
+                                    "snippet": {
+                                        "text": "अपना व्रत या मर्यादा लिखें..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 110,
+                                    "endLine": 115,
+                                    "snippet": {
+                                        "text": "    <string name=\"days_count\">%d दिन</string>\n    <string name=\"set_maryada\">मर्यादा तय करें</string>\n    <string name=\"custom_maryada_hint\">अपना व्रत या मर्यादा लिखें...</string>\n\n    <!-- Quotes Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values-hi/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 112,
+                                                "startColumn": 66,
+                                                "charOffset": 4966,
+                                                "endLine": 112,
+                                                "endColumn": 69,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "8ba2e04379b0442c"
+                    }
+                },
+                {
+                    "ruleId": "TypographyEllipsis",
+                    "ruleIndex": 5,
+                    "message": {
+                        "text": "Replace \"...\" with ellipsis character (…, &#8230;) ?"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/res/values/strings.xml"
+                                },
+                                "region": {
+                                    "startLine": 112,
+                                    "startColumn": 40,
+                                    "endLine": 112,
+                                    "endColumn": 65,
+                                    "charOffset": 5005,
+                                    "charLength": 25,
+                                    "snippet": {
+                                        "text": "Enter your vow / limit..."
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 110,
+                                    "endLine": 115,
+                                    "snippet": {
+                                        "text": "    <string name=\"days_count\">%d Days</string>\n    <string name=\"set_maryada\">Set Maryada</string>\n    <string name=\"custom_maryada_hint\">Enter your vow / limit...</string>\n\n    <!-- Quotes Screen -->\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Replace with …"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/res/values/strings.xml"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 112,
+                                                "startColumn": 62,
+                                                "charOffset": 5027,
+                                                "endLine": 112,
+                                                "endColumn": 65,
+                                                "charLength": 3
+                                            },
+                                            "insertedContent": {
+                                                "text": "…\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "dfdfca5d766fa93b"
                     }
                 }
             ]

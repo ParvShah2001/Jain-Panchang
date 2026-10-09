@@ -40,6 +40,20 @@
     </incident>
 
     <incident
+        id="PluralsCandidate"
+        severity="warning"
+        message="Formatting %d followed by words (&quot;Days&quot;): This should probably be a plural rather than a string">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="110"
+            column="5"
+            startOffset="4871"
+            endLine="110"
+            endColumn="47"
+            endOffset="4913"/>
+    </incident>
+
+    <incident
         id="ObsoleteSdkInt"
         severity="warning"
         message="Unnecessary; `SDK_INT` is always >= 26">
@@ -52,6 +66,120 @@
             endLine="21"
             endColumn="59"
             endOffset="648"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-gu/strings.xml"
+            line="99"
+            column="41"
+            startOffset="4192"
+            endLine="99"
+            endColumn="67"
+            endOffset="4218"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-hi/strings.xml"
+            line="99"
+            column="41"
+            startOffset="4236"
+            endLine="99"
+            endColumn="66"
+            endOffset="4261"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="99"
+            column="41"
+            startOffset="4295"
+            endLine="99"
+            endColumn="73"
+            endOffset="4327"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-gu/strings.xml"
+            line="112"
+            column="40"
+            startOffset="4878"
+            endLine="112"
+            endColumn="65"
+            endOffset="4903"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values-hi/strings.xml"
+            line="112"
+            column="40"
+            startOffset="4940"
+            endLine="112"
+            endColumn="69"
+            endOffset="4969"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"
+            priority="0"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="112"
+            column="40"
+            startOffset="5005"
+            endLine="112"
+            endColumn="65"
+            endOffset="5030"/>
     </incident>
 
 </incidents>

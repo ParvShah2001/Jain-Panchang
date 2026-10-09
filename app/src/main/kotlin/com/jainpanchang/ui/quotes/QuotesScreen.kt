@@ -16,10 +16,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jainpanchang.R
 import com.jainpanchang.data.repository.QuotesRepository
 import com.jainpanchang.data.schema.QuoteFileEntry
 import com.jainpanchang.ui.theme.*
@@ -34,17 +36,15 @@ fun QuotesScreen(
     val today = remember { LocalDate.now() }
     val dailyQuote = remember { quotesRepository.getDailyQuote(today) }
     val allQuotes = remember { quotesRepository.getQuotes() }
+    val lang = LocalAppLanguage.current
 
     fun shareQuote(q: QuoteFileEntry) {
+        val mainText = q.text.get(lang)
         val textToShare = """
-            "${q.text.gu}"
-            
-            "${q.text.hi}"
-            
-            "${q.text.en}"
+            "$mainText"
             
             — ${q.source}
-            (સાભાર: જૈન પંચાંગ / Jain Panchang)
+            (Jain Panchang)
         """.trimIndent()
 
         val sendIntent = Intent().apply {
@@ -52,7 +52,7 @@ fun QuotesScreen(
             putExtra(Intent.EXTRA_TEXT, textToShare)
             type = "text/plain"
         }
-        val shareIntent = Intent.createChooser(sendIntent, "જૈન સુવિચાર શેર કરો")
+        val shareIntent = Intent.createChooser(sendIntent, "Share Quote")
         context.startActivity(shareIntent)
     }
 
@@ -65,7 +65,7 @@ fun QuotesScreen(
     ) {
         item {
             Text(
-                text = "આજનો સુવિચાર (Daily Quote)",
+                text = stringResource(R.string.title_quotes),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary,
@@ -95,29 +95,23 @@ fun QuotesScreen(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = dailyQuote.text.gu,
+                        text = dailyQuote.text.get(lang),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
                         lineHeight = 32.sp
                     )
 
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Text(
-                        text = dailyQuote.text.hi,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = Color.White.copy(alpha = 0.9f)
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = dailyQuote.text.en,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontStyle = FontStyle.Italic,
-                        color = Color.White.copy(alpha = 0.8f)
-                    )
+                    // Secondary translation if not in English
+                    if (lang != AppLanguage.ENGLISH) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = dailyQuote.text.en,
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontStyle = FontStyle.Italic,
+                            color = Color.White.copy(alpha = 0.85f)
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
@@ -142,7 +136,7 @@ fun QuotesScreen(
                         ) {
                             Icon(Icons.Default.Share, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("શેર કરો")
+                            Text(stringResource(R.string.share))
                         }
                     }
                 }
@@ -151,7 +145,7 @@ fun QuotesScreen(
 
         item {
             Text(
-                text = "આગમ અને જૈન સાહિત્યના સુવિચારો",
+                text = stringResource(R.string.title_quotes),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary
@@ -168,15 +162,9 @@ fun QuotesScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = quote.text.gu,
+                        text = quote.text.get(lang),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = quote.text.hi,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(

@@ -28,19 +28,25 @@ import com.jainpanchang.ui.settings.SettingsScreen
 import com.jainpanchang.ui.theme.JainPanchangTheme
 import com.jainpanchang.ui.timings.TimingsScreen
 
+import android.content.res.Configuration
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import com.jainpanchang.ui.theme.AppLanguage
+import com.jainpanchang.ui.theme.LocalAppLanguage
+
 enum class MainNavDestination(
-    val titleGu: String,
-    val titleEn: String,
+    val titleRes: Int,
     val icon: ImageVector
 ) {
-    HOME("આજનું", "Home", Icons.Default.Home),
-    CALENDAR("કેલેન્ડર", "Calendar", Icons.Default.CalendarMonth),
-    TIMINGS("ચોઘડિયા", "Timings", Icons.Default.AccessTime),
-    FESTIVALS("પર્વ", "Festivals", Icons.Default.Celebration),
-    NIYAM("નિયમ", "Niyam", Icons.Default.SelfImprovement),
-    QUOTES("સુવિચાર", "Quotes", Icons.Default.FormatQuote),
-    EVENTS("પ્રસંગો", "Events", Icons.Default.Event),
-    SETTINGS("સેટિંગ્સ", "Settings", Icons.Default.Settings)
+    HOME(R.string.tab_home, Icons.Default.Home),
+    CALENDAR(R.string.tab_calendar, Icons.Default.CalendarMonth),
+    TIMINGS(R.string.tab_timings, Icons.Default.AccessTime),
+    FESTIVALS(R.string.tab_festivals, Icons.Default.Celebration),
+    NIYAM(R.string.tab_niyam, Icons.Default.SelfImprovement),
+    QUOTES(R.string.tab_quotes, Icons.Default.FormatQuote),
+    EVENTS(R.string.tab_events, Icons.Default.Event),
+    SETTINGS(R.string.tab_settings, Icons.Default.Settings)
 }
 
 class MainActivity : ComponentActivity() {
@@ -85,32 +91,53 @@ class MainActivity : ComponentActivity() {
                 else -> isSystemInDarkTheme()
             }
 
-            JainPanchangTheme(darkTheme = isDark) {
-                var currentDest by remember { mutableStateOf(MainNavDestination.HOME) }
-                var showCityPicker by remember { mutableStateOf(false) }
+            val currentLanguage = AppLanguage.fromCode(settings?.languageCode ?: "GU")
+            val baseContext = LocalContext.current
+            val baseConfig = LocalConfiguration.current
 
-                Scaffold(
-                    bottomBar = {
-                        NavigationBar {
-                            MainNavDestination.entries.take(5).forEach { dest ->
+            val localizedConfiguration = remember(currentLanguage, baseConfig) {
+                val config = Configuration(baseConfig)
+                config.setLocale(currentLanguage.locale)
+                config
+            }
+            val localizedContext = remember(currentLanguage, baseContext, baseConfig) {
+                val config = Configuration(baseConfig)
+                config.setLocale(currentLanguage.locale)
+                baseContext.createConfigurationContext(config)
+            }
+
+            CompositionLocalProvider(
+                LocalConfiguration provides localizedConfiguration,
+                LocalContext provides localizedContext,
+                LocalAppLanguage provides currentLanguage
+            ) {
+                JainPanchangTheme(darkTheme = isDark) {
+                    var currentDest by remember { mutableStateOf(MainNavDestination.HOME) }
+                    var showCityPicker by remember { mutableStateOf(false) }
+
+                    Scaffold(
+                        bottomBar = {
+                            NavigationBar {
+                                MainNavDestination.entries.take(5).forEach { dest ->
+                                    val title = stringResource(dest.titleRes)
+                                    NavigationBarItem(
+                                        selected = currentDest == dest,
+                                        onClick = { currentDest = dest },
+                                        icon = { Icon(dest.icon, contentDescription = title) },
+                                        label = { Text(title) }
+                                    )
+                                }
+                                val settingsTitle = stringResource(MainNavDestination.SETTINGS.titleRes)
                                 NavigationBarItem(
-                                    selected = currentDest == dest,
-                                    onClick = { currentDest = dest },
-                                    icon = { Icon(dest.icon, contentDescription = dest.titleGu) },
-                                    label = { Text(dest.titleGu) }
+                                    selected = currentDest == MainNavDestination.SETTINGS,
+                                    onClick = { currentDest = MainNavDestination.SETTINGS },
+                                    icon = { Icon(Icons.Default.Settings, contentDescription = settingsTitle) },
+                                    label = { Text(settingsTitle) }
                                 )
                             }
-                            // More dropdown or direct item
-                            NavigationBarItem(
-                                selected = currentDest == MainNavDestination.SETTINGS,
-                                onClick = { currentDest = MainNavDestination.SETTINGS },
-                                icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
-                                label = { Text("સેટિંગ્સ") }
-                            )
-                        }
-                    },
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
+                        },
+                        modifier = Modifier.fillMaxSize()
+                    ) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
                         when (currentDest) {
                             MainNavDestination.HOME -> HomeScreen(
@@ -155,4 +182,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
 }

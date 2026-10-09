@@ -10,13 +10,18 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jainpanchang.R
 import com.jainpanchang.data.repository.SettingsRepository
 import com.jainpanchang.data.repository.UserSettings
 import com.jainpanchang.engine.model.Ayanamsha
 import com.jainpanchang.engine.model.Sampraday
+import com.jainpanchang.ui.theme.AppLanguage
+import com.jainpanchang.ui.theme.LocalAppLanguage
 import com.jainpanchang.ui.theme.SaffronPrimary
+import com.jainpanchang.ui.theme.displayName
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,9 +33,11 @@ fun SettingsScreen(
 ) {
     val settings by settingsRepository.settingsFlow.collectAsState(initial = null)
     val scope = rememberCoroutineScope()
+    val appLanguage = LocalAppLanguage.current
 
     var showSampradayDialog by remember { mutableStateOf(false) }
     var showAyanamshaDialog by remember { mutableStateOf(false) }
+    var showLanguageDialog by remember { mutableStateOf(false) }
     var showThemeDialog by remember { mutableStateOf(false) }
     var showPrivacyDialog by remember { mutableStateOf(false) }
 
@@ -45,7 +52,7 @@ fun SettingsScreen(
     ) {
         item {
             Text(
-                text = "સેટિંગ્સ (Settings)",
+                text = stringResource(R.string.title_settings),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 color = SaffronPrimary
@@ -63,7 +70,7 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "સ્થાન (Location)",
+                        text = stringResource(R.string.section_location),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = SaffronPrimary
@@ -106,7 +113,7 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "પરંપરા અને ગણતરી (Tradition & Calculation)",
+                        text = stringResource(R.string.section_panchang_rules),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = SaffronPrimary
@@ -123,9 +130,9 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column {
-                            Text(text = "સંપ્રદાય (Tradition)", style = MaterialTheme.typography.bodyLarge)
+                            Text(text = stringResource(R.string.select_sampraday), style = MaterialTheme.typography.bodyLarge)
                             Text(
-                                text = userSettings.sampraday.nameGu,
+                                text = userSettings.sampraday.displayName(appLanguage),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = SaffronPrimary
@@ -146,7 +153,7 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column {
-                            Text(text = "અયનાંશ (Ayanamsha)", style = MaterialTheme.typography.bodyLarge)
+                            Text(text = stringResource(R.string.select_ayanamsha), style = MaterialTheme.typography.bodyLarge)
                             Text(
                                 text = userSettings.ayanamsha.displayName,
                                 style = MaterialTheme.typography.bodyMedium,
@@ -160,7 +167,7 @@ fun SettingsScreen(
             }
         }
 
-        // 3. App Display & Theme Card
+        // 3. App Display, Language & Theme Card
         item {
             Card(
                 colors = CardDefaults.cardColors(
@@ -171,13 +178,37 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "થીમ અને દેખાવ (Appearance)",
+                        text = stringResource(R.string.section_appearance),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = SaffronPrimary
                     )
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    // Language Selector
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { showLanguageDialog = true }
+                            .padding(vertical = 10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column {
+                            Text(text = stringResource(R.string.language), style = MaterialTheme.typography.bodyLarge)
+                            Text(
+                                text = appLanguage.nativeName,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = SaffronPrimary
+                            )
+                        }
+                        Icon(Icons.Default.ChevronRight, contentDescription = null)
+                    }
+
+                    HorizontalDivider()
+
+                    // Theme Selector
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -187,9 +218,14 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column {
-                            Text(text = "થીમ (Theme)", style = MaterialTheme.typography.bodyLarge)
+                            Text(text = stringResource(R.string.theme), style = MaterialTheme.typography.bodyLarge)
+                            val themeName = when (userSettings.themeMode) {
+                                "LIGHT" -> stringResource(R.string.theme_light)
+                                "DARK" -> stringResource(R.string.theme_dark)
+                                else -> stringResource(R.string.theme_system)
+                            }
                             Text(
-                                text = userSettings.themeMode,
+                                text = themeName,
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = SaffronPrimary
@@ -212,7 +248,7 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "નોટિફિકેશન અને સ્મરણ (Notifications)",
+                        text = stringResource(R.string.section_notifications),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = SaffronPrimary
@@ -220,22 +256,22 @@ fun SettingsScreen(
                     Spacer(modifier = Modifier.height(8.dp))
 
                     NotificationSwitchItem(
-                        title = "તિથિ અને પર્વ સૂચના (Tithi & Festivals)",
+                        title = stringResource(R.string.remind_tithi),
                         checked = userSettings.remindTithi,
                         onCheckedChange = { scope.launch { settingsRepository.setNotificationToggle("tithi", it) } }
                     )
                     NotificationSwitchItem(
-                        title = "સૂર્યાસ્ત / ચૌવિહાર સ્મરણ (Sunset / Chauvihar)",
+                        title = stringResource(R.string.remind_chauvihar),
                         checked = userSettings.remindChauvihar,
                         onCheckedChange = { scope.launch { settingsRepository.setNotificationToggle("chauvihar", it) } }
                     )
                     NotificationSwitchItem(
-                        title = "પચ્ચખાણ સ્મરણ (Pachkhan Reminders)",
+                        title = stringResource(R.string.remind_pachkhan),
                         checked = userSettings.remindPachkhan,
                         onCheckedChange = { scope.launch { settingsRepository.setNotificationToggle("pachkhan", it) } }
                     )
                     NotificationSwitchItem(
-                        title = "મારા પ્રસંગો સ્મરણ (My Events)",
+                        title = stringResource(R.string.remind_my_events),
                         checked = userSettings.remindMyEvents,
                         onCheckedChange = { scope.launch { settingsRepository.setNotificationToggle("my_events", it) } }
                     )
@@ -254,31 +290,70 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "ગોપનીયતા અને અધિકાર (Privacy & Trust)",
+                        text = stringResource(R.string.section_trust),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = SaffronPrimary
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "• ૧૦૦% ઓફલાઇન: કોઈ ડેટા કે લોકેશન ઉપકરણ બહાર જતું નથી.\n• કોઈ જાહેરાત નહીં (Ad-Free) અને કોઈ ટ્રેકિંગ નહીં.\n• ગણતરી સંપૂર્ણપણે ઑન-ડિવાઇસ ગાણિતિક અને ખગોળીય અલ્ગોરિધમથી થાય છે.",
+                        text = stringResource(R.string.privacy_guarantee_text),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     TextButton(onClick = { showPrivacyDialog = true }) {
-                        Text("સંપૂર્ણ ગોપનીયતા નીતિ વાંચો (Read Full Privacy Policy)")
+                        Text(stringResource(R.string.read_privacy_policy))
                     }
                 }
             }
         }
     }
 
+    // Language Selection Dialog
+    if (showLanguageDialog) {
+        AlertDialog(
+            onDismissRequest = { showLanguageDialog = false },
+            title = { Text(stringResource(R.string.select_language)) },
+            text = {
+                Column {
+                    AppLanguage.entries.forEach { lang ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    scope.launch { settingsRepository.setLanguageCode(lang.code) }
+                                    showLanguageDialog = false
+                                }
+                                .padding(vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(
+                                selected = appLanguage == lang,
+                                onClick = {
+                                    scope.launch { settingsRepository.setLanguageCode(lang.code) }
+                                    showLanguageDialog = false
+                                }
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = lang.nativeName,
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontWeight = if (appLanguage == lang) FontWeight.Bold else FontWeight.Normal
+                            )
+                        }
+                    }
+                }
+            },
+            confirmButton = {}
+        )
+    }
+
     // Sampraday Selection Dialog
     if (showSampradayDialog) {
         AlertDialog(
             onDismissRequest = { showSampradayDialog = false },
-            title = { Text("સંપ્રદાય પસંદ કરો") },
+            title = { Text(stringResource(R.string.select_sampraday)) },
             text = {
                 Column {
                     for (samp in Sampraday.entries) {
@@ -300,7 +375,7 @@ fun SettingsScreen(
                                 }
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(text = samp.nameGu, style = MaterialTheme.typography.bodyLarge)
+                            Text(text = samp.displayName(appLanguage), style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
@@ -313,7 +388,7 @@ fun SettingsScreen(
     if (showAyanamshaDialog) {
         AlertDialog(
             onDismissRequest = { showAyanamshaDialog = false },
-            title = { Text("અયનાંશ પદ્ધતિ પસંદ કરો") },
+            title = { Text(stringResource(R.string.select_ayanamsha)) },
             text = {
                 Column {
                     for (ayan in Ayanamsha.entries) {
@@ -348,10 +423,14 @@ fun SettingsScreen(
     if (showThemeDialog) {
         AlertDialog(
             onDismissRequest = { showThemeDialog = false },
-            title = { Text("થીમ પસંદ કરો") },
+            title = { Text(stringResource(R.string.theme)) },
             text = {
                 Column {
-                    listOf("SYSTEM", "LIGHT", "DARK").forEach { mode ->
+                    listOf(
+                        "SYSTEM" to stringResource(R.string.theme_system),
+                        "LIGHT" to stringResource(R.string.theme_light),
+                        "DARK" to stringResource(R.string.theme_dark)
+                    ).forEach { (mode, title) ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -370,7 +449,7 @@ fun SettingsScreen(
                                 }
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(text = mode, style = MaterialTheme.typography.bodyLarge)
+                            Text(text = title, style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
@@ -383,7 +462,7 @@ fun SettingsScreen(
     if (showPrivacyDialog) {
         AlertDialog(
             onDismissRequest = { showPrivacyDialog = false },
-            title = { Text("Privacy Policy / ગોપનીયતા નીતિ") },
+            title = { Text(stringResource(R.string.privacy_policy)) },
             text = {
                 Text(
                     "Jain Panchang is an ad-free, completely offline application dedicated to Jain religious practice. " +
@@ -392,7 +471,7 @@ fun SettingsScreen(
                 )
             },
             confirmButton = {
-                TextButton(onClick = { showPrivacyDialog = false }) { Text("બરાબર છે (OK)") }
+                TextButton(onClick = { showPrivacyDialog = false }) { Text(stringResource(R.string.close)) }
             }
         )
     }
