@@ -1,0 +1,227 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "prayer",
+      "name": { "en": "Prayer & Bhakti", "hi": "प्रार्थना एवं भक्ति", "gu": "પ્રાર્થના અને ભક્તિ" },
+      "icon": "favorite"
+    },
+    {
+      "id": "swadhyay",
+      "name": { "en": "Swadhyay & Study", "hi": "स्वाध्याय एवं चिंतन", "gu": "સ્વાધ્યાય અને ચિંતન" },
+      "icon": "menu_book"
+    },
+    {
+      "id": "tap",
+      "name": { "en": "Tap & Austerity", "hi": "तप एवं संयम", "gu": "તપ અને સંયમ" },
+      "icon": "self_improvement"
+    },
+    {
+      "id": "jeev_daya",
+      "name": { "en": "Jeev Daya & Compassion", "hi": "जीव दया एवं करुणा", "gu": "જીવ દયા અને કરુણા" },
+      "icon": "spa"
+    },
+    {
+      "id": "aahar_sanyam",
+      "name": { "en": "Aahar Sanyam (Diet Control)", "hi": "आहार संयम", "gu": "આહાર સંયમ" },
+      "icon": "restaurant"
+    },
+    {
+      "id": "digital_detox",
+      "name": { "en": "Digital Detox & Silence", "hi": "डिजिटल डिटॉक्स एवं मौन", "gu": "ડિજિટલ ડિટોક્સ અને મૌન" },
+      "icon": "phonelink_off"
+    }
+  ],
+  "chaudah_niyam": [
+    {
+      "id": 1,
+      "name": { "en": "1. Sachitta (Living Produce)", "hi": "१. सचित्त त्याग", "gu": "૧. સચિત્ત ત્યાગ" },
+      "description": {
+        "en": "Limit raw uncooked grains, green vegetables, raw water, and live seeds.",
+        "hi": "कच्चे पानी, कच्ची वनस्पति, फल व बीज आदि का परिमाण या त्याग।",
+        "gu": "કાચું પાણી, લીલોતરી, ફળ અને બીજ વગેરેનો નિયમ કે ત્યાગ."
+      },
+      "default_maryada": "No raw green veggies after sunset"
+    },
+    {
+      "id": 2,
+      "name": { "en": "2. Dravya (Food Varieties)", "hi": "२. द्रव्य परिमाण", "gu": "૨. દ્રવ્ય પરિમાણ" },
+      "description": {
+        "en": "Limit the total number of distinct edible items/ingredients consumed in a day.",
+        "hi": "दिनभर में खाए जाने वाले खाद्य पदार्थों की कुल संख्या की मर्यादा।",
+        "gu": "દિવસભરમાં વાપરવાના ખોરાકના દ્રવ્યોની કુલ સંખ્યાની મર્યાદા."
+      },
+      "default_maryada": "Maximum 20 dravyas today"
+    },
+    {
+      "id": 3,
+      "name": { "en": "3. Vigai (Rich Delicacies)", "hi": "३. विगय परिमाण", "gu": "૩. વિગઇ પરિમાણ" },
+      "description": {
+        "en": "Renounce or limit the 6 Vigais: milk, curd, ghee, oil, jaggery/sugar, and fried foods.",
+        "hi": "दूध, दही, घी, तेल, गुड़/शक्कर तथा तली हुई वस्तुओं का त्याग या सीमित करना।",
+        "gu": "દૂધ, દહીં, ઘી, તેલ, ગોળ/ખાંડ અને તળેલ વસ્તુઓનો ત્યાગ કે મર્યાદા."
+      },
+      "default_maryada": "Give up at least 1 vigai today"
+    },
+    {
+      "id": 4,
+      "name": { "en": "4. Vahana (Footwear)", "hi": "४. उपानह (जूते/चप्पल)", "gu": "૪. વાહન (જોડા/ચંપલ)" },
+      "description": {
+        "en": "Limit pairs of shoes, slippers, or footwear used during the day.",
+        "hi": "दिन में उपयोग किए जाने वाले जूते-चप्पलों की जोड़ियों की मर्यादा।",
+        "gu": "દિવસમાં પહેરવાના જોડા-ચંપલની જોડીઓની મર્યાદા."
+      },
+      "default_maryada": "Maximum 2 pairs"
+    },
+    {
+      "id": 5,
+      "name": { "en": "5. Tambula (Mouth Fresheners)", "hi": "५. ताम्बूल (मुखवास)", "gu": "૫. તાંબૂલ (મુખવાસ)" },
+      "description": {
+        "en": "Limit betel leaves, supari, cloves, cardamom, and mouth fresheners.",
+        "hi": "पान, सुपारी, लौंग, इलायची और मुखवास की मर्यादा।",
+        "gu": "પાન, સોપારી, લવિંગ, એલચી અને મુખવાસની મર્યાદા."
+      },
+      "default_maryada": "No supari or artificial mouth freshener"
+    },
+    {
+      "id": 6,
+      "name": { "en": "6. Vastra (Garments)", "hi": "६. वस्त्र परिमाण", "gu": "૬. વસ્ત્ર પરિમાણ" },
+      "description": {
+        "en": "Limit the number of clothes and changes worn in 24 hours.",
+        "hi": "२४ घंटे में पहने जाने वाले वस्त्रों की संख्या की मर्यादा।",
+        "gu": "૨૪ કલાકમાં પહેરવાના વસ્ત્રોની સંખ્યાની મર્યાદા."
+      },
+      "default_maryada": "Maximum 4 pairs of clothes"
+    },
+    {
+      "id": 7,
+      "name": { "en": "7. Kusuma (Flowers & Scents)", "hi": "७. कुसुम (पुष्प व सुगंध)", "gu": "૭. કુસુમ (ફૂલ અને સુગંધ)" },
+      "description": {
+        "en": "Abstain from fresh decorative flowers, perfumes, and synthetic fragrances.",
+        "hi": "सुगंधित पुष्प, इत्र, डियोड्रेंट और सेंट आदि का त्याग या मर्यादा।",
+        "gu": "તાજા ફૂલો, અત્તર, પરફ્યુમ અને સુગંધી પદાર્થોનો ત્યાગ કે મર્યાદા."
+      },
+      "default_maryada": "No chemical perfumes today"
+    },
+    {
+      "id": 8,
+      "name": { "en": "8. Vahana (Vehicles & Travel)", "hi": "८. वाहन (सवारी)", "gu": "૮. વાહન (મુસાફરી)" },
+      "description": {
+        "en": "Limit vehicles, rides, and motorized transport used today.",
+        "hi": "कार, बस, ट्रेन, फ्लाइट आदि वाहनों की संख्या व यात्रा की मर्यादा।",
+        "gu": "ગાડી, બસ, ટ્રેન વગેરે વાહનોની સંખ્યા અને મુસાફરીની મર્યાદા."
+      },
+      "default_maryada": "Walk for short errands"
+    },
+    {
+      "id": 9,
+      "name": { "en": "9. Shayana (Bedding & Seating)", "hi": "९. शयन (बिस्तर व आसन)", "gu": "૯. શયન (પથારી અને આસન)" },
+      "description": {
+        "en": "Limit mattresses, pillows, cushions, and luxurious bedding.",
+        "hi": "सोने के गद्दे, तकिए और आरामदायक बिस्तरों की मर्यादा।",
+        "gu": "સુવાના ગાદલા, ઓશીકા અને આરામદાયક પથારીની મર્યાદા."
+      },
+      "default_maryada": "Simple bedding, avoid luxury recliner"
+    },
+    {
+      "id": 10,
+      "name": { "en": "10. Vilepana (Body Lotions & Oils)", "hi": "१०. विलेपन (उबटन व क्रीम)", "gu": "૧૦. વિલેપન (ક્રીમ અને તેલ)" },
+      "description": {
+        "en": "Limit cosmetic creams, soaps, body lotions, and hair styling oils.",
+        "hi": "शरीर पर लगाए जाने वाले तेल, साबुन, क्रीम व सौंदर्य प्रसाधनों की मर्यादा।",
+        "gu": "શરીરે લગાવવાના તેલ, સાબુ, ક્રીમ અને શૃંગાર પ્રસાધનોની મર્યાદા."
+      },
+      "default_maryada": "Use simple natural cleanser only"
+    },
+    {
+      "id": 11,
+      "name": { "en": "11. Brahma (Celibacy & Chastity)", "hi": "११. ब्रह्मचर्य मर्यादा", "gu": "૧૧. બ્રહ્મચર્ય મર્યાદા" },
+      "description": {
+        "en": "Maintain purity of thoughts, senses, and practice brahmacharya maryada.",
+        "hi": "मन-वचन-काया से कामविकारों पर नियंत्रण और ब्रह्मचर्य की मर्यादा।",
+        "gu": "મન-વચન-કાયાથી ઇન્દ્રિય સંયમ અને બ્રહ્મચર્યની મર્યાદા."
+      },
+      "default_maryada": "Strict mental purity and sense control"
+    },
+    {
+      "id": 12,
+      "name": { "en": "12. Disha (Geographical Boundaries)", "hi": "१२. दिशा परिमाण", "gu": "૧૨. દિશા પરિમાણ" },
+      "description": {
+        "en": "Set boundaries on distance of travel in north, south, east, and west.",
+        "hi": "दिन में यात्रा की अधिकतम दूरी व दिशाओं की सीमा तय करना।",
+        "gu": "દિવસમાં મુસાફરી કરવાના અંતર અને દિશાઓની સીમા નક્કી કરવી."
+      },
+      "default_maryada": "Within city limits today"
+    },
+    {
+      "id": 13,
+      "name": { "en": "13. Upabhoga (Repeated Usables)", "hi": "१३. उपभोग-परिभोग मर्यादा", "gu": "૧૩. ઉપભોગ-પરિભોગ મર્યાદા" },
+      "description": {
+        "en": "Limit reusable and single-use possessions, gadgets, and utensils.",
+        "hi": "एक बार (उपभोग) व बार-बार (परिभोग) काम आने वाली वस्तुओं का परिमाण।",
+        "gu": "એકવાર અને વારંવાર વાપરવાની વસ્તુઓનો પરિમાણ."
+      },
+      "default_maryada": "Limit personal utensils and gadgets"
+    },
+    {
+      "id": 14,
+      "name": { "en": "14. Anarthadanda (Purposeless Sin)", "hi": "१४. अनर्थदंड त्याग", "gu": "૧૪. અનર્થદંડ ત્યાગ" },
+      "description": {
+        "en": "Abstain from purposeless gossiping, browsing, destructive thought, and carelessness.",
+        "hi": "बिना प्रयोजन के पाप, व्यर्थ गपशप, दूसरों का बुरा सोचना और प्रमाद का त्याग।",
+        "gu": "નિરર્થક પાપ, નકામી વાતો, બીજાનું અહિત વિચારવું અને પ્રમાદનો ત્યાગ."
+      },
+      "default_maryada": "Zero gossip, mindful speech"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "sug_navkar_mala",
+      "category": "prayer",
+      "title": { "en": "Chant 3 Malas of Navkar Mantra", "hi": "३ माला नवकार महामंत्र का जाप", "gu": "૩ માળા નવકાર મહામંત્રનો જાપ" },
+      "detail": { "en": "Recite with mindful awareness and gratitude towards the Pancha Parameshti.", "hi": "पंच परमेष्ठी के प्रति श्रद्धाभाव से शांत मन से जाप करें।", "gu": "પંચ પરમેષ્ઠી પ્રત્યે શ્રદ્ધાભાવથી શાંત મનથી જાપ કરવો." }
+    },
+    {
+      "id": "sug_logassa_study",
+      "category": "prayer",
+      "title": { "en": "Recite Logassa with Meaning", "hi": "अर्थ सहित लोगस्स का पाठ", "gu": "અર્થ સહિત લોગસ્સનો પાઠ" },
+      "detail": { "en": "Praise the 24 Tirthankars and reflect on their supreme virtues.", "hi": "२४ तीर्थंकरों के गुणों का स्मरण और स्तवन करें।", "gu": "૨૪ તીર્થંકરોના ગુણોનું સ્મરણ અને સ્તવન કરવું." }
+    },
+    {
+      "id": "sug_uttaradhyayana_reading",
+      "category": "swadhyay",
+      "title": { "en": "Read One Chapter of Uttaradhyayana Sutra", "hi": "उत्तराध्ययन सूत्र का एक अध्ययन पढ़ें", "gu": "ઉત્તરાધ્યયન સૂત્રનું એક અધ્યયન વાંચવું" },
+      "detail": { "en": "Bhagwan Mahavir's final sermon containing profound life lessons.", "hi": "भगवान महावीर की अंतिम देशना से आत्म-बोध प्राप्त करें।", "gu": "ભગવાન મહાવીરની અંતિમ દેશનામાંથી આત્મ-બોધ મેળવવો." }
+    },
+    {
+      "id": "sug_navkarshi_fast",
+      "category": "tap",
+      "title": { "en": "Observe Navkarshi Today", "hi": "आज नवकारशी का नियम लें", "gu": "આજે નવકારશીનો નિયમ લેવો" },
+      "detail": { "en": "Take food and water only 48 minutes after local sunrise.", "hi": "सूर्योदय के ४८ मिनट बाद ही जल व आहार ग्रहण करें।", "gu": "સૂર્યોદયના ૪૮ મિનિટ પછી જ જળ અને આહાર લેવો." }
+    },
+    {
+      "id": "sug_chauvihar",
+      "category": "tap",
+      "title": { "en": "Observe Sunset Chauvihar", "hi": "सूर्यास्त पर चौविहार करें", "gu": "સૂર્યાસ્તે ચૌવિહાર કરવો" },
+      "detail": { "en": "Give up food and water before sunset until tomorrow morning.", "hi": "सूर्यास्त से पहले भोजन समाप्त कर रातभर त्याग रखें।", "gu": "સૂર્યાસ્ત પહેલાં ભોજન પૂરું કરી રાત્રે ત્યાગ રાખવો." }
+    },
+    {
+      "id": "sug_feed_birds",
+      "category": "jeev_daya",
+      "title": { "en": "Feed Birds and Animals", "hi": "पशु-पक्षियों को दाना-पानी दें", "gu": "પશુ-પક્ષીઓને ચણ અને પાણી આપવું" },
+      "detail": { "en": "Practice active compassion by nourishing voiceless beings.", "hi": "मूक प्राणियों के प्रति अनुकंपा भाव से अन्न-जल प्रदान करें।", "gu": "મૂંગા પ્રાણીઓ પ્રત્યે કરુણાભાવથી અન્ન-જળ આપવું." }
+    },
+    {
+      "id": "sug_avoid_green_veg",
+      "category": "aahar_sanyam",
+      "title": { "en": "Green Vegetable Fast (Lilotari Tyag)", "hi": "आज हरी सब्जी (लीलोतरी) का त्याग", "gu": "આજે લીલોતરી શાકભાજીનો ત્યાગ" },
+      "detail": { "en": "Consume grains and lentils only to minimize harm to plant-bodied beings.", "hi": "वनस्पतिकाय जीवों की रक्षा हेतु दाल-रोटी आदि सात्विक आहार लें।", "gu": "વનસ્પતિકાય જીવોની રક્ષા માટે કઠોળ-અનાજનો સાત્ત્વિક આહાર લેવો." }
+    },
+    {
+      "id": "sug_screen_free_evening",
+      "category": "digital_detox",
+      "title": { "en": "Screen-Free Evening (After 8 PM)", "hi": "रात्रि ८ बजे के बाद डिजिटल उपवास", "gu": "રાત્રે ૮ વાગ્યા પછી ડિજિટલ ઉપવાસ" },
+      "detail": { "en": "Turn off phone screens and spend time in silence, reading or family conversation.", "hi": "फोन व टीवी से दूर रहकर मौन, स्वाध्याय या परिवार के साथ समय बिताएं।", "gu": "ફોન અને સ્ક્રીન બંધ કરી મૌન, સ્વાધ્યાય કે પરિવાર સાથે સમય વિતાવવો." }
+    }
+  ]
+}

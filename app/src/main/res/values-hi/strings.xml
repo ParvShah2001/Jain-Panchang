@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">जैन पंचांग</string>
+    <string name="tab_home">मुख्य पृष्ठ</string>
+    <string name="tab_calendar">कैलेंडर</string>
+    <string name="tab_timings">समय</string>
+    <string name="tab_festivals">पर्व व कल्याणक</string>
+    <string name="tab_niyam">दैनिक नियम</string>
+    <string name="tab_events">मेरे प्रसंग</string>
+    <string name="tab_settings">सेटिंग्स</string>
+
+    <!-- Panchang Elements -->
+    <string name="tithi">तिथि</string>
+    <string name="paksha">पक्ष</string>
+    <string name="nakshatra">नक्षत्र</string>
+    <string name="yoga">योग</string>
+    <string name="karana">करण</string>
+    <string name="vara">वार</string>
+    <string name="sunrise">सूर्योदय</string>
+    <string name="sunset">सूर्यास्त</string>
+    <string name="moonrise">चन्द्रोदय</string>
+    <string name="moonset">चन्द्रास्त</string>
+    <string name="current_choghadiya">वर्तमान चौघड़िया</string>
+    <string name="next_event">अगला समय</string>
+    <string name="samvat">विक्रम संवत</string>
+    <string name="veer_nirvan_samvat">वीर निर्वाण संवत</string>
+
+    <!-- Choghadiya Types -->
+    <string name="choghadiya_amrit">अमृत</string>
+    <string name="choghadiya_shubh">शुभ</string>
+    <string name="choghadiya_labh">लाभ</string>
+    <string name="choghadiya_char">चर</string>
+    <string name="choghadiya_rog">रोग</string>
+    <string name="choghadiya_kaal">काल</string>
+    <string name="choghadiya_udveg">उद्वेग</string>
+
+    <!-- Pachkhan Names -->
+    <string name="pachkhan_navkarshi">नवकारशी</string>
+    <string name="pachkhan_porsi">पोरसी</string>
+    <string name="pachkhan_sadh_porsi">साढ़ पोरसी</string>
+    <string name="pachkhan_purimuddh">पुरिमड्ढ</string>
+    <string name="pachkhan_avaddh">अवड्ढ</string>
+    <string name="pachkhan_chauvihar">चौविहार</string>
+    <string name="pachkhan_tivihar">तिविहार</string>
+    <string name="pachkhan_ekasana">एकासन</string>
+    <string name="pachkhan_biyasana">ब्यासन</string>
+
+    <!-- Settings & Options -->
+    <string name="select_city">नगर चुनें</string>
+    <string name="select_sampraday">संप्रदाय / परंपरा</string>
+    <string name="select_ayanamsha">अयनांश</string>
+    <string name="theme">थीम</string>
+    <string name="theme_system">सिस्टम अनुसार</string>
+    <string name="theme_light">लाइट (उजाला)</string>
+    <string name="theme_dark">डार्क (अंधेरा)</string>
+    <string name="language">भाषा</string>
+    <string name="notifications">सूचनाएं एवं स्मरण</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+</resources>

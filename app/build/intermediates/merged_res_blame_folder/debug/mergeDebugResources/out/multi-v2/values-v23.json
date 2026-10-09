@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.jainpanchang.app-mergeDebugResources-53:/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\parvs\\.gradle\\caches\\9.8.0\\transforms\\85a5ec9f5dc0c8d706c9c6debb7b0937\\transformed\\glance-appwidget-1.1.1\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "184",
+                        "endColumns": "55",
+                        "endOffsets": "235"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\parvs\\.gradle\\caches\\9.8.0\\transforms\\12e594c218bcc7cce70794315945f3b8\\transformed\\work-runtime-2.10.0\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

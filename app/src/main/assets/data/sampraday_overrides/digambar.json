@@ -1,0 +1,22 @@
+{
+  "sampraday_id": "digambar",
+  "name": { "en": "Digambar", "hi": "दिगंबर", "gu": "દિગંબર" },
+  "tithi_decision_rule": "UDAYA_TITHI",
+  "paryushan_name": { "en": "Das Lakshana Parva", "hi": "दशलक्षण महापर्व", "gu": "દશલક્ષણ મહાપર્વ" },
+  "paryushan_days": 10,
+  "paryushan_start_month": "BHADRAPADA",
+  "paryushan_start_paksha": "SHUKLA",
+  "paryushan_start_tithi": 5,
+  "kshamavani_month": "BHADRAPADA",
+  "kshamavani_paksha": "SHUKLA",
+  "kshamavani_tithi": 14,
+  "overrides": [
+    {
+      "festival_id": "samvatsari",
+      "action": "EXCLUDE",
+      "reason": "Digambar tradition celebrates 10-day Das Lakshana ending on Anant Chaturdashi"
+    }
+  ],
+  "needs_review": false,
+  "notes": "Digambar tradition celebrates Das Lakshana Parva from Bhadrapada Shukla Panchami to Chaturdashi, followed by Kshamavani."
+}

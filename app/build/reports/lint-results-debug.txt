@@ -1,0 +1,221 @@
+D:\github\Jain-Panchang\app\build.gradle.kts:15: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk = 36
+        ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application or sdk runs on a version of Android that is more
+   recent than your targetSdk specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdk is
+   less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdk to the highest available value. Then
+   test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+D:\github\Jain-Panchang\app\build.gradle.kts:10: Warning: A newer version of compileSdk than 36 is available: 37 [GradleDependency]
+    compileSdk = 36
+    ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+D:\github\Jain-Panchang\app\src\main\kotlin\com\jainpanchang\receiver\AlarmScheduler.kt:21: Warning: Unnecessary; SDK_INT is always >= 26 [ObsoleteSdkInt]
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:3: Warning: The resource R.string.tab_home appears to be unused [UnusedResources]
+    <string name="tab_home">Home</string>
+            ~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:4: Warning: The resource R.string.tab_calendar appears to be unused [UnusedResources]
+    <string name="tab_calendar">Calendar</string>
+            ~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:5: Warning: The resource R.string.tab_timings appears to be unused [UnusedResources]
+    <string name="tab_timings">Timings</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:6: Warning: The resource R.string.tab_festivals appears to be unused [UnusedResources]
+    <string name="tab_festivals">Festivals</string>
+            ~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:7: Warning: The resource R.string.tab_niyam appears to be unused [UnusedResources]
+    <string name="tab_niyam">Niyam</string>
+            ~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:8: Warning: The resource R.string.tab_events appears to be unused [UnusedResources]
+    <string name="tab_events">My Events</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:9: Warning: The resource R.string.tab_settings appears to be unused [UnusedResources]
+    <string name="tab_settings">Settings</string>
+            ~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:12: Warning: The resource R.string.tithi appears to be unused [UnusedResources]
+    <string name="tithi">Tithi</string>
+            ~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:13: Warning: The resource R.string.paksha appears to be unused [UnusedResources]
+    <string name="paksha">Paksha</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:14: Warning: The resource R.string.nakshatra appears to be unused [UnusedResources]
+    <string name="nakshatra">Nakshatra</string>
+            ~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:15: Warning: The resource R.string.yoga appears to be unused [UnusedResources]
+    <string name="yoga">Yoga</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:16: Warning: The resource R.string.karana appears to be unused [UnusedResources]
+    <string name="karana">Karana</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:17: Warning: The resource R.string.vara appears to be unused [UnusedResources]
+    <string name="vara">Day</string>
+            ~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:18: Warning: The resource R.string.sunrise appears to be unused [UnusedResources]
+    <string name="sunrise">Sunrise</string>
+            ~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:19: Warning: The resource R.string.sunset appears to be unused [UnusedResources]
+    <string name="sunset">Sunset</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:20: Warning: The resource R.string.moonrise appears to be unused [UnusedResources]
+    <string name="moonrise">Moonrise</string>
+            ~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:21: Warning: The resource R.string.moonset appears to be unused [UnusedResources]
+    <string name="moonset">Moonset</string>
+            ~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:22: Warning: The resource R.string.current_choghadiya appears to be unused [UnusedResources]
+    <string name="current_choghadiya">Current Choghadiya</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:23: Warning: The resource R.string.next_event appears to be unused [UnusedResources]
+    <string name="next_event">Next Timing</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:24: Warning: The resource R.string.samvat appears to be unused [UnusedResources]
+    <string name="samvat">Vikram Samvat</string>
+            ~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:25: Warning: The resource R.string.veer_nirvan_samvat appears to be unused [UnusedResources]
+    <string name="veer_nirvan_samvat">Veer Nirvan Samvat</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:28: Warning: The resource R.string.choghadiya_amrit appears to be unused [UnusedResources]
+    <string name="choghadiya_amrit">Amrit</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:29: Warning: The resource R.string.choghadiya_shubh appears to be unused [UnusedResources]
+    <string name="choghadiya_shubh">Shubh</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:30: Warning: The resource R.string.choghadiya_labh appears to be unused [UnusedResources]
+    <string name="choghadiya_labh">Labh</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:31: Warning: The resource R.string.choghadiya_char appears to be unused [UnusedResources]
+    <string name="choghadiya_char">Char</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:32: Warning: The resource R.string.choghadiya_rog appears to be unused [UnusedResources]
+    <string name="choghadiya_rog">Rog</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:33: Warning: The resource R.string.choghadiya_kaal appears to be unused [UnusedResources]
+    <string name="choghadiya_kaal">Kaal</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:34: Warning: The resource R.string.choghadiya_udveg appears to be unused [UnusedResources]
+    <string name="choghadiya_udveg">Udveg</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:37: Warning: The resource R.string.pachkhan_navkarshi appears to be unused [UnusedResources]
+    <string name="pachkhan_navkarshi">Navkarshi</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:38: Warning: The resource R.string.pachkhan_porsi appears to be unused [UnusedResources]
+    <string name="pachkhan_porsi">Porsi</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:39: Warning: The resource R.string.pachkhan_sadh_porsi appears to be unused [UnusedResources]
+    <string name="pachkhan_sadh_porsi">Sadh Porsi</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:40: Warning: The resource R.string.pachkhan_purimuddh appears to be unused [UnusedResources]
+    <string name="pachkhan_purimuddh">Purimuddh</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:41: Warning: The resource R.string.pachkhan_avaddh appears to be unused [UnusedResources]
+    <string name="pachkhan_avaddh">Avaddh</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:42: Warning: The resource R.string.pachkhan_chauvihar appears to be unused [UnusedResources]
+    <string name="pachkhan_chauvihar">Chauvihar</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:43: Warning: The resource R.string.pachkhan_tivihar appears to be unused [UnusedResources]
+    <string name="pachkhan_tivihar">Tivihar</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:44: Warning: The resource R.string.pachkhan_ekasana appears to be unused [UnusedResources]
+    <string name="pachkhan_ekasana">Ekasana</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:45: Warning: The resource R.string.pachkhan_biyasana appears to be unused [UnusedResources]
+    <string name="pachkhan_biyasana">Biyasana</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:48: Warning: The resource R.string.select_city appears to be unused [UnusedResources]
+    <string name="select_city">Select City</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:49: Warning: The resource R.string.select_sampraday appears to be unused [UnusedResources]
+    <string name="select_sampraday">Sampraday / Tradition</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:50: Warning: The resource R.string.select_ayanamsha appears to be unused [UnusedResources]
+    <string name="select_ayanamsha">Ayanamsha</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:51: Warning: The resource R.string.theme appears to be unused [UnusedResources]
+    <string name="theme">Theme</string>
+            ~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:52: Warning: The resource R.string.theme_system appears to be unused [UnusedResources]
+    <string name="theme_system">System Default</string>
+            ~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:53: Warning: The resource R.string.theme_light appears to be unused [UnusedResources]
+    <string name="theme_light">Light</string>
+            ~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:54: Warning: The resource R.string.theme_dark appears to be unused [UnusedResources]
+    <string name="theme_dark">Dark</string>
+            ~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:55: Warning: The resource R.string.language appears to be unused [UnusedResources]
+    <string name="language">Language</string>
+            ~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:56: Warning: The resource R.string.notifications appears to be unused [UnusedResources]
+    <string name="notifications">Notifications &amp; Reminders</string>
+            ~~~~~~~~~~~~~~~~~~~~
+D:\github\Jain-Panchang\app\src\main\res\values\strings.xml:57: Warning: The resource R.string.privacy_policy appears to be unused [UnusedResources]
+    <string name="privacy_policy">Privacy Policy</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests=true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests=true.
+
+   Available options:
+
+   **skip-libraries** (default is true):
+   Whether the unused resource check should skip reporting unused resources in libraries.
+
+   Many libraries will declare resources that are part of the library surface; other modules depending on the library will also reference the resources. To avoid reporting all these resources as unused (in the context of a library), the unused resource check normally skips reporting unused resources in libraries. Instead, run the unused resource check on the consuming app module (along with `checkDependencies=true`).
+
+   However, there are cases where you want to check that all the resources declared in a library are used; in that case, you can disable the skip option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UnusedResources">
+           <option name="skip-libraries" value="true" />
+       </issue>
+   </lint>
+   ```
+
+0 errors, 50 warnings

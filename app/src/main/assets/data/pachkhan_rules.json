@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "pachkhans": [
+    {
+      "id": "navkarshi",
+      "name": { "en": "Navkarshi", "hi": "नवकारशी", "gu": "નવકારશી" },
+      "formula_type": "SUNRISE_OFFSET_MINUTES",
+      "offset_minutes": 48,
+      "description": {
+        "en": "Fasting until 48 minutes (2 Ghadis) after sunrise.",
+        "hi": "सूर्योदय के 48 मिनट (2 घड़ी) बाद तक आहार-पानी का त्याग।",
+        "gu": "સૂર્યોદય પછી 48 મિનિટ (2 ઘડી) સુધી અન્ન-જળનો ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "porsi",
+      "name": { "en": "Porsi", "hi": "पोरसी", "gu": "પોરસી" },
+      "formula_type": "DINMAN_FRACTION",
+      "fraction_numerator": 1,
+      "fraction_denominator": 4,
+      "description": {
+        "en": "Fasting until one Prahar (1/4th of daytime) after sunrise.",
+        "hi": "सूर्योदय से दिन के 1/4 भाग (1 प्रहर) तक त्याग।",
+        "gu": "સૂર્યોદયથી દિવસના ચોથા ભાગ (1 પ્રહર) સુધી ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "sadh_porsi",
+      "name": { "en": "Sadh Porsi", "hi": "साढ़ पोरसी", "gu": "સાઢ પોરસી" },
+      "formula_type": "DINMAN_FRACTION",
+      "fraction_numerator": 3,
+      "fraction_denominator": 8,
+      "description": {
+        "en": "Fasting until one and a half Prahars (3/8th of daytime) after sunrise.",
+        "hi": "सूर्योदय से दिन के 3/8 भाग (डेढ़ प्रहर) तक त्याग।",
+        "gu": "સૂર્યોદયથી દિવસના દોઢ પ્રહર (3/8 ભાગ) સુધી ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "purimuddh",
+      "name": { "en": "Purimuddh", "hi": "पुरिमड्ढ", "gu": "પુરીમડ્ઢ" },
+      "formula_type": "DINMAN_FRACTION",
+      "fraction_numerator": 1,
+      "fraction_denominator": 2,
+      "description": {
+        "en": "Fasting until half of the daytime (2 Prahars / Midday) has elapsed.",
+        "hi": "सूर्योदय से दिन के आधे भाग (2 प्रहर) तक त्याग।",
+        "gu": "સૂર્યોદયથી દિવસના અડધા ભાગ (2 પ્રહર) સુધી ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "avaddh",
+      "name": { "en": "Avaddh", "hi": "अवड्ढ", "gu": "અવડ્ઢ" },
+      "formula_type": "DINMAN_FRACTION",
+      "fraction_numerator": 3,
+      "fraction_denominator": 4,
+      "description": {
+        "en": "Fasting until 3 Prahars (3/4th of daytime) after sunrise.",
+        "hi": "सूर्योदय से दिन के 3/4 भाग (तीन प्रहर) तक त्याग।",
+        "gu": "સૂર્યોદયથી દિવસના પોણા ભાગ (3 પ્રહર) સુધી ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "chauvihar",
+      "name": { "en": "Chauvihar (Sunset Fast)", "hi": "चौविहार (सूर्यास्त त्याग)", "gu": "ચૌવિહાર (સૂર્યાસ્ત ત્યાગ)" },
+      "formula_type": "EXACT_SUNSET",
+      "offset_minutes": 0,
+      "description": {
+        "en": "Absolute renunciation of all food and drink from sunset until next sunrise.",
+        "hi": "सूर्यास्त से अगले सूर्योदय तक चारों प्रकार के आहार-पानी का संपूर्ण त्याग।",
+        "gu": "સૂર્યાસ્તથી આગલા સૂર્યોદય સુધી ચારેય પ્રકારના આહાર-પાણીનો ત્યાગ."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "tivihar",
+      "name": { "en": "Tivihar", "hi": "तिविहार", "gu": "તિવિહાર" },
+      "formula_type": "EXACT_SUNSET",
+      "offset_minutes": 0,
+      "description": {
+        "en": "Renunciation of food, but boiled water permitted during daytime until sunset.",
+        "hi": "अशन, खादिम, स्वादिम का त्याग; केवल उबला पानी सूर्यास्त तक ग्राह्य।",
+        "gu": "અન્ન-નાસ્તાનો ત્યાગ; માત્ર ઉકાળેલું પાણી સૂર્યાસ્ત સુધી લઇ શકાય."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "ekasana",
+      "name": { "en": "Ekasana Guidance", "hi": "एकासन", "gu": "એકાસણું" },
+      "formula_type": "GUIDANCE",
+      "offset_minutes": 0,
+      "description": {
+        "en": "Partaking of one meal in a single sitting before afternoon, followed by Chauvihar at sunset.",
+        "hi": "एक ही आसन पर बैठकर एक बार भोजन ग्रहण करना, सूर्यास्त पर चौविहार।",
+        "gu": "એક જ આસને બેસીને એક વખત ભોજન કરવું, સૂર્યાસ્તે ચૌવિહાર."
+      },
+      "needs_review": false
+    },
+    {
+      "id": "biyasana",
+      "name": { "en": "Biyasana Guidance", "hi": "ब्यासन", "gu": "બિયાસણું" },
+      "formula_type": "GUIDANCE",
+      "offset_minutes": 0,
+      "description": {
+        "en": "Partaking of two meals during daylight hours, followed by Chauvihar at sunset.",
+        "hi": "दिन में दो बार बैठकर भोजन ग्रहण करना, सूर्यास्त पर चौविहार।",
+        "gu": "દિવસ દરમિયાન બે વખત બેસીને ભોજન કરવું, સૂર્યાસ્તે ચૌવિહાર."
+      },
+      "needs_review": false
+    }
+  ]
+}

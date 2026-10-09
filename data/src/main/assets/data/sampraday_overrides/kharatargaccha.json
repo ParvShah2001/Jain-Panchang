@@ -1,0 +1,10 @@
+{
+  "sampraday_id": "kharatargaccha",
+  "name": { "en": "Shwetambar Murtipujak (Kharatargaccha)", "hi": "श्वेतांबर मूर्तिपूजक (खरतरगच्छ)", "gu": "શ્વેતાંબર મૂર્તિપૂજક (ખરતરગચ્છ)" },
+  "tithi_decision_rule": "UDAYA_TITHI",
+  "samvatsari_rule": "BHADRAPADA_SHUKLA_PANCHAMI_OR_CHATURTHI",
+  "paryushan_days": 8,
+  "overrides": [],
+  "needs_review": true,
+  "notes": "In certain Kshaya/Vriddhi years, Kharatargaccha may observe Samvatsari on Bhadrapada Shukla 5."
+}

@@ -1,0 +1,294 @@
+{
+  "$schema": "kalyanak_v1",
+  "version": 1,
+  "tirthankars": [
+    {
+      "id": 1,
+      "name": { "en": "Rishabhanatha (Adinatha)", "hi": "ऋषभनाथ (आदिनाथ)", "gu": "ઋષભનાથ (આદિનાથ)" },
+      "symbol": "Bull",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "ASHADHA", "paksha": "KRISHNA", "tithi": 4, "needs_review": false, "notes": "Ashadha Vad Chauth" },
+        { "type": "JANMA", "jain_month": "CHAITRA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Chaitra Vad Nom" },
+        { "type": "DIKSHA", "jain_month": "CHAITRA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Chaitra Vad Nom" },
+        { "type": "KEVALGYAN", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 11, "needs_review": false, "notes": "Fagan Vad Agiyaras" },
+        { "type": "MOKSHA", "jain_month": "MAGHA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Ashtapad, Maha Vad Chaudas" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": { "en": "Ajitanatha", "hi": "अजितनाथ", "gu": "અજિતનાથ" },
+      "symbol": "Elephant",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "JYESHTHA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Jeth Sud Poonam" },
+        { "type": "JANMA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Maha Sud Dasham" },
+        { "type": "DIKSHA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 9, "needs_review": false, "notes": "Maha Sud Nom" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Posh Sud Agiyaras" },
+        { "type": "MOKSHA", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 5, "needs_review": false, "notes": "Sammet Shikhar, Chaitra Sud Pancham" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": { "en": "Sambhavanatha", "hi": "संभवनाथ", "gu": "સંભવનાથ" },
+      "symbol": "Horse",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "PHALGUNA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Fagan Sud Aatham" },
+        { "type": "JANMA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 14, "needs_review": false, "notes": "Magshar Sud Chaudas" },
+        { "type": "DIKSHA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Magshar Sud Poonam" },
+        { "type": "KEVALGYAN", "jain_month": "KARTIKA", "paksha": "KRISHNA", "tithi": 4, "needs_review": false, "notes": "Kartik Vad Chauth" },
+        { "type": "MOKSHA", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Sammet Shikhar, Chaitra Sud Chhath" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": { "en": "Abhinandananatha", "hi": "अभिनंदननाथ", "gu": "અભિનંદનનાથ" },
+      "symbol": "Monkey",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 4, "needs_review": false, "notes": "Vaishakh Sud Chauth" },
+        { "type": "JANMA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 2, "needs_review": false, "notes": "Maha Sud Beej" },
+        { "type": "DIKSHA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 12, "needs_review": false, "notes": "Maha Sud Baras" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "SHUKLA", "tithi": 14, "needs_review": false, "notes": "Posh Sud Chaudas" },
+        { "type": "MOKSHA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 7, "needs_review": false, "notes": "Sammet Shikhar, Vaishakh Sud Satam" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": { "en": "Sumatinatha", "hi": "सुमतिनाथ", "gu": "સુમતિનાથ" },
+      "symbol": "Curlew/Chakrava",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 2, "needs_review": false, "notes": "Shravan Sud Beej" },
+        { "type": "JANMA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Vaishakh Sud Aatham" },
+        { "type": "DIKSHA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 9, "needs_review": false, "notes": "Vaishakh Sud Nom" },
+        { "type": "KEVALGYAN", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Chaitra Sud Agiyaras" },
+        { "type": "MOKSHA", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 9, "needs_review": false, "notes": "Sammet Shikhar, Chaitra Sud Nom" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": { "en": "Padmaprabha", "hi": "पद्मप्रभ", "gu": "પદ્મપ્રભ" },
+      "symbol": "Red Lotus",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "MAGHA", "paksha": "KRISHNA", "tithi": 6, "needs_review": false, "notes": "Maha Vad Chhath" },
+        { "type": "JANMA", "jain_month": "KARTIKA", "paksha": "KRISHNA", "tithi": 12, "needs_review": false, "notes": "Kartik Vad Baras" },
+        { "type": "DIKSHA", "jain_month": "KARTIKA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Kartik Vad Teras" },
+        { "type": "KEVALGYAN", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Chaitra Sud Poonam" },
+        { "type": "MOKSHA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Sammet Shikhar, Magshar Sud Agiyaras" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": { "en": "Suparshvanatha", "hi": "सुपार्श्वनाथ", "gu": "સુપાર્શ્વનાથ" },
+      "symbol": "Swastika",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "BHADRAPADA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Bhadarva Sud Aatham" },
+        { "type": "JANMA", "jain_month": "JYESHTHA", "paksha": "SHUKLA", "tithi": 12, "needs_review": false, "notes": "Jeth Sud Baras" },
+        { "type": "DIKSHA", "jain_month": "JYESHTHA", "paksha": "SHUKLA", "tithi": 13, "needs_review": false, "notes": "Jeth Sud Teras" },
+        { "type": "KEVALGYAN", "jain_month": "PHALGUNA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Fagan Sud Chhath" },
+        { "type": "MOKSHA", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 7, "needs_review": false, "notes": "Sammet Shikhar, Fagan Vad Satam" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": { "en": "Chandraprabha", "hi": "चन्द्रप्रभ", "gu": "ચંદ્રપ્રભ" },
+      "symbol": "Crescent Moon",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "CHAITRA", "paksha": "KRISHNA", "tithi": 5, "needs_review": false, "notes": "Chaitra Vad Pancham" },
+        { "type": "JANMA", "jain_month": "PAUSHA", "paksha": "KRISHNA", "tithi": 12, "needs_review": false, "notes": "Posh Vad Baras" },
+        { "type": "DIKSHA", "jain_month": "PAUSHA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Posh Vad Teras" },
+        { "type": "KEVALGYAN", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 7, "needs_review": false, "notes": "Fagan Vad Satam" },
+        { "type": "MOKSHA", "jain_month": "BHADRAPADA", "paksha": "SHUKLA", "tithi": 7, "needs_review": false, "notes": "Sammet Shikhar, Bhadarva Sud Satam" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": { "en": "Pushpadanta (Suvidhinatha)", "hi": "पुष्पदंत (सुविधिनाथ)", "gu": "પુષ્પદંત (સુવિધિનાથ)" },
+      "symbol": "Crocodile",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Fagan Vad Nom" },
+        { "type": "JANMA", "jain_month": "MARGASHIRSHA", "paksha": "KRISHNA", "tithi": 1, "needs_review": false, "notes": "Magshar Vad Ekam" },
+        { "type": "DIKSHA", "jain_month": "MARGASHIRSHA", "paksha": "KRISHNA", "tithi": 1, "needs_review": false, "notes": "Magshar Vad Ekam" },
+        { "type": "KEVALGYAN", "jain_month": "KARTIKA", "paksha": "SHUKLA", "tithi": 3, "needs_review": false, "notes": "Kartik Sud Trij" },
+        { "type": "MOKSHA", "jain_month": "ASHVINA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Sammet Shikhar, Aso Sud Aatham" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": { "en": "Shitalanatha", "hi": "शीतलनाथ", "gu": "શીતલનાથ" },
+      "symbol": "Shrivatsa / Kalpavriksha",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "CHAITRA", "paksha": "KRISHNA", "tithi": 8, "needs_review": false, "notes": "Chaitra Vad Aatham" },
+        { "type": "JANMA", "jain_month": "MAGHA", "paksha": "KRISHNA", "tithi": 12, "needs_review": false, "notes": "Maha Vad Baras" },
+        { "type": "DIKSHA", "jain_month": "MAGHA", "paksha": "KRISHNA", "tithi": 12, "needs_review": false, "notes": "Maha Vad Baras" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Posh Vad Chaudas" },
+        { "type": "MOKSHA", "jain_month": "VAISHAKHA", "paksha": "KRISHNA", "tithi": 2, "needs_review": false, "notes": "Sammet Shikhar, Vaishakh Vad Beej" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": { "en": "Shreyamsanatha", "hi": "श्रेयांसनाथ", "gu": "શ્રેયાંસનાથ" },
+      "symbol": "Rhinoceros",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 6, "needs_review": false, "notes": "Jeth Vad Chhath" },
+        { "type": "JANMA", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 12, "needs_review": false, "notes": "Fagan Vad Baras" },
+        { "type": "DIKSHA", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Fagan Vad Teras" },
+        { "type": "KEVALGYAN", "jain_month": "MAGHA", "paksha": "KRISHNA", "tithi": 15, "needs_review": false, "notes": "Maha Vad Amas" },
+        { "type": "MOKSHA", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Sammet Shikhar, Shravan Sud Poonam" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": { "en": "Vasupujya", "hi": "वासुपूज्य", "gu": "વાસુપૂજ્ય" },
+      "symbol": "Buffalo",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "ASHADHA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Ashadha Vad Nom" },
+        { "type": "JANMA", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Fagan Vad Chaudas" },
+        { "type": "DIKSHA", "jain_month": "PHALGUNA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Fagan Vad Chaudas" },
+        { "type": "KEVALGYAN", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 2, "needs_review": false, "notes": "Maha Sud Beej" },
+        { "type": "MOKSHA", "jain_month": "BHADRAPADA", "paksha": "SHUKLA", "tithi": 14, "needs_review": false, "notes": "Champapuri, Bhadarva Sud Chaudas" }
+      ]
+    },
+    {
+      "id": 13,
+      "name": { "en": "Vimalanatha", "hi": "विमलनाथ", "gu": "વિમલનાથ" },
+      "symbol": "Boar",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "JYESHTHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Jeth Sud Dasham" },
+        { "type": "JANMA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 3, "needs_review": false, "notes": "Maha Sud Trij" },
+        { "type": "DIKSHA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 4, "needs_review": false, "notes": "Maha Sud Chauth" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Posh Sud Chhath" },
+        { "type": "MOKSHA", "jain_month": "ASHADHA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Sammet Shikhar, Ashadha Sud Aatham" }
+      ]
+    },
+    {
+      "id": 14,
+      "name": { "en": "Anantanatha", "hi": "अनंतनाथ", "gu": "અનંતનાથ" },
+      "symbol": "Falcon / Bear",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "KARTIKA", "paksha": "KRISHNA", "tithi": 1, "needs_review": false, "notes": "Kartik Vad Ekam" },
+        { "type": "JANMA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Jeth Vad Teras" },
+        { "type": "DIKSHA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Jeth Vad Chaudas" },
+        { "type": "KEVALGYAN", "jain_month": "VAISHAKHA", "paksha": "KRISHNA", "tithi": 15, "needs_review": false, "notes": "Vaishakh Vad Amas" },
+        { "type": "MOKSHA", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 5, "needs_review": false, "notes": "Sammet Shikhar, Chaitra Sud Pancham" }
+      ]
+    },
+    {
+      "id": 15,
+      "name": { "en": "Dharmanatha", "hi": "धर्मनाथ", "gu": "ધર્મનાથ" },
+      "symbol": "Vajra",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Vaishakh Sud Aatham" },
+        { "type": "JANMA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 3, "needs_review": false, "notes": "Maha Sud Trij" },
+        { "type": "DIKSHA", "jain_month": "MAGHA", "paksha": "SHUKLA", "tithi": 13, "needs_review": false, "notes": "Maha Sud Teras" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Posh Sud Poonam" },
+        { "type": "MOKSHA", "jain_month": "JYESHTHA", "paksha": "SHUKLA", "tithi": 5, "needs_review": false, "notes": "Sammet Shikhar, Jeth Sud Pancham" }
+      ]
+    },
+    {
+      "id": 16,
+      "name": { "en": "Shantinatha", "hi": "शांतिनाथ", "gu": "શાંતિનાથ" },
+      "symbol": "Deer",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "BHADRAPADA", "paksha": "KRISHNA", "tithi": 7, "needs_review": false, "notes": "Bhadarva Vad Satam" },
+        { "type": "JANMA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Jeth Vad Teras" },
+        { "type": "DIKSHA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 14, "needs_review": false, "notes": "Jeth Vad Chaudas" },
+        { "type": "KEVALGYAN", "jain_month": "PAUSHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Posh Sud Dasham" },
+        { "type": "MOKSHA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 13, "needs_review": false, "notes": "Sammet Shikhar, Jeth Vad Teras" }
+      ]
+    },
+    {
+      "id": 17,
+      "name": { "en": "Kunthunatha", "hi": "कुंथुनाथ", "gu": "કુંથુનાથ" },
+      "symbol": "Goat",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "SHRAVANA", "paksha": "KRISHNA", "tithi": 10, "needs_review": false, "notes": "Shravan Vad Dasham" },
+        { "type": "JANMA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 14, "needs_review": false, "notes": "Vaishakh Sud Chaudas" },
+        { "type": "DIKSHA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Vaishakh Sud Poonam" },
+        { "type": "KEVALGYAN", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 3, "needs_review": false, "notes": "Chaitra Sud Trij" },
+        { "type": "MOKSHA", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 1, "needs_review": false, "notes": "Sammet Shikhar, Vaishakh Sud Ekam" }
+      ]
+    },
+    {
+      "id": 18,
+      "name": { "en": "Aranatha", "hi": "अरनाथ", "gu": "અરનાથ" },
+      "symbol": "Nandyavarta / Fish",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "PHALGUNA", "paksha": "SHUKLA", "tithi": 3, "needs_review": false, "notes": "Fagan Sud Trij" },
+        { "type": "JANMA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Magshar Sud Dasham" },
+        { "type": "DIKSHA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Magshar Sud Agiyaras" },
+        { "type": "KEVALGYAN", "jain_month": "KARTIKA", "paksha": "SHUKLA", "tithi": 12, "needs_review": false, "notes": "Kartik Sud Baras" },
+        { "type": "MOKSHA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Sammet Shikhar, Magshar Sud Dasham" }
+      ]
+    },
+    {
+      "id": 19,
+      "name": { "en": "Mallinatha", "hi": "मल्लिनाथ", "gu": "મલ્લિનાથ" },
+      "symbol": "Kalasha (Water Pitcher)",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 1, "needs_review": false, "notes": "Chaitra Sud Ekam" },
+        { "type": "JANMA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Magshar Sud Agiyaras" },
+        { "type": "DIKSHA", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Magshar Sud Agiyaras" },
+        { "type": "KEVALGYAN", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Attained same day" },
+        { "type": "MOKSHA", "jain_month": "PHALGUNA", "paksha": "SHUKLA", "tithi": 12, "needs_review": false, "notes": "Sammet Shikhar, Fagan Sud Baras" }
+      ]
+    },
+    {
+      "id": 20,
+      "name": { "en": "Munisuvrata", "hi": "मुनिसुव्रत", "gu": "મુનિસુવ્રત" },
+      "symbol": "Tortoise",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 15, "needs_review": false, "notes": "Shravan Sud Poonam" },
+        { "type": "JANMA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 8, "needs_review": false, "notes": "Jeth Vad Aatham" },
+        { "type": "DIKSHA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Jeth Vad Nom" },
+        { "type": "KEVALGYAN", "jain_month": "VAISHAKHA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Vaishakh Vad Nom" },
+        { "type": "MOKSHA", "jain_month": "JYESHTHA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Sammet Shikhar, Jeth Vad Nom" }
+      ]
+    },
+    {
+      "id": 21,
+      "name": { "en": "Naminatha", "hi": "नमिनाथ", "gu": "નમિનાથ" },
+      "symbol": "Blue Lotus (Nilotpala)",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "ASHVINA", "paksha": "KRISHNA", "tithi": 2, "needs_review": false, "notes": "Aso Vad Beej" },
+        { "type": "JANMA", "jain_month": "ASHADHA", "paksha": "KRISHNA", "tithi": 8, "needs_review": false, "notes": "Ashadha Vad Aatham" },
+        { "type": "DIKSHA", "jain_month": "ASHADHA", "paksha": "KRISHNA", "tithi": 9, "needs_review": false, "notes": "Ashadha Vad Nom" },
+        { "type": "KEVALGYAN", "jain_month": "MARGASHIRSHA", "paksha": "SHUKLA", "tithi": 11, "needs_review": false, "notes": "Magshar Sud Agiyaras" },
+        { "type": "MOKSHA", "jain_month": "VAISHAKHA", "paksha": "KRISHNA", "tithi": 10, "needs_review": false, "notes": "Sammet Shikhar, Vaishakh Vad Dasham" }
+      ]
+    },
+    {
+      "id": 22,
+      "name": { "en": "Neminatha (Arishtanemi)", "hi": "नेमिनाथ (अरिष्टनेमि)", "gu": "નેમિનાથ (અરિષ્ટનેમિ)" },
+      "symbol": "Conch (Shankha)",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "KARTIKA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Kartik Sud Chhath" },
+        { "type": "JANMA", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 5, "needs_review": false, "notes": "Shravan Sud Pancham" },
+        { "type": "DIKSHA", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Shravan Sud Chhath" },
+        { "type": "KEVALGYAN", "jain_month": "ASHVINA", "paksha": "SHUKLA", "tithi": 1, "needs_review": false, "notes": "Aso Sud Ekam" },
+        { "type": "MOKSHA", "jain_month": "ASHADHA", "paksha": "SHUKLA", "tithi": 8, "needs_review": false, "notes": "Girnar, Ashadha Sud Aatham" }
+      ]
+    },
+    {
+      "id": 23,
+      "name": { "en": "Parshvanatha", "hi": "पार्श्वनाथ", "gu": "પાર્શ્વનાથ" },
+      "symbol": "Serpent (Phani)",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "VAISHAKHA", "paksha": "KRISHNA", "tithi": 4, "needs_review": false, "notes": "Vaishakh Vad Chauth" },
+        { "type": "JANMA", "jain_month": "PAUSHA", "paksha": "KRISHNA", "tithi": 10, "needs_review": false, "notes": "Posh Vad Dasham" },
+        { "type": "DIKSHA", "jain_month": "PAUSHA", "paksha": "KRISHNA", "tithi": 11, "needs_review": false, "notes": "Posh Vad Agiyaras" },
+        { "type": "KEVALGYAN", "jain_month": "CHAITRA", "paksha": "KRISHNA", "tithi": 4, "needs_review": false, "notes": "Chaitra Vad Chauth" },
+        { "type": "MOKSHA", "jain_month": "SHRAVANA", "paksha": "SHUKLA", "tithi": 7, "needs_review": false, "notes": "Sammet Shikhar, Shravan Sud Satam" }
+      ]
+    },
+    {
+      "id": 24,
+      "name": { "en": "Mahavira (Vardhamana)", "hi": "महावीर (वर्धमान)", "gu": "મહાવીર (વર્ધમાન)" },
+      "symbol": "Lion",
+      "kalyanaks": [
+        { "type": "CHYAVAN", "jain_month": "ASHADHA", "paksha": "SHUKLA", "tithi": 6, "needs_review": false, "notes": "Ashadha Sud Chhath" },
+        { "type": "JANMA", "jain_month": "CHAITRA", "paksha": "SHUKLA", "tithi": 13, "needs_review": false, "notes": "Chaitra Sud Teras (Mahavir Jayanti)" },
+        { "type": "DIKSHA", "jain_month": "MARGASHIRSHA", "paksha": "KRISHNA", "tithi": 10, "needs_review": false, "notes": "Magshar Vad Dasham" },
+        { "type": "KEVALGYAN", "jain_month": "VAISHAKHA", "paksha": "SHUKLA", "tithi": 10, "needs_review": false, "notes": "Vaishakh Sud Dasham" },
+        { "type": "MOKSHA", "jain_month": "ASHVINA", "paksha": "KRISHNA", "tithi": 15, "needs_review": false, "notes": "Pawapuri, Aso Vad Amas (Diwali night/dawn)" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jainpanchang.engine.PanchangReferenceValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-09T12:30:58.355Z" hostname="PARVSHAH" time="0.004">
+  <properties/>
+  <testcase name="testReferenceDatasets" classname="com.jainpanchang.engine.PanchangReferenceValuesTest" time="0.004"/>
+  <system-out><![CDATA[[REFERENCE TEST REPORT] Reference dataset files are currently MISSING in app/src/test/resources/reference/*.json.
+[REFERENCE TEST REPORT] All verification running in self-consistency and property-based invariant mode.
+[REFERENCE TEST REPORT] As requested by user: No reference values are invented or fabricated.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

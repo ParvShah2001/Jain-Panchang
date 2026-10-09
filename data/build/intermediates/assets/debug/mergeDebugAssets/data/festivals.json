@@ -1,0 +1,259 @@
+{
+  "$schema": "festivals_v1",
+  "version": 1,
+  "festivals": [
+    {
+      "id": "paryushan_start",
+      "name": { "en": "Paryushan Mahaparva Start", "hi": "पर्युषण महापर्व प्रारंभ", "gu": "પર્યુષણ મહાપર્વ પ્રારંભ" },
+      "category": "PARYUSHAN",
+      "jain_month": "BHADRAPADA",
+      "paksha": "KRISHNA",
+      "tithi": 12,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth"],
+      "description": "8-day spiritual festival of fasting, introspection and repentance.",
+      "needs_review": true
+    },
+    {
+      "id": "samvatsari",
+      "name": { "en": "Samvatsari Mahaparva", "hi": "संवत्सरी महापर्व (क्षमायाचना दिवस)", "gu": "સંવત્સરી મહાપર્વ (ક્ષમાયાચના પર્વ)" },
+      "category": "PARYUSHAN",
+      "jain_month": "BHADRAPADA",
+      "paksha": "SHUKLA",
+      "tithi": 4,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth"],
+      "description": "The holiest day of universal forgiveness (Michhami Dukkadam). Determined by 50th day from Ashadha Purnima rule in case of Kshaya/Vriddhi.",
+      "needs_review": true
+    },
+    {
+      "id": "das_lakshana_start",
+      "name": { "en": "Das Lakshana Parva Start (Uttam Kshama)", "hi": "दशलक्षण महापर्व प्रारंभ (उत्तम क्षमा)", "gu": "દશલક્ષણ મહાપર્વ પ્રારંભ (ઉત્તમ ક્ષમા)" },
+      "category": "PARYUSHAN",
+      "jain_month": "BHADRAPADA",
+      "paksha": "SHUKLA",
+      "tithi": 5,
+      "sampradays": ["digambar"],
+      "description": "10-day Digambar observance of the ten supreme virtues of the soul.",
+      "needs_review": false
+    },
+    {
+      "id": "anant_chaturdashi_kshamavani",
+      "name": { "en": "Anant Chaturdashi (Digambar Kshamavani)", "hi": "अनंत चतुर्दशी (क्षमावाणी पर्व)", "gu": "અનંત ચતુર્દશી (ક્ષમાવાણી પર્વ)" },
+      "category": "PARYUSHAN",
+      "jain_month": "BHADRAPADA",
+      "paksha": "SHUKLA",
+      "tithi": 14,
+      "sampradays": ["digambar"],
+      "description": "Culmination of Das Lakshana Parva and universal forgiveness day in Digambar tradition.",
+      "needs_review": false
+    },
+    {
+      "id": "mahavir_jayanti",
+      "name": { "en": "Bhagwan Mahavir Janma Kalyanak", "hi": "भगवान महावीर जन्म कल्याणक", "gu": "ભગવાન મહાવીર જન્મ કલ્યાણક" },
+      "category": "MAJOR_PARV",
+      "jain_month": "CHAITRA",
+      "paksha": "SHUKLA",
+      "tithi": 13,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Birth anniversary of the 24th Tirthankar Bhagwan Mahavira.",
+      "needs_review": false
+    },
+    {
+      "id": "diwali_nirvan",
+      "name": { "en": "Diwali (Bhagwan Mahavir Nirvana Kalyanak)", "hi": "दीपावली (भगवान महावीर निर्वाण कल्याणक)", "gu": "દિવાળી (ભગવાન મહાવીર નિર્વાણ કલ્યાણક)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "ASHVINA",
+      "paksha": "KRISHNA",
+      "tithi": 15,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Moksha of Bhagwan Mahavir at Pawapuri and Kevalgyan of Gautam Swami.",
+      "needs_review": false
+    },
+    {
+      "id": "nutan_varsha",
+      "name": { "en": "Nutan Varsha (Veer Nirvan Samvat New Year)", "hi": "नूतन वर्ष (वीर निर्वाण संवत प्रारंभ)", "gu": "નૂતન વર્ષ (વીર નિર્વાણ સંવત પ્રારંભ)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "KARTIKA",
+      "paksha": "SHUKLA",
+      "tithi": 1,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Beginning of the new Jain year (Veer Nirvan Samvat).",
+      "needs_review": false
+    },
+    {
+      "id": "bhai_dooj",
+      "name": { "en": "Bhai Dooj (Bhratri Dvitiya)", "hi": "भाई दूज (भ्रातृ द्वितीया)", "gu": "ભાઈ બીજ" },
+      "category": "PARV",
+      "jain_month": "KARTIKA",
+      "paksha": "SHUKLA",
+      "tithi": 2,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Celebration of sibling bond in memory of Raja Nandivardhan comforted by sister Sudarshana.",
+      "needs_review": false
+    },
+    {
+      "id": "gyan_panchami",
+      "name": { "en": "Gyan Panchami (Saubhagya Panchami)", "hi": "ज्ञान पंचमी (सौभाग्य पंचमी)", "gu": "જ્ઞાન પંચમી (સૌભાગ્ય પંચમી)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "KARTIKA",
+      "paksha": "SHUKLA",
+      "tithi": 5,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Day devoted to the worship and preservation of sacred scriptures and knowledge.",
+      "needs_review": false
+    },
+    {
+      "id": "kartiki_chaumasi_chaudas",
+      "name": { "en": "Kartiki Chaumasi Chaudas", "hi": "कार्तिकी चौमासी चौदस", "gu": "કાર્તિકી ચૌમાસી ચૌદસ" },
+      "category": "CHAUMASI",
+      "jain_month": "KARTIKA",
+      "paksha": "SHUKLA",
+      "tithi": 14,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Chaumasi Parva marking the conclusion of the 4-month monsoon retreat.",
+      "needs_review": false
+    },
+    {
+      "id": "kartiki_poonam",
+      "name": { "en": "Kartiki Purnima (Dev Diwali)", "hi": "कार्तिकी पूर्णिमा (देव दिवाली)", "gu": "કાર્તિકી પૂનમ (દેવ દિવાળી)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "KARTIKA",
+      "paksha": "SHUKLA",
+      "tithi": 15,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Opening of Shatrunjay Palitana pilgrimage gates; Moksha of Dravid and Varikhill with 10 crore munis.",
+      "needs_review": false
+    },
+    {
+      "id": "maun_ekadashi",
+      "name": { "en": "Maun Ekadashi (Maun Agiyaras)", "hi": "मौन एकादशी (मौन ग्यारस)", "gu": "મૌન એકાદશી (મૌન અગિયારસ)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "MARGASHIRSHA",
+      "paksha": "SHUKLA",
+      "tithi": 11,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Great day of silence and meditation celebrating 150 Kalyanaks of present, past and future Tirthankars.",
+      "needs_review": false
+    },
+    {
+      "id": "paush_dashami",
+      "name": { "en": "Paush Dashami", "hi": "पौष दशमी", "gu": "પોષ દશમી" },
+      "category": "PARV",
+      "jain_month": "PAUSHA",
+      "paksha": "KRISHNA",
+      "tithi": 10,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Janma Kalyanak of Bhagwan Parshvanatha and 3-day fast (Attham tap).",
+      "needs_review": false
+    },
+    {
+      "id": "meru_trayodashi",
+      "name": { "en": "Meru Trayodashi", "hi": "मेरु त्रयोदशी", "gu": "મેરુ ત્રયોદશી" },
+      "category": "PARV",
+      "jain_month": "MAGHA",
+      "paksha": "KRISHNA",
+      "tithi": 13,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Eve of Bhagwan Rishabhdev's Moksha Kalyanak.",
+      "needs_review": false
+    },
+    {
+      "id": "falguni_chaumasi_chaudas",
+      "name": { "en": "Falguni Chaumasi Chaudas", "hi": "फाल्गुनी चौमासी चौदस", "gu": "ફાલ્ગુની ચૌમાસી ચૌદસ" },
+      "category": "CHAUMASI",
+      "jain_month": "PHALGUNA",
+      "paksha": "SHUKLA",
+      "tithi": 14,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Mid-year Chaumasi Parva fasting and pratikraman.",
+      "needs_review": false
+    },
+    {
+      "id": "chaitri_oli_start",
+      "name": { "en": "Chaitri Navpad Oli Start", "hi": "चैत्री नवपद ओली प्रारंभ", "gu": "ચૈત્રી નવપદ ઓળી પ્રારંભ" },
+      "category": "OLI",
+      "jain_month": "CHAITRA",
+      "paksha": "SHUKLA",
+      "tithi": 7,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Beginning of the 9-day Ayambil fasting dedicated to the Siddhachakra Navpad.",
+      "needs_review": false
+    },
+    {
+      "id": "chaitri_oli_end",
+      "name": { "en": "Chaitri Navpad Oli Purnahuti", "hi": "चैत्री नवपद ओली पूर्णाहुति", "gu": "ચૈત્રી નવપદ ઓળી પૂર્ણાહુતિ" },
+      "category": "OLI",
+      "jain_month": "CHAITRA",
+      "paksha": "SHUKLA",
+      "tithi": 15,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Culmination of Chaitri Ayambil Oli on Chaitra Purnima.",
+      "needs_review": false
+    },
+    {
+      "id": "akshay_tritiya",
+      "name": { "en": "Akshay Tritiya (Varshitap Parana)", "hi": "अक्षय तृतीया (वर्षीतप पारणा)", "gu": "અક્ષય તૃતીયા (વર્ષીતપ પારણા)" },
+      "category": "MAJOR_PARV",
+      "jain_month": "VAISHAKHA",
+      "paksha": "SHUKLA",
+      "tithi": 3,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Parana of Bhagwan Rishabhdev's 13-month fast with sugarcane juice offered by Shreyans Kumar.",
+      "needs_review": false
+    },
+    {
+      "id": "ashadhi_chaumasi_chaudas",
+      "name": { "en": "Ashadhi Chaumasi Chaudas (Chaturmas Start)", "hi": "आषाढ़ी चौमासी चौदस (चातुर्मास प्रारंभ)", "gu": "અષાઢી ચૌમાસી ચૌદસ (ચાતુર્માસ પ્રારંભ)" },
+      "category": "CHAUMASI",
+      "jain_month": "ASHADHA",
+      "paksha": "SHUKLA",
+      "tithi": 14,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Beginning of the sacred 4-month monsoon monastic stay (Chaturmas).",
+      "needs_review": false
+    },
+    {
+      "id": "aso_oli_start",
+      "name": { "en": "Aso Navpad Oli Start", "hi": "आसो नवपद ओली प्रारंभ", "gu": "આસો નવપદ ઓળી પ્રારંભ" },
+      "category": "OLI",
+      "jain_month": "ASHVINA",
+      "paksha": "SHUKLA",
+      "tithi": 7,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Autumn 9-day Ayambil festival dedicated to Navpad worship.",
+      "needs_review": false
+    },
+    {
+      "id": "aso_oli_end",
+      "name": { "en": "Aso Navpad Oli Purnahuti", "hi": "आसो नवपद ओली पूर्णाहुति", "gu": "આસો નવપદ ઓળી પૂર્ણાહુતિ" },
+      "category": "OLI",
+      "jain_month": "ASHVINA",
+      "paksha": "SHUKLA",
+      "tithi": 15,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Conclusion of Autumn Ayambil Oli on Sharad Purnima.",
+      "needs_review": false
+    },
+    {
+      "id": "dhan_teras",
+      "name": { "en": "Dhan Teras", "hi": "धन तेरस", "gu": "ધન તેરસ" },
+      "category": "PARV",
+      "jain_month": "ASHVINA",
+      "paksha": "KRISHNA",
+      "tithi": 13,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Worship of true spiritual wealth (Gyan, Darshan, Charitra).",
+      "needs_review": false
+    },
+    {
+      "id": "kali_chaudas",
+      "name": { "en": "Kali Chaudas", "hi": "काली चौदस", "gu": "કાળી ચૌદસ" },
+      "category": "PARV",
+      "jain_month": "ASHVINA",
+      "paksha": "KRISHNA",
+      "tithi": 14,
+      "sampradays": ["tapagaccha", "kharatargaccha", "sthanakvasi", "terapanth", "digambar"],
+      "description": "Meditation, Ghantakarna Mahavir and protective devas remembrance.",
+      "needs_review": false
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/custom_dialog.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_template_part_chronometer.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/ime_secondary_split_test_activity.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/ime_secondary_split_test_activity.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_template_custom_big.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_action_tombstone.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_action.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_action.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/ime_base_split_test_activity.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/ime_base_split_test_activity.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_template_icon_group.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "com.jainpanchang.data-release-18:/layout/notification_template_part_time.xml",
+        "source": "com.jainpanchang.data-core-1.18.0-14:/layout/notification_template_part_time.xml"
+    }
+]

@@ -1,0 +1,10 @@
+{
+  "sampraday_id": "terapanth",
+  "name": { "en": "Shwetambar Terapanth", "hi": "श्वेतांबर तेरापंथ", "gu": "શ્વેતાંબર તેરાપંથ" },
+  "tithi_decision_rule": "UDAYA_TITHI",
+  "samvatsari_rule": "BHADRAPADA_SHUKLA_CHATURTHI",
+  "paryushan_days": 8,
+  "overrides": [],
+  "needs_review": false,
+  "notes": "Follows Terapanth calendar decisions set by Acharya."
+}

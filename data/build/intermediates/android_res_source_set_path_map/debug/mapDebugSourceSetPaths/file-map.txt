@@ -1,0 +1,9 @@
+com.jainpanchang.data-pngs-0 D:\github\Jain-Panchang\data\build\generated\res\pngs\debug
+com.jainpanchang.data-updated_navigation_xml-1 D:\github\Jain-Panchang\data\build\generated\updated_navigation_xml\debug
+com.jainpanchang.data-mergeDebugResources-2 D:\github\Jain-Panchang\data\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.jainpanchang.data-mergeDebugResources-3 D:\github\Jain-Panchang\data\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.jainpanchang.data-debug-4 D:\github\Jain-Panchang\data\build\intermediates\merged_res\debug\mergeDebugResources
+com.jainpanchang.data-debug-5 D:\github\Jain-Panchang\data\build\intermediates\packaged_res\debug\packageDebugResources
+com.jainpanchang.data-debug-6 D:\github\Jain-Panchang\data\src\debug\res
+com.jainpanchang.data-main-7 D:\github\Jain-Panchang\data\src\main\res
+gradleHome-0 C:\Users\parvs\.gradle

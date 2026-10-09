@@ -1,0 +1,10 @@
+{
+  "sampraday_id": "tapagaccha",
+  "name": { "en": "Shwetambar Murtipujak (Tapagaccha)", "hi": "श्वेतांबर मूर्तिपूजक (तपागच्छ)", "gu": "શ્વેતાંબર મૂર્તિપૂજક (તપાગચ્છ)" },
+  "tithi_decision_rule": "UDAYA_TITHI",
+  "samvatsari_rule": "FIFTIETH_DAY_FROM_ASHADHA_PURNIMA",
+  "paryushan_days": 8,
+  "overrides": [],
+  "needs_review": false,
+  "notes": "Follows standard Tapagaccha Panchang traditions."
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 9.4.1" type="conditional_incidents">
+
+    <incident
+        id="NotificationPermission"
+        severity="error"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission">
+        <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*2}/com/jainpanchang/receiver/AlarmScheduler.kt"
+            line="61"
+            column="9"
+            startOffset="2109"
+            endLine="61"
+            endColumn="56"
+            endOffset="2156"/>
+    </incident>
+
+</incidents>

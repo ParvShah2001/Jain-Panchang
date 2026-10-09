@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-09T12:30:58.180Z" hostname="PARVSHAH" time="0.171">
+  <properties/>
+  <testcase name="testPachkhanOrderInvariants" classname="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" time="0.063"/>
+  <testcase name="testChoghadiyaSumAndPartInvariants" classname="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" time="0.053"/>
+  <testcase name="testPanchangCoreElementsRanges" classname="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" time="0.023"/>
+  <testcase name="testHorasAndGowriInvariants" classname="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" time="0.001"/>
+  <testcase name="testSolarTimesInvariants" classname="com.jainpanchang.engine.PanchangPropertyAndInvariantTest" time="0.028"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

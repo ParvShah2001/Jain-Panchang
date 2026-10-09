@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.jainpanchang.app-debug-55:/xml_today_panchang_widget_info.xml.flat",
+        "source": "com.jainpanchang.app-main-57:/xml/today_panchang_widget_info.xml"
+    },
+    {
+        "merged": "com.jainpanchang.app-debug-55:/xml_choghadiya_widget_info.xml.flat",
+        "source": "com.jainpanchang.app-main-57:/xml/choghadiya_widget_info.xml"
+    }
+]

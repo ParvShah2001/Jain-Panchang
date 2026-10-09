@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Jain Panchang</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_calendar">Calendar</string>
+    <string name="tab_timings">Timings</string>
+    <string name="tab_festivals">Festivals</string>
+    <string name="tab_niyam">Niyam</string>
+    <string name="tab_events">My Events</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Panchang Elements -->
+    <string name="tithi">Tithi</string>
+    <string name="paksha">Paksha</string>
+    <string name="nakshatra">Nakshatra</string>
+    <string name="yoga">Yoga</string>
+    <string name="karana">Karana</string>
+    <string name="vara">Day</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="moonrise">Moonrise</string>
+    <string name="moonset">Moonset</string>
+    <string name="current_choghadiya">Current Choghadiya</string>
+    <string name="next_event">Next Timing</string>
+    <string name="samvat">Vikram Samvat</string>
+    <string name="veer_nirvan_samvat">Veer Nirvan Samvat</string>
+
+    <!-- Choghadiya Types -->
+    <string name="choghadiya_amrit">Amrit</string>
+    <string name="choghadiya_shubh">Shubh</string>
+    <string name="choghadiya_labh">Labh</string>
+    <string name="choghadiya_char">Char</string>
+    <string name="choghadiya_rog">Rog</string>
+    <string name="choghadiya_kaal">Kaal</string>
+    <string name="choghadiya_udveg">Udveg</string>
+
+    <!-- Pachkhan Names -->
+    <string name="pachkhan_navkarshi">Navkarshi</string>
+    <string name="pachkhan_porsi">Porsi</string>
+    <string name="pachkhan_sadh_porsi">Sadh Porsi</string>
+    <string name="pachkhan_purimuddh">Purimuddh</string>
+    <string name="pachkhan_avaddh">Avaddh</string>
+    <string name="pachkhan_chauvihar">Chauvihar</string>
+    <string name="pachkhan_tivihar">Tivihar</string>
+    <string name="pachkhan_ekasana">Ekasana</string>
+    <string name="pachkhan_biyasana">Biyasana</string>
+
+    <!-- Settings & Options -->
+    <string name="select_city">Select City</string>
+    <string name="select_sampraday">Sampraday / Tradition</string>
+    <string name="select_ayanamsha">Ayanamsha</string>
+    <string name="theme">Theme</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="language">Language</string>
+    <string name="notifications">Notifications &amp; Reminders</string>
+    <string name="privacy_policy">Privacy Policy</string>
+</resources>

@@ -1,0 +1,10 @@
+{
+  "sampraday_id": "sthanakvasi",
+  "name": { "en": "Shwetambar Sthanakvasi", "hi": "श्वेतांबर स्थानकवासी", "gu": "શ્વેતાંબર સ્થાનકવાસી" },
+  "tithi_decision_rule": "UDAYA_TITHI",
+  "samvatsari_rule": "FIFTIETH_DAY_FROM_ASHADHA_PURNIMA",
+  "paryushan_days": 8,
+  "overrides": [],
+  "needs_review": false,
+  "notes": "Follows Sthanakvasi tradition."
+}

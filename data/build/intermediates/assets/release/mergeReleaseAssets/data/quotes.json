@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "quotes": [
+    {
+      "id": "quote_1",
+      "text": {
+        "en": "All beings desire to live; nobody desires to suffer. Just as pain is unwelcome to you, so is it to all living beings.",
+        "hi": "सभी जीव जीना चाहते हैं, कोई मरना नहीं चाहता। जैसे सुख आपको प्रिय और दुःख अप्रिय है, वैसे ही सभी जीवों को है।",
+        "gu": "બધા જીવો જીવવા માંગે છે, કોઈ મરવા માંગતું નથી. જેમ સુખ તમને પ્રિય છે અને દુઃખ અપ્રિય છે, તેમ જ સર્વ જીવોને છે."
+      },
+      "source": "Acharanga Sutra (1.2.3)",
+      "theme": "Ahimsa"
+    },
+    {
+      "id": "quote_2",
+      "text": {
+        "en": "Fight with your own self! Why fight with external foes? He who conquers his own passions conquers the entire world.",
+        "hi": "अपने आप से युद्ध करो! बाहरी शत्रुओं से क्या लड़ना? जो अपनी आत्मा पर विजय पा लेता है, वह सारे संसार पर विजय प्राप्त कर लेता है।",
+        "gu": "તમારી પોતાની જાત સાથે યુદ્ધ કરો! બાહ્ય શત્રુઓ સાથે શું લડવું? જે પોતાના આત્મા પર વિજય મેળવે છે, તે આખા સંસાર પર વિજય મેળવે છે."
+      },
+      "source": "Uttaradhyayana Sutra (9.34)",
+      "theme": "Self-Mastery"
+    },
+    {
+      "id": "quote_3",
+      "text": {
+        "en": "Parasparopagraho Jivanam — All living souls are bound together by mutual support, compassion, and interdependence.",
+        "hi": "परस्परोपग्रहो जीवानाम् — सभी जीव परस्पर एक-दूसरे के उपकारी और सहायक हैं।",
+        "gu": "પરસ્પરોપગ્રહો જીવાનામ્ — બધા જીવો પરસ્પર એકબીજાના ઉપકારી અને સહાયક છે."
+      },
+      "source": "Tattvartha Sutra (5.21)",
+      "theme": "Interdependence"
+    },
+    {
+      "id": "quote_4",
+      "text": {
+        "en": "Knowing that human life is rare and fleeting like a drop of water on a blade of grass, do not be indolent for even a single moment.",
+        "hi": "मनुष्य जीवन तृण के अग्रभाग पर टिकी ओस की बूंद के समान अत्यंत क्षणभंगुर है, अतः एक क्षण के लिए भी प्रमाद न करो।",
+        "gu": "માનવ જન્મ ઘાસના તણખલા પર રહેલા ઝાકળના બિંદુ જેવો ક્ષણભંગુર છે, તેથી એક ક્ષણ માટે પણ પ્રમાદ ન કરવો."
+      },
+      "source": "Uttaradhyayana Sutra (10.1)",
+      "theme": "Mindfulness"
+    },
+    {
+      "id": "quote_5",
+      "text": {
+        "en": "Forgiveness is the supreme jewel of the soul. Anger destroys love, pride destroys modesty, deceit destroys friendship, and greed destroys everything.",
+        "hi": "क्षमा आत्मा का परम आभूषण है। क्रोध प्रेम का, मान विनय का, माया मित्रता का और लोभ सब कुछ का नाश कर देता है।",
+        "gu": "ક્ષમા આત્માનું પરમ આભૂષણ છે. ક્રોધ પ્રેમને, માન વિનયને, માયા મિત્રતાને અને લોભ સર્વસ્વનો નાશ કરે છે."
+      },
+      "source": "Dashavaikalika Sutra (8.38)",
+      "theme": "Forgiveness"
+    },
+    {
+      "id": "quote_6",
+      "text": {
+        "en": "I ask pardon of all living creatures; may all of them pardon me. May I have friendship with all beings and malice toward none.",
+        "hi": "खामेमि सव्व जीवे, सव्वे जीवा खमंतु मे। मित्ती मे सव्व भूएसु, वेरं मज्झं न केणइ॥ (सभी जीवों से क्षमा चाहता हूँ, सभी मुझे क्षमा करें। मेरी सर्व जीवों से मैत्री है, किसी से वैर नहीं।)",
+        "gu": "ખામેમિ સવ્વ જીવે, સવ્વે જીવા ખમંતુ મે. મિત્તી મે સવ્વ ભૂએસુ, વેરં મજ્ઝં ન કેણઇ. (હું બધા જીવોની ક્ષમા યાચું છું, બધા મને ક્ષમા કરે. મારી સૌ જીવો સાથે મૈત્રી છે, કોઈ સાથે વેર નથી.)"
+      },
+      "source": "Avashyaka Sutra (Iryavahi Pratikraman)",
+      "theme": "Universal Friendship"
+    },
+    {
+      "id": "quote_7",
+      "text": {
+        "en": "One who is pure in mind, serene in conduct, and detached from possessions is truly wealthy, even if penniless.",
+        "hi": "जिसका मन निर्मल है, आचरण शांत है और जो परिग्रह से विरक्त है, वह बाह्य रूप से निर्धन होने पर भी वास्तव में सबसे बड़ा धनी है।",
+        "gu": "જેનું મન નિર્મળ છે, આચરણ શાંત છે અને જે પરિગ્રહથી વિરક્ત છે, તે બાહ્ય રીતે નિર્ધન હોવા છતાં ખરેખર સૌથી મોટો ધનવાન છે."
+      },
+      "source": "Saman Suttam (143)",
+      "theme": "Aparigraha"
+    }
+  ]
+}
